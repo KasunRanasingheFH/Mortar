@@ -16,6 +16,9 @@ public class HomePage extends HooksStepDefinitions {
     @FindBy(xpath = "//app-header-sidebar-large/div/div[4]/div/div/button")
     private WebElement lnklogout;
 
+    @FindBy(id = "error-msg")
+    private WebElement spanErrorMessage;
+
     public String getWelcomeMessage()
     {
         return lbldashboard.getText();

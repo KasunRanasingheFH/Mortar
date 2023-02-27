@@ -1,6 +1,4 @@
 package StepDefinitions;
-
-
 import com.mortarai.pages.HomePage;
 import com.mortarai.pages.LoginPage;
 import io.cucumber.java.en.And;
@@ -90,42 +88,47 @@ public class HooksStepDefinitions {
         driver.close();
     }
 
-    @Given("user navigates to the login page")
+    @Given("User navigates to the login page")
     public void user_navigates_to_the_login_page() {
         beforeSuite();
         beforeMethod("chrome");
-        System.out.println("I'm in login page");
+//        System.out.println("I'm in login page");
     }
-    @When("^user enters username \"([^\"]*)\"$")
+    @When("User enters username \"([^\"]*)\"$")
     public void user_enters_username(String username) {
 //        loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.typeUserName(username);
         System.out.println("username");
-        logger.info("Entered the Username");
+//        logger.info("Entered the Username");
     }
-    @And("user enters the password as \"([^\"]*)\"$")
+    @And("User enters the password as \"([^\"]*)\"$")
     public void userEntersThePasswordAs(String password) {
         loginPage.typePassword(password);
     }
-    @And("clicks on login button")
+    @And("Clicks on login button")
     public void clicks_on_login_button() {
         loginPage.clickLoginButtonSuccess();
-        System.out.println("I pressed Login button");
+//        System.out.println("I pressed Login button");
     }
 
-    @Then("user is navigated to the home page and see {string} message")
+    @Then("User is navigated to the home page and see {string} message")
     public void userIsNavigatedToTheHomePageAndSeeWelcomeAdminMessage(String message) {
         Duration duration = Duration.ofSeconds(60);
         WebDriverWait wait = new WebDriverWait(driver,duration);
         wait.until(ExpectedConditions.urlToBe(Constants.BASE_URL + "dashboard"));
         Assert.assertEquals(homePage.getWelcomeMessage(),message);
-        System.out.println("I'm in Home Page");
+        System.out.println("I'm in Home Page" + message);
+        System.out.println("Expected message:" +homePage.getWelcomeMessage());
 
         homePage.logout();
-        System.out.println("I pressed Logout button");
+//        System.out.println("I pressed Logout button");
         afterMethod();
-        System.out.println("Officially closed the test case");
+//        System.out.println("Officially closed the test case");
     }
 
-
+    @Then("User should get an error {string} message")
+    public void userShouldGettingAnErrorInvalidCredentialsMessage(String message) {
+        Assert.assertEquals(loginPage.getErrorMessage(),message);
+        afterMethod();
+    }
 }
