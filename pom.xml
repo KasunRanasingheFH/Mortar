@@ -101,7 +101,7 @@
                 <version>3.0.0-M9</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>C:\Automation\MortarAI\Mortar\testng.xml</suiteXmlFile>
+                        <suiteXmlFile>https://github.com/KasunRanasingheFH/Mortar/blob/0014493d516ad37667080247b03e1e65b1943a7f/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
