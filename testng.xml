@@ -12,38 +12,38 @@
             <class name="com.mortarai.test.LoginTest"/>
         </classes>
     </test>
-<!--    <test name="login-tests-firefox-pom">-->
-<!--        <parameter name="browser.name" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="com.mortarai.test.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="login-tests-firefox-headless-pom">-->
-<!--        <parameter name="browser.name" value="firefox-headless"/>-->
-<!--        <classes>-->
-<!--            <class name="com.mortarai.test.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="login-tests-chrome-pom">-->
-<!--        <parameter name="browser.name" value="chrome"/>-->
-<!--        <classes>-->
-<!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="login-tests-firefox-pom">
+        <parameter name="browser.name" value="firefox"/>
+        <classes>
+            <class name="com.mortarai.test.LoginTest"/>
+        </classes>
+    </test>
+    <test name="login-tests-firefox-headless-pom">
+        <parameter name="browser.name" value="firefox-headless"/>
+        <classes>
+            <class name="com.mortarai.test.LoginTest"/>
+        </classes>
+    </test>
+    <!--    <test name="login-tests-chrome-pom">-->
+    <!--        <parameter name="browser.name" value="chrome"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-<!--    <test name="login-tests-chrome-headless-pom">-->
-<!--        <parameter name="browser.name" value="chrome-headless"/>-->
-<!--        <classes>-->
-<!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="login-tests-chrome-headless-pom">-->
+    <!--        <parameter name="browser.name" value="chrome-headless"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
-<!--    <test name="login-tests-firefox-headless-pom">-->
-<!--        <parameter name="browser.name" value="firefox-headless"/>-->
-<!--        <classes>-->
-<!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="login-tests-firefox-headless-pom">-->
+    <!--        <parameter name="browser.name" value="firefox-headless"/>-->
+    <!--        <classes>-->
+    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
