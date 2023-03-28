@@ -1,4 +1,5 @@
 package StepDefinitions;
+
 import com.mortarai.pages.HomePage;
 import com.mortarai.pages.LoginPage;
 import io.cucumber.java.en.And;
@@ -15,12 +16,13 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utility.Constants;
+
 import java.time.Duration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class HooksStepDefinitions {
     public HooksStepDefinitions(){}
@@ -33,7 +35,6 @@ public class HooksStepDefinitions {
     public void beforeSuite() {
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
-        logger.info("In BeforeSuite");
     }
 
     @Parameters({"browser.name"})
@@ -45,7 +46,13 @@ public class HooksStepDefinitions {
 //            options.addArguments("disable-infobars");
             options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
             //            Maximize the browser
+            options.addArguments("test-type");
             options.addArguments("start-maximized");
+//            options.addArguments("disable-infobars");
+//            options.addArguments("remote-debugging-port");
+//            options.addArguments("enable-precise-memory-info");
+//            options.addArguments("disable-popup-blocking");
+//            options.addArguments("disable-default-apps");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
@@ -72,7 +79,6 @@ public class HooksStepDefinitions {
         }
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         homePage = PageFactory.initElements(driver, HomePage.class);
-        logger.info("In BeforeMethod");
         driver.manage().window().maximize();
         driver.navigate().to(Constants.BASE_URL);
 
@@ -98,7 +104,7 @@ public class HooksStepDefinitions {
     public void user_enters_username(String username) {
 //        loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.typeUserName(username);
-        System.out.println("username");
+//        System.out.println("username");
 //        logger.info("Entered the Username");
     }
     @And("User enters the password as \"([^\"]*)\"$")
