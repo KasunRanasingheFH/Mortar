@@ -1,13 +1,12 @@
 package com.mortarai.pages;
 
 import StepDefinitions.HooksStepDefinitions;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends HooksStepDefinitions {
-    @FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[1]/h1")
+    @FindBy(xpath = "//app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[1]/div[1]/div/h1")
     private WebElement lbldashboard;
 
     @FindBy(id = "userDropdown")
