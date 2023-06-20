@@ -40,9 +40,8 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         initialization();
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
-        businessOverview = dashboardPage.clickOnGoToClientsBusinessOverView();
-        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
-        customerChurnPredictionAIAnalytics = aiAnalytics.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+        customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToAIAnalytics();
     }
 
     @Test(priority = 1)

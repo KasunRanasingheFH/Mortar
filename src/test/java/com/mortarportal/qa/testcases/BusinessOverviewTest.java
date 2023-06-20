@@ -2,6 +2,7 @@ package com.mortarportal.qa.testcases;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,6 +20,7 @@ public class BusinessOverviewTest extends TestBase {
     SocialAndDisplayAdvertising socialAndDisplayAdvertising;
     DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
+    CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalyticsTest;
 
     public BusinessOverviewTest() {
         super();
@@ -61,7 +63,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 4)
     public void verifyClickGoToAIAnalyticsTest() {
 //        testUtil.switchToFrame();
-        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        customerChurnPredictionAIAnalyticsTest = businessOverview.clickOnGoToAIAnalytics();
     }
 
     @Test(priority = 5)

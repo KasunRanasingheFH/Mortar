@@ -1,6 +1,7 @@
 package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -70,9 +71,9 @@ public class BusinessOverview extends TestBase {
         return new BusinessOverview();
     }
 
-    public AIAnalytics clickOnGoToAIAnalytics() {
+    public CustomerChurnPredictionAIAnalytics clickOnGoToAIAnalytics() {
         navAiAnalyticsLink.click();
-        return new AIAnalytics();
+        return new CustomerChurnPredictionAIAnalytics();
     }
 
     public MyCustomer clickOnGoToMyCustomer() {
