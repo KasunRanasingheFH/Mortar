@@ -1,4 +1,4 @@
-package com.mortarportal.qa.testcases.AIAnalyticsPageTests;
+package com.mortarai.testcases.AIAnalyticsPageTests;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;

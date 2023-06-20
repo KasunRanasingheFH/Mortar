@@ -3,25 +3,25 @@
     <test name="login-tests-chrome-pom">
         <parameter name="browser.name" value="chrome"/>
         <classes>
-            <class name="com.mortarai.test.LoginTest"/>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
         </classes>
     </test>
     <test name="login-tests-chrome-headless-pom">
         <parameter name="browser.name" value="chrome-headless"/>
         <classes>
-            <class name="com.mortarai.test.LoginTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
     <test name="login-tests-firefox-pom">
         <parameter name="browser.name" value="firefox"/>
         <classes>
-            <class name="com.mortarai.test.LoginTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
         </classes>
     </test>
     <test name="login-tests-firefox-headless-pom">
         <parameter name="browser.name" value="firefox-headless"/>
         <classes>
-            <class name="com.mortarai.test.LoginTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
         </classes>
     </test>
     <!--    <test name="login-tests-chrome-pom">-->

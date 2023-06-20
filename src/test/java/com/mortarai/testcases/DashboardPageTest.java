@@ -1,4 +1,4 @@
-package com.mortarportal.qa.testcases;
+package com.mortarai.testcases;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.BusinessOverview;
@@ -6,6 +6,7 @@ import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.util.TestUtil;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -65,16 +66,11 @@ public class DashboardPageTest extends TestBase {
         dashboardPage.searchABrand(prop.getProperty("brandName"));
         String searchedUser = dashboardPage.verifySearchedBrand();
         Assert.assertEquals(searchedUser, prop.getProperty("brandName"),"Searched user is displaying wrong");
-
-//        dashboardPage.clickBrandSearchButton();
-//        dashboardPage.clickBrandSearchButton();
-//        dashboardPage.enterSearchedBrand();
-//        dashboardPage.clickOnGoToSearchedClientDashboard();
     }
 
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }

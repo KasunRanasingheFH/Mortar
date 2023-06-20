@@ -1,4 +1,4 @@
-package com.mortarportal.qa.testcases;
+package com.mortarai.testcases;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
