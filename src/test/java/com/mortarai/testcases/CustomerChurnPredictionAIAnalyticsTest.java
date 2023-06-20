@@ -4,8 +4,7 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     //NAV BAR
@@ -34,9 +33,10 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     public CustomerChurnPredictionAIAnalyticsTest(){
         super();
     }
+    @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp() {
-        initialization();
+    public void setUp(@Optional("chrome") String browser) {
+        initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
         businessOverview = dashboardPage.clickOnGoToClientsBusinessOverView();
@@ -51,5 +51,8 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         Assert.assertTrue(customerChurnPredictionAIAnalytics.verifyCustomersAtChurnListDisplay());
     }
 
-
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+    }
 }

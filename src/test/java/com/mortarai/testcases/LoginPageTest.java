@@ -4,23 +4,26 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginPageTest extends TestBase {
     LoginPage loginPage;
     DashboardPage dashboardPage;
     BusinessOverview businessOverview;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginPageTest.class);
+
     public LoginPageTest() {
         super();
     }
 
+    @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp() {
-        initialization();
+    public void setUp(@Optional("chrome") String browser) {
+        initialization(browser);
         loginPage = new LoginPage();
     }
 
@@ -78,6 +81,7 @@ public class LoginPageTest extends TestBase {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        logger.info("All the test cases of LoginPageTest.class have been executed");
+        driver.close();
     }
 }
