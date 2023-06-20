@@ -1,6 +1,8 @@
 package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,13 +31,16 @@ public class BusinessOverview extends TestBase {
     WebElement navIntegrationsLink;
 
     //Emails & Journeys From Nav Bar
-    @FindBy(xpath = "//span[contains(text(),'Emails & Journeys')]")
+//    @FindBy(xpath = "//span[contains(text(),'Emails & Journeys')]")
+    @FindBy(xpath = "//li[5]/div")
     WebElement navEmailsAndJourneyLink;
 
     //Social & Display Advertising From Nav Bar
-    @FindBy(xpath = "//span[contains(text(),'Social & Display Advertising')]")
+//    @FindBy(xpath = "//span[contains(text(),'Social & Display Advertising')]")
+    @FindBy(xpath = "//li[6]/div/span")
     WebElement navSocialDisplayAdvertisingLink;
-
+@FindBy(xpath = "//span[contains(.,'Facebook Advertising')]")
+WebElement navFacebookAdvertisingLink;
     //Digital Media Buying From Nav Bar
     @FindBy(xpath = "//span[contains(text(),'Digital Media Buying')]")
     WebElement navDigitalMediaBuyingLink;
@@ -70,9 +75,9 @@ public class BusinessOverview extends TestBase {
         return new BusinessOverview();
     }
 
-    public AIAnalytics clickOnGoToAIAnalytics() {
+    public CustomerChurnPredictionAIAnalytics clickOnGoToAIAnalytics() {
         navAiAnalyticsLink.click();
-        return new AIAnalytics();
+        return new CustomerChurnPredictionAIAnalytics();
     }
 
     public MyCustomer clickOnGoToMyCustomer() {
@@ -90,9 +95,10 @@ public class BusinessOverview extends TestBase {
         return new EmailsAndJourneys();
     }
 
-    public SocialAndDisplayAdvertising clickOnGoToSocialAndDisplayAdvertising() {
+    public FacebookAdvertisingPage clickOnGoToSocialAndDisplayAdvertising() {
         navSocialDisplayAdvertisingLink.click();
-        return new SocialAndDisplayAdvertising();
+        navFacebookAdvertisingLink.click();
+        return new FacebookAdvertisingPage();
     }
 
     public DigitalMediaBuying clickOnGoToDigitalMediaBuying() {

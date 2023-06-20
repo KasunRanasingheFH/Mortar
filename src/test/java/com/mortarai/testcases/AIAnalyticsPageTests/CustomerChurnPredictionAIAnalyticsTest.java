@@ -3,6 +3,7 @@ package com.mortarai.testcases.AIAnalyticsPageTests;
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,7 +19,8 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     MyCustomer myCustomer;
     Intergrations intergrations;
     EmailsAndJourneys emailsAndJourneys;
-    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
+//    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
+    FacebookAdvertisingPage facebookAdvertisingPage;
     DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
 
@@ -40,9 +42,8 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         initialization();
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
-        businessOverview = dashboardPage.clickOnGoToClientsBusinessOverView();
-        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
-        customerChurnPredictionAIAnalytics = aiAnalytics.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+        customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToAIAnalytics();
     }
 
     @Test(priority = 1)

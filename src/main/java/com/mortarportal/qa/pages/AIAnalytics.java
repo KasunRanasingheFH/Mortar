@@ -2,6 +2,7 @@ package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -102,9 +103,9 @@ public class AIAnalytics extends TestBase {
         return new EmailsAndJourneys();
     }
 
-    public SocialAndDisplayAdvertising clickOnGoToSocialAndDisplayAdvertising() {
+    public FacebookAdvertisingPage clickOnGoToSocialAndDisplayAdvertising() {
         navSocialDisplayAdvertisingLink.click();
-        return new SocialAndDisplayAdvertising();
+        return new FacebookAdvertisingPage();
     }
 
     public DigitalMediaBuying clickOnGoToDigitalMediaBuying() {
