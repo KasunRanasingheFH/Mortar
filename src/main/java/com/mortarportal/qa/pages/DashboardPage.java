@@ -31,6 +31,26 @@ public class DashboardPage extends TestBase {
     WebElement brandSearchButton;*/
     @FindBy(id = "submitButton")
     WebElement brandSearchButton;
+    @FindBy(id = "dropdownBasic1")
+    WebElement dropDownStatusFilter;
+    @FindBy(id = "check-all")
+    WebElement selectAllInDropDown;
+    @FindBy(id = "check_0")
+    WebElement setupRequiredInDropDown;
+    @FindBy(id = "check_1")
+    WebElement activeInDopDown;
+    @FindBy(id = "check_2")
+    WebElement inactiveInDropDown;
+    /**
+     * Validate Checkbox isSelected method and click
+
+    WebElement checkBoxElement = driver.findElement(By.cssSelector("label[for='hobbies-checkbox-1']"));
+    boolean isSelected = checkBoxElement.isSelected();
+
+//performing click operation if element is not checked
+if(isSelected == false) {
+        checkBoxElement.click();
+    }*/
 
     //Initializing the Page Objects;
     public DashboardPage() {
@@ -52,7 +72,22 @@ public class DashboardPage extends TestBase {
     public void searchABrand(String brandName) {
         placeholderSearchClient.sendKeys(brandName);
         brandSearchButton.click();
+    }
 
+    public void statusDropDownClick() {
+        dropDownStatusFilter.click();
+    }
+    public boolean selectAllIsSelected(){
+        return selectAllInDropDown.isSelected();
+    }
+    public boolean setupRequiredIsSelected(){
+        return setupRequiredInDropDown.isSelected();
+    }
+    public boolean activeIsSelected(){
+        return activeInDopDown.isSelected();
+    }
+    public boolean inactiveIsSelected(){
+        return inactiveInDropDown.isSelected();
     }
 
     public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) {
