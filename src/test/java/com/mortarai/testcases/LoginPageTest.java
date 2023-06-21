@@ -42,19 +42,29 @@ public class LoginPageTest extends TestBase {
     }
 
     @Test(priority = 3)
-    public void VerifyUserNameInputFieldIsVisible(){
+    public void verifyUserNameInputFieldIsVisible(){
         Assert.assertTrue(loginPage.loginUserNameFieldVisibility(),"UserName Field is Not Visible");
     }
-    @Test(priority = 3)
-    public void VerifyPasswordInputFieldIsVisible(){
+    @Test(priority = 4)
+    public void verifyPasswordInputFieldIsVisible(){
         Assert.assertTrue(loginPage.loginPasswordFieldVisibility(),"Password Field is Not Visible");
     }
-    @Test(priority = 3)
+    @Test(priority = 5)
+    public void verifyLoginButtonIsVisible(){
+        Assert.assertTrue(loginPage.loginButtonVisibility(),"Password Field is Not Visible");
+    }
+    @Test(priority = 6)
+    public void verifyLoginButtonClickable(){
+        loginPage.loginButtonClickable();
+        boolean errorMsg = loginPage.getErrorMessage();
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+    }
+    @Test(priority = 7)
     public void accountManagerLoginWithValidCredentialsTest() {
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
     }
 
-    @Test(priority = 4)
+    @Test(priority = 8)
     public void accountManagerLoginWithInvalidEmailCredentials() {
         String invalidEmail = "Sankaw233@dmk";
         loginPage.login(invalidEmail, prop.getProperty("AdminPassword"));
@@ -65,7 +75,7 @@ public class LoginPageTest extends TestBase {
 //        Assert.assertTrue(loginPage.getErrorMessage(),"Login failed! Please check your username and password and try again.");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 9)
     public void accountManagerLoginWithInvalidPasswordCredentials() {
         String invalidPassword = "Sankaw233@dmk";
         loginPage.login(prop.getProperty("AdminUsername"), invalidPassword);
@@ -73,12 +83,12 @@ public class LoginPageTest extends TestBase {
         Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
 
-    @Test(priority = 6)
+    @Test(priority = 10)
     public void businessOwnerLoginWithValidCredentials() {
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), prop.getProperty("Password"));
     }
 
-    @Test(priority = 7)
+    @Test(priority = 11)
     public void businessOwnerLoginWithInvalidPasswordCredentials() {
         String invalidPassword = "Sankaw233@dmk";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
@@ -86,7 +96,7 @@ public class LoginPageTest extends TestBase {
         Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
 
-    @Test(priority = 8)
+    @Test(priority = 12)
     public void businessOwnerLoginWithInvalidEmailCredentials() {
         String invalidEmail = "Sankaw233@dmk";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidEmail);
@@ -94,7 +104,7 @@ public class LoginPageTest extends TestBase {
         Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
 
-    @Test(priority = 9)
+    @Test(priority = 13)
     public void loginWithEmptyEmailCredentials() {
         String invalidEmail = "";
         businessOverview = loginPage.loginAsUser(invalidEmail, prop.getProperty("Password"));
@@ -103,7 +113,7 @@ public class LoginPageTest extends TestBase {
 
     }
 
-    @Test(priority = 9)
+    @Test(priority = 14)
     public void loginWithEmptyPasswordCredentials() {
         String invalidPassword = "";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
@@ -111,7 +121,7 @@ public class LoginPageTest extends TestBase {
         Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
 
-    @Test(priority = 10)
+    @Test(priority = 15)
     public void loginWithEmptyCredentials() {
         String invalidEmail = "";
         String invalidPassword = "";
