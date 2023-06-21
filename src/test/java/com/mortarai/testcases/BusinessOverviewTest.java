@@ -2,6 +2,8 @@ package com.mortarai.testcases;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -10,13 +12,14 @@ public class BusinessOverviewTest extends TestBase {
     DashboardPage dashboardPage;
     //    ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
-    AIAnalytics aiAnalytics;
     MyCustomer myCustomer;
     Intergrations intergrations;
     EmailsAndJourneys emailsAndJourneys;
-    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
+//    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
+    FacebookAdvertisingPage facebookAdvertisingPage;
     DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
+    CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalyticsTest;
 
     public BusinessOverviewTest() {
         super();
@@ -60,7 +63,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 4)
     public void verifyClickGoToAIAnalyticsTest() {
 //        testUtil.switchToFrame();
-        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        customerChurnPredictionAIAnalyticsTest = businessOverview.clickOnGoToAIAnalytics();
     }
 
     @Test(priority = 5)
@@ -84,7 +87,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 8)
     public void verifyClickGoToSocialAndDisplayAdvertisingTest() {
 //        testUtil.switchToFrame();
-        socialAndDisplayAdvertising = businessOverview.clickOnGoToSocialAndDisplayAdvertising();
+        facebookAdvertisingPage = businessOverview.clickOnGoToSocialAndDisplayAdvertising();
     }
 
     @Test(priority = 9)

@@ -10,18 +10,18 @@ import org.openqa.selenium.support.PageFactory;
 public class DashboardPage extends TestBase {
     @FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
     WebElement dashboardLabel;
-   // xpath=//h1[contains(.,'DashboardPage')]
+    // xpath=//h1[contains(.,'DashboardPage')]
 
     //B&M-SankaXYZ Button to go to dashboard
-    @FindBy(xpath="//tr[4]/td[3]/button")
+    @FindBy(xpath = "//tr[4]/td[3]/button")
     WebElement goToBrandDashboardDirectButton;
     @FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[3]/div/" +
             "div/div/div/div/div[2]/div/div/div/div[2]/div/table/tbody/tr/td[3]/button")
     WebElement goToSearchedDashboardButton;
-@FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[3]" +
-        "/div/div/div/div/div/div[2]/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]")
-WebElement searchedCustomer;
-    @FindBy(xpath= "//tr[1]/td[3]/button")
+    @FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[3]" +
+            "/div/div/div/div/div/div[2]/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]")
+    WebElement searchedCustomer;
+    @FindBy(xpath = "//tr[1]/td[3]/button")
     WebElement goToSearchedClient;
 
     @FindBy(id = "search")
@@ -33,14 +33,15 @@ WebElement searchedCustomer;
     WebElement brandSearchButton;
 
     //Initializing the Page Objects;
-    public DashboardPage(){
+    public DashboardPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public String verifyMortarTitle(){
+    public String verifyMortarTitle() {
         return driver.getTitle();
     }
-    public boolean verifyDashboardText(){
+
+    public boolean verifyDashboardText() {
         return dashboardLabel.isDisplayed();
     }
 
@@ -48,36 +49,40 @@ WebElement searchedCustomer;
          placeholderSearchClient.sendKeys(brandName);
         brandSearchButton.click();
     }*/
-    public void searchABrand(String brandName){
+    public void searchABrand(String brandName) {
         placeholderSearchClient.sendKeys(brandName);
         brandSearchButton.click();
 
     }
-    public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName){
+
+    public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) {
         placeholderSearchClient.sendKeys(brandName);
         brandSearchButton.click();
         goToSearchedDashboardButton.click();
         return new BusinessOverview();
     }
-    public String verifySearchedBrand(){
+
+    public String verifySearchedBrand() {
         return searchedCustomer.getText();
     }
-    public DashboardPage enterSearchedBrand(){
+
+    public DashboardPage enterSearchedBrand() {
         driver.findElement(By.id("search")).click();
         driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
         return this;
     }
-    public void clickBrandSearchButton(){
+
+    public void clickBrandSearchButton() {
         driver.findElement(By.id("submitButton")).click();
     }
 
 
-    public BusinessOverview clickOnGoToClientsBusinessOverView(){
+    public BusinessOverview clickOnGoToClientsBusinessOverView() {
         goToBrandDashboardDirectButton.click();
         return new BusinessOverview();
     }
 
-    public BusinessOverview clickOnGoToSearchedClientDashboard(){
+    public BusinessOverview clickOnGoToSearchedClientDashboard() {
         goToSearchedClient.click();
         return new BusinessOverview();
     }
