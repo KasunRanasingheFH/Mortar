@@ -1,9 +1,8 @@
-package com.mortarai.testcases.AIAnalyticsPageTests;
+package com.mortarai.testcases;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
-import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -17,8 +16,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     MyCustomer myCustomer;
     Intergrations intergrations;
     EmailsAndJourneys emailsAndJourneys;
-//    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
-    FacebookAdvertisingPage facebookAdvertisingPage;
+    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
     DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
 
@@ -41,8 +39,9 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
-        businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
-        customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        businessOverview = dashboardPage.clickOnGoToClientsBusinessOverView();
+        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        customerChurnPredictionAIAnalytics =aiAnalytics.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
 
     @Test(priority = 1)
@@ -51,14 +50,9 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
 //        String customerChurnTable = customerChurnPredictionAIAnalytics.verifyCustomersAtChurnListDisplay();
         Assert.assertTrue(customerChurnPredictionAIAnalytics.verifyCustomersAtChurnListDisplay());
     }
-    @Test(priority = 2)
-    public void verifySelectMinimumPurchaseCount(){
-        String value = "5";
-        customerChurnPredictionAIAnalytics.changeMinimumPurchaseCount(value);
-    }
+
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
-
 }

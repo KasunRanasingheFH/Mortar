@@ -5,9 +5,7 @@ import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class BusinessOverviewTest extends TestBase {
     LoginPage loginPage;
@@ -31,9 +29,10 @@ public class BusinessOverviewTest extends TestBase {
     //  before each test case -- launch the browser and login
     //  @test -- execute test cases
     //  after each test case -- close the browser
+    @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp() {
-        initialization();
+    public void setUp(@Optional("chrome") String browser) {
+        initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
         businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
@@ -105,6 +104,6 @@ public class BusinessOverviewTest extends TestBase {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
 }

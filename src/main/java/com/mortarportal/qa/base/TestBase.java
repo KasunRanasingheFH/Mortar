@@ -6,8 +6,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,21 +37,60 @@ public class TestBase {
         }
     }
 
-    public static void initialization() {
+    @BeforeSuite
+    public void beforeSuite() {
+        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
+    }
 
-        String browser = prop.getProperty("browser");
 
+    public static void initialization(String browser) {
+
+//        String browser = prop.getProperty("browser");
         if (browser.equalsIgnoreCase("chrome")) {
-            /*System.setProperty("webdriver.chrome.driver", "H:\\Firehouse\\Mortar\\MortarNew\\MortarPOM\\WebDriver\\chromedriver_win113\\chromedriver.exe");
-            driver = new ChromeDriver();*/
-            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+            //            Maximize the browser
+            options.addArguments("test-type");
+            options.addArguments("start-maximized");
+            driver = new ChromeDriver(options);
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            driver = new FirefoxDriver();
+        } else if (browser.equalsIgnoreCase("ie")) {
 
-            driver = new ChromeDriver();
+        } else if (browser.equalsIgnoreCase("edge")) {
+
+        } else if (browser.equalsIgnoreCase("safari")) {
+
         } else if (browser.equalsIgnoreCase("chrome-headless")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("headless");
             driver = new ChromeDriver(options);
+
+        } else if (browser.equalsIgnoreCase("firefox-headless")) {
+            FirefoxBinary firefoxBinary = new FirefoxBinary();
+            firefoxBinary.addCommandLineOptions("--headless");
+            FirefoxOptions options = new FirefoxOptions();
+            options.setBinary(firefoxBinary);
+            driver = new FirefoxDriver(options);
+
+        } else {
+            System.exit(-1);
         }
+
+//        String browser = prop.getProperty("browser");
+
+//        if (browser.equalsIgnoreCase("chrome")) {
+//            /*System.setProperty("webdriver.chrome.driver", "H:\\Firehouse\\Mortar\\MortarNew\\MortarPOM\\WebDriver\\chromedriver_win113\\chromedriver.exe");
+//            driver = new ChromeDriver();*/
+////            WebDriverManager.chromedriver().setup();
+//
+//            driver = new ChromeDriver();
+//        } else if (browser.equalsIgnoreCase("chrome-headless")) {
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("headless");
+//            driver = new ChromeDriver(options);
+//        }
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -56,11 +99,4 @@ public class TestBase {
 
         driver.get(prop.getProperty("url"));
     }
-
-  /*  @AfterMethod
-    public void afterMethod()
-    {
-        logger.info("In AfterMethod");
-        driver.close();
-    }*/
 }

@@ -1,27 +1,39 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="MortarAI-Smoke-Test-Suite">
-    <test name="login-tests-chrome-pom">
+    <test name="all-tests-chrome-pom">
         <parameter name="browser.name" value="chrome"/>
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
-        </classes>
-    </test>
-    <test name="login-tests-chrome-headless-pom">
-        <parameter name="browser.name" value="chrome-headless"/>
-        <classes>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
-    <test name="login-tests-firefox-pom">
-        <parameter name="browser.name" value="firefox"/>
+    <test name="all-tests-chrome-headless-pom">
+        <parameter name="browser.name" value="chrome-headless"/>
         <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
-    <test name="login-tests-firefox-headless-pom">
+    <test name="all-tests-firefox-pom">
+        <parameter name="browser.name" value="firefox"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+    <test name="all-tests-firefox-headless-pom">
         <parameter name="browser.name" value="firefox-headless"/>
         <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
             <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
     <!--    <test name="login-tests-chrome-pom">-->
