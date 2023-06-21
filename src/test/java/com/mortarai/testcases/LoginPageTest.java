@@ -27,10 +27,12 @@ public class LoginPageTest extends TestBase {
         loginPage = new LoginPage();
     }
 
+    int x = 1;
+
     @Test(priority = 1)
     public void loginPageTitleTest() {
         String title = loginPage.validateLoginPageTitle();
-        Assert.assertEquals(title, "Sign in to mortar","Title is wrong");
+        Assert.assertEquals(title, "Sign in to mortar", "Title is wrong");
     }
 
     @Test(priority = 2)
@@ -40,44 +42,84 @@ public class LoginPageTest extends TestBase {
     }
 
     @Test(priority = 3)
-    public void accountManagerLoginWithValidCredentialsTest(){
-       dashboardPage = loginPage.login(prop.getProperty("AdminUsername"),prop.getProperty("AdminPassword"));
+    public void VerifyUserNameInputFieldIsVisible(){
+        Assert.assertTrue(loginPage.loginUserNameFieldVisibility(),"UserName Field is Not Visible");
     }
+    @Test(priority = 3)
+    public void VerifyPasswordInputFieldIsVisible(){
+        Assert.assertTrue(loginPage.loginPasswordFieldVisibility(),"Password Field is Not Visible");
+    }
+    @Test(priority = 3)
+    public void accountManagerLoginWithValidCredentialsTest() {
+        dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
+    }
+
     @Test(priority = 4)
-    public void accountManagerLoginWithInvalidEmailCredentials(){
+    public void accountManagerLoginWithInvalidEmailCredentials() {
         String invalidEmail = "Sankaw233@dmk";
         loginPage.login(invalidEmail, prop.getProperty("AdminPassword"));
       /*  loginPage.getErrorMessage();
         System.out.println("Login Error");*/
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg,"Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
 //        Assert.assertTrue(loginPage.getErrorMessage(),"Login failed! Please check your username and password and try again.");
     }
+
     @Test(priority = 5)
-    public void accountManagerLoginWithInvalidPasswordCredentials(){
+    public void accountManagerLoginWithInvalidPasswordCredentials() {
         String invalidPassword = "Sankaw233@dmk";
         loginPage.login(prop.getProperty("AdminUsername"), invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg,"Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
+
     @Test(priority = 6)
-    public void businessOwnerLoginWithValidCredentials(){
-        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"),prop.getProperty("Password"));
+    public void businessOwnerLoginWithValidCredentials() {
+        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), prop.getProperty("Password"));
     }
-    @Test(priority = 7 )
-    public void businessOwnerLoginWithInvalidPasswordCredentials(){
+
+    @Test(priority = 7)
+    public void businessOwnerLoginWithInvalidPasswordCredentials() {
         String invalidPassword = "Sankaw233@dmk";
-        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"),invalidPassword);
+        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg,"Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
-    @Test(priority = 8 )
-    public void businessOwnerLoginWithInvalidEmailCredentials(){
+
+    @Test(priority = 8)
+    public void businessOwnerLoginWithInvalidEmailCredentials() {
         String invalidEmail = "Sankaw233@dmk";
-        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"),invalidEmail);
+        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidEmail);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg,"Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
+
+    @Test(priority = 9)
+    public void loginWithEmptyEmailCredentials() {
+        String invalidEmail = "";
+        businessOverview = loginPage.loginAsUser(invalidEmail, prop.getProperty("Password"));
+        boolean errorMsg = loginPage.getErrorMessage();
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+
+    }
+
+    @Test(priority = 9)
+    public void loginWithEmptyPasswordCredentials() {
+        String invalidPassword = "";
+        businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
+        boolean errorMsg = loginPage.getErrorMessage();
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+    }
+
+    @Test(priority = 10)
+    public void loginWithEmptyCredentials() {
+        String invalidEmail = "";
+        String invalidPassword = "";
+        businessOverview = loginPage.loginAsUser(invalidEmail, invalidPassword);
+        boolean errorMsg = loginPage.getErrorMessage();
+        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+    }
+
 
     @AfterMethod
     public void tearDown() {

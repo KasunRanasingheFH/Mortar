@@ -16,7 +16,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     MyCustomer myCustomer;
     Intergrations intergrations;
     EmailsAndJourneys emailsAndJourneys;
-    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
+//    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
     DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
 
@@ -39,8 +39,8 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
-        businessOverview = dashboardPage.clickOnGoToClientsBusinessOverView();
-        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+//        aiAnalytics = businessOverview.clickOnGoToAIAnalytics();
         customerChurnPredictionAIAnalytics =aiAnalytics.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
 

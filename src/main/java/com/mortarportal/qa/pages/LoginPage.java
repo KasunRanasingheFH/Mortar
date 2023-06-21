@@ -36,6 +36,12 @@ public class LoginPage extends TestBase {
     public boolean validateLoginPageImage(){
         return mortarLogo.isDisplayed();
     }
+    public boolean loginUserNameFieldVisibility(){
+        return username.isDisplayed();
+    }
+    public boolean loginPasswordFieldVisibility(){
+        return password.isDisplayed();
+    }
     public DashboardPage login(String uname, String pwd){
         username.sendKeys(uname);
         password.sendKeys(pwd);
