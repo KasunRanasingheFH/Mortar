@@ -19,10 +19,6 @@ public class DashboardPageTest extends TestBase {
         super();
     }
 
-    //  Test Case should be Separated -- independent with each other
-    //  before each test case -- launch the browser and login
-    //  @test -- execute test cases
-    //  after each test case -- close the browser
     @Parameters({"browser.name"})
     @BeforeMethod
     public void setUp(@Optional("chrome-headless") String browser) {
@@ -157,13 +153,6 @@ public class DashboardPageTest extends TestBase {
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
-
-
-    @Test(priority = 12)
-    public void verifyClickAddClient() {
-
-    }
-
     @AfterMethod
     public void tearDown() {
         driver.close();
