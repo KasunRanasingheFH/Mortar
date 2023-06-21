@@ -110,15 +110,17 @@ public class DashboardPageTest extends TestBase {
         }
     }
     @Test(priority = 12)
-    public void verifyStatusFilterSelectAllDeselect(){
+    public void verifyStatusFilterSelectAllDeselect() throws InterruptedException {
         dashboardPage.clickStatusFilter();
         boolean selectAllStatus = dashboardPage.selectAllIsSelected();
+        Thread.sleep(2000);
         if(selectAllStatus){
             dashboardPage.clickOnSelectAllCheckBox();
-            Assert.assertTrue(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
-            Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
-            Assert.assertTrue(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
-            Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
+            Thread.sleep(2000);
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
+            Assert.assertFalse(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
+            Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
         }
     }
 
@@ -128,8 +130,8 @@ public class DashboardPageTest extends TestBase {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-    }
+//    @AfterMethod
+//    public void tearDown() {
+//        driver.close();
+//    }
 }
