@@ -37,16 +37,20 @@ public class DashboardPage extends TestBase {
     WebElement dropDownPanel;
     @FindBy(id = "check-all")
     WebElement selectAllInDropDown;
-    @FindBy(css = ".custom__checkboxe:nth-child(1) .check__marked")
-    WebElement clickSelectAllInDropDown;
     @FindBy(id = "check_0")
     WebElement setupRequiredInDropDown;
     @FindBy(id = "check_1")
     WebElement activeInDropDown;
     @FindBy(id = "check_2")
     WebElement inactiveInDropDown;
-    @FindBy(css = "")
-    WebElement selectallCeck;
+    @FindBy(css = ".custom__checkboxe:nth-child(1) .check__marked")
+    WebElement selectAllInDropDownCheckBox;
+    @FindBy(css = ".custom__checkboxe:nth-child(2) .check__marked")
+    WebElement setupRequiredDropdownCheckBox;
+    @FindBy(css = ".custom__checkboxe:nth-child(3) .check__marked")
+    WebElement activeInDropdownCheckBox;
+    @FindBy(css = ".custom__checkboxe:nth-child(4) .check__marked")
+    WebElement inactiveInDropdownCheckBox;
     /**
      * Validate Checkbox isSelected method and click
 
@@ -99,16 +103,16 @@ if(isSelected == false) {
         return inactiveInDropDown.isSelected();
     }
     public void clickOnSelectAllCheckBox(){
-        clickSelectAllInDropDown.click();
+        selectAllInDropDownCheckBox.click();
     }
-    public void clickOnSetupRequiredCheckbox(){
-        setupRequiredInDropDown.click();
-    }
+  public void clickOnSetupRequiredCheckbox(){
+        setupRequiredDropdownCheckBox.click();
+  }
     public void clickOnActiveCheckbox(){
-        activeInDropDown.click();
+        activeInDropdownCheckBox.click();
     }
     public void clickOnInactiveCheckbox(){
-        inactiveInDropDown.click();
+        inactiveInDropdownCheckBox.click();
     }
 
     public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) {

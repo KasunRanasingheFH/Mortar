@@ -25,7 +25,7 @@ public class DashboardPageTest extends TestBase {
     //  after each test case -- close the browser
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome-headless") String browser) {
         initialization(browser);
         testUtil = new TestUtil();
         businessOverview = new BusinessOverview();
@@ -60,7 +60,7 @@ public class DashboardPageTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifySearchABrandAndGoToBrandDashboard() {
+    public void verifySearchABrandAndGoToBrandDetails() {
 
         dashboardPage.searchABrand(prop.getProperty("brandName"));
         String searchedUser = dashboardPage.verifySearchedBrand();
@@ -113,14 +113,48 @@ public class DashboardPageTest extends TestBase {
     public void verifyStatusFilterSelectAllDeselect() throws InterruptedException {
         dashboardPage.clickStatusFilter();
         boolean selectAllStatus = dashboardPage.selectAllIsSelected();
-        Thread.sleep(2000);
         if(selectAllStatus){
             dashboardPage.clickOnSelectAllCheckBox();
-            Thread.sleep(2000);
             Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
             Assert.assertFalse(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
             Assert.assertFalse(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
+        }
+    }
+    @Test(priority = 13)
+    public void verifyStatusFilterOnlySetupRequiredDeselect() {
+        dashboardPage.clickStatusFilter();
+        boolean setupRequiredStatus = dashboardPage.setupRequiredIsSelected();
+        if(setupRequiredStatus){
+            dashboardPage.clickOnSetupRequiredCheckbox();
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
+            Assert.assertTrue(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
+            Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
+        }
+    }
+    @Test(priority = 14)
+    public void verifyStatusFilterOnlyActiveDeselect(){
+        dashboardPage.clickStatusFilter();
+        boolean activeStatus = dashboardPage.activeIsSelected();
+        if(activeStatus){
+            dashboardPage.clickOnActiveCheckbox();
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Selected the Select All CheckBox");
+            Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Selected the Setup Required CheckBox");
+            Assert.assertFalse(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
+            Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
+        }
+    }
+    @Test(priority = 15)
+    public void verifyStatusFilterOnlyInactiveDeselect(){
+        dashboardPage.clickStatusFilter();
+        boolean inactiveStatus = dashboardPage.inactiveIsSelected();
+        if(inactiveStatus){
+            dashboardPage.clickOnInactiveCheckbox();
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Selected the Select All CheckBox");
+            Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Selected the Setup Required CheckBox");
+            Assert.assertTrue(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
+            Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
 
@@ -130,8 +164,8 @@ public class DashboardPageTest extends TestBase {
 
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.close();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+    }
 }
