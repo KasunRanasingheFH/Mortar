@@ -37,12 +37,16 @@ public class DashboardPage extends TestBase {
     WebElement dropDownPanel;
     @FindBy(id = "check-all")
     WebElement selectAllInDropDown;
+    @FindBy(css = ".custom__checkboxe:nth-child(1) .check__marked")
+    WebElement clickSelectAllInDropDown;
     @FindBy(id = "check_0")
     WebElement setupRequiredInDropDown;
     @FindBy(id = "check_1")
     WebElement activeInDropDown;
     @FindBy(id = "check_2")
     WebElement inactiveInDropDown;
+    @FindBy(css = "")
+    WebElement selectallCeck;
     /**
      * Validate Checkbox isSelected method and click
 
@@ -95,7 +99,7 @@ if(isSelected == false) {
         return inactiveInDropDown.isSelected();
     }
     public void clickOnSelectAllCheckBox(){
-        selectAllInDropDown.click();
+        clickSelectAllInDropDown.click();
     }
     public void clickOnSetupRequiredCheckbox(){
         setupRequiredInDropDown.click();
