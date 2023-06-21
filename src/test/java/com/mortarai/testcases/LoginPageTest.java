@@ -22,7 +22,7 @@ public class LoginPageTest extends TestBase {
 
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome-headless") String browser) {
         initialization(browser);
         loginPage = new LoginPage();
     }
