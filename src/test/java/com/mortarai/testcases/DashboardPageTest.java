@@ -105,7 +105,6 @@ public class DashboardPageTest extends TestBase {
         if (selectAllStatus){
             Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Setup Required is Not Selected");
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Active is Not Selected");
-            Thread.sleep(2000);
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Inactive is Not Selected");
         }
     }
@@ -157,13 +156,6 @@ public class DashboardPageTest extends TestBase {
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
-
-
-    @Test(priority = 12)
-    public void verifyClickAddClient() {
-
-    }
-
     @AfterMethod
     public void tearDown() {
         driver.close();

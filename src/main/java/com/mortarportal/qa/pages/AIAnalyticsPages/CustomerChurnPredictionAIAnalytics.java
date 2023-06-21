@@ -2,7 +2,8 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
-import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -87,43 +88,27 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
         navBusinessOverviewLink.click();
         return new BusinessOverview();
     }
-
-    public AIAnalytics clickOnGoToAIAnalytics() {
-        navAiAnalyticsLink.click();
-        return new AIAnalytics();
-    }
-
-    public MyCustomer clickOnGoToMyCustomer() {
+        public MyCustomer clickOnGoToMyCustomer() {
         navMyCustomersLink.click();
         return new MyCustomer();
     }
-
     public Intergrations clickOnGoToIntergrations() {
         navIntegrationsLink.click();
         return new Intergrations();
     }
-
-    public EmailsAndJourneys clickOnGoToEmailsAndJourneys() {
+    public SingleMailingPage clickOnGoToEmailsAndJourneys() {
         navEmailsAndJourneyLink.click();
-        return new EmailsAndJourneys();
+        return new SingleMailingPage();
     }
-
     public FacebookAdvertisingPage clickOnGoToSocialAndDisplayAdvertising() {
         navSocialDisplayAdvertisingLink.click();
 //        navFacebookAdvertisingLink.click();
         return new FacebookAdvertisingPage();
     }
-
-    public DigitalMediaBuying clickOnGoToDigitalMediaBuying() {
-        navDigitalMediaBuyingLink.click();
-        return new DigitalMediaBuying();
-    }
-
     public MyCreatives clickOnGoToMyCreatives() {
         navMyCreativesLink.click();
         return new MyCreatives();
     }
-
     public boolean verifyCustomersAtChurnListDisplay(){
         return customersAtChurnList.isDisplayed();
     }

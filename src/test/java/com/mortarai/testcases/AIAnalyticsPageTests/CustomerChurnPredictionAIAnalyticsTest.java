@@ -3,7 +3,7 @@ package com.mortarai.testcases.AIAnalyticsPageTests;
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
-import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -13,13 +13,9 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     DashboardPage dashboardPage;
 //    ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
-    AIAnalytics aiAnalytics;
     MyCustomer myCustomer;
     Intergrations intergrations;
-    EmailsAndJourneys emailsAndJourneys;
-//    SocialAndDisplayAdvertising socialAndDisplayAdvertising;
     FacebookAdvertisingPage facebookAdvertisingPage;
-    DigitalMediaBuying digitalMediaBuying;
     MyCreatives myCreatives;
 
     //AI Analytics Page
