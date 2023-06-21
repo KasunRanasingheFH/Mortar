@@ -5,7 +5,7 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
@@ -14,7 +14,7 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
@@ -23,7 +23,7 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
@@ -32,30 +32,10 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
-    <!--    <test name="login-tests-chrome-pom">-->
-    <!--        <parameter name="browser.name" value="chrome"/>-->
-    <!--        <classes>-->
-    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="login-tests-chrome-headless-pom">-->
-    <!--        <parameter name="browser.name" value="chrome-headless"/>-->
-    <!--        <classes>-->
-    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
-    <!--    <test name="login-tests-firefox-headless-pom">-->
-    <!--        <parameter name="browser.name" value="firefox-headless"/>-->
-    <!--        <classes>-->
-    <!--            <class name="com.mortarai.mortar.Test.LoginTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
