@@ -33,12 +33,14 @@ public class DashboardPage extends TestBase {
     WebElement brandSearchButton;
     @FindBy(id = "dropdownBasic1")
     WebElement dropDownStatusFilter;
+    @FindBy(xpath = "//div[2]/div/div")
+    WebElement dropDownPanel;
     @FindBy(id = "check-all")
     WebElement selectAllInDropDown;
     @FindBy(id = "check_0")
     WebElement setupRequiredInDropDown;
     @FindBy(id = "check_1")
-    WebElement activeInDopDown;
+    WebElement activeInDropDown;
     @FindBy(id = "check_2")
     WebElement inactiveInDropDown;
     /**
@@ -74,8 +76,11 @@ if(isSelected == false) {
         brandSearchButton.click();
     }
 
-    public void statusDropDownClick() {
+    public void clickStatusFilter() {
         dropDownStatusFilter.click();
+    }
+    public boolean statusFilterDropdown(){
+        return dropDownPanel.isDisplayed();
     }
     public boolean selectAllIsSelected(){
         return selectAllInDropDown.isSelected();
@@ -84,10 +89,22 @@ if(isSelected == false) {
         return setupRequiredInDropDown.isSelected();
     }
     public boolean activeIsSelected(){
-        return activeInDopDown.isSelected();
+        return activeInDropDown.isSelected();
     }
     public boolean inactiveIsSelected(){
         return inactiveInDropDown.isSelected();
+    }
+    public void clickOnSelectAllCheckBox(){
+        selectAllInDropDown.click();
+    }
+    public void clickOnSetupRequiredCheckbox(){
+        setupRequiredInDropDown.click();
+    }
+    public void clickOnActiveCheckbox(){
+        activeInDropDown.click();
+    }
+    public void clickOnInactiveCheckbox(){
+        inactiveInDropDown.click();
     }
 
     public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) {
@@ -100,6 +117,8 @@ if(isSelected == false) {
     public String verifySearchedBrand() {
         return searchedCustomer.getText();
     }
+
+
 
     public DashboardPage enterSearchedBrand() {
         driver.findElement(By.id("search")).click();
