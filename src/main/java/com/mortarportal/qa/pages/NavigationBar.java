@@ -1,7 +1,8 @@
 package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
-import com.mortarportal.qa.pages.SocialAndDisplayAdvertising.FacebookAdvertisingPage;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -47,40 +48,25 @@ public class NavigationBar extends TestBase {
         navBusinessOverviewLink.click();
         return new BusinessOverview();
     }
-
-    public AIAnalytics clickOnGoToAIAnalytics() {
-        navAiAnalyticsLink.click();
-        return new AIAnalytics();
-    }
-
-    public MyCustomer clickOnGoToMyCustomer() {
+        public MyCustomer clickOnGoToMyCustomer() {
         navMyCustomersLink.click();
         return new MyCustomer();
     }
-
     public Intergrations clickOnGoToIntergrations() {
         navIntegrationsLink.click();
         return new Intergrations();
     }
-
-    public EmailsAndJourneys clickOnGoToEmailsAndJourneys() {
+    public SingleMailingPage clickOnGoToEmailsAndJourneys() {
         navEmailsAndJourneyLink.click();
-        return new EmailsAndJourneys();
+        return new SingleMailingPage();
     }
-
     public FacebookAdvertisingPage clickOnGoToSocialAndDisplayAdvertising() {
         navSocialDisplayAdvertisingLink.click();
         return new FacebookAdvertisingPage();
-    }
-
-    public DigitalMediaBuying clickOnGoToDigitalMediaBuying() {
-        navDigitalMediaBuyingLink.click();
-        return new DigitalMediaBuying();
     }
 
     public MyCreatives clickOnGoToMyCreatives() {
         navMyCreativesLink.click();
         return new MyCreatives();
     }
-
 }
