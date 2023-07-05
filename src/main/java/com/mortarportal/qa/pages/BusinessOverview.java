@@ -58,6 +58,21 @@ public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'My Creatives')]")
     WebElement navMyCreativesLink;
     ///
+    @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
+    WebElement conversionGraphHeading;
+    @FindBy(xpath = "//p[contains(text(),'Sales')]")
+    WebElement salesGraphInConversionHeader;
+    @FindBy(css = "[class='font-weight-bold font-size-topic mb-0 p-0']")
+    WebElement mailingListSubscriptionGraphHeader;
+    @FindBy(xpath = "//h4[contains(text(),'New Contacts')]")
+    WebElement newContactsGraphHeading;
+    @FindBy(xpath = "//h4[contains(text(),'Customers (Spenders)')]")
+    WebElement customerSpendersGraphHeader;
+    @FindBy(xpath = "//h4[contains(.,'Basket Summary')]")
+    WebElement basketSummaryGraphHeader;
+    @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
+    WebElement bestPerformingProductGraphHeader;
+
 
     public BusinessOverview() {
         PageFactory.initElements(driver, this);
@@ -86,7 +101,7 @@ public class BusinessOverview extends TestBase {
         return new BusinessOverview();
     }
 
-    public CustomerChurnPredictionAIAnalytics clickOnGoToAIAnalytics() {
+    public CustomerChurnPredictionAIAnalytics clickOnGoToCustomerChurnPredictionAIAnalytics() {
         navAiAnalyticsLink.click();
         return new CustomerChurnPredictionAIAnalytics();
     }
@@ -125,11 +140,13 @@ public class BusinessOverview extends TestBase {
     public void clickOnNavDigitalMediaBuying() {
         navDigitalMediaBuyingLink.click();
     }
+
     public CampaignReportingPage clickOnGoToCampaignReportingPage() {
         navDigitalMediaBuyingLink.click();
         campaignReportingPageLink.click();
         return new CampaignReportingPage();
     }
+
     public CreatNewCampaignPage clickOnGoToCreatNewCampaignPage() {
         navDigitalMediaBuyingLink.click();
         campaignCreatingPageLink.click();
@@ -140,5 +157,31 @@ public class BusinessOverview extends TestBase {
         navMyCreativesLink.click();
         return new MyCreatives();
     }
+
+    public boolean verifyConversionGraphHeader() {
+        return conversionGraphHeading.isDisplayed();
+    }
+    public boolean verifySalesGraphInConversionHeader(){
+        return salesGraphInConversionHeader.isDisplayed();
+    }
+    public boolean verifyMailingListSubscriptionGraphInConversionHeader(){
+        return mailingListSubscriptionGraphHeader.isDisplayed();
+    }
+
+    public boolean verifyNewContactGraph() {
+        return newContactsGraphHeading.isDisplayed();
+    }
+
+    public boolean verifyCustomerSpendersGraphHeading() {
+        return customerSpendersGraphHeader.isDisplayed();
+    }
+
+    public boolean verifyBasketSummaryGraphHeading() {
+        return basketSummaryGraphHeader.isDisplayed();
+    }
+    public boolean verifyBestPerformingProductGraphHeading(){
+        return bestPerformingProductGraphHeader.isDisplayed();
+    }
+
 
 }
