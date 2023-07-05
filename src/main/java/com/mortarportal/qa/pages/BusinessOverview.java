@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.nio.file.WatchEvent;
+
 public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//h1[@innertext='Business Overview']")
     WebElement BusinessOverviewPageText;
@@ -58,6 +60,7 @@ public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'My Creatives')]")
     WebElement navMyCreativesLink;
     ///
+    //Graphs
     @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
     WebElement conversionGraphHeading;
     @FindBy(xpath = "//p[contains(text(),'Sales')]")
@@ -72,6 +75,23 @@ public class BusinessOverview extends TestBase {
     WebElement basketSummaryGraphHeader;
     @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
     WebElement bestPerformingProductGraphHeader;
+///
+    @FindBy(css = "[class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
+    WebElement selectOptionDropDown;
+    @FindBy(css = "[for='sales-woocommerce'] .checkmark")
+    WebElement checkBoxWooComInSalesGraph;
+    @FindBy(css = "[for='sales-myob'] .checkmark")
+    WebElement checkBoxMyObInSalesGraph;
+    @FindBy(css = "[for='mailing-mailchimp']")
+    WebElement checkBoxMailChimpInMailingGraph;
+    @FindBy(css = "[for='mailing-woocommerce'] .checkmark")
+    WebElement checkBoxWooComInMailingGraph;
+    @FindBy(css = "[for='mailing-myob'] .checkmark")
+    WebElement checkBoxMyObInMailingGraph;
+    @FindBy(id = "inlineRadio1")
+    WebElement quantityRadioButtonInBestPerformanceGraph;
+    @FindBy(id = "inlineRadio2")
+    WebElement revenueRadioButtonInBestPerformanceGraph;
 
 
     public BusinessOverview() {
@@ -182,6 +202,19 @@ public class BusinessOverview extends TestBase {
     public boolean verifyBestPerformingProductGraphHeading(){
         return bestPerformingProductGraphHeader.isDisplayed();
     }
-
-
+    public void verifyClickOnSelectOptionDropDown(){
+        selectOptionDropDown.click();
+    }
+    public boolean verifyWooComIsInSalesDataGraph(){
+        return checkBoxWooComInSalesGraph.isDisplayed();
+    }
+    public boolean verifyMyObIsInSalesDataGraph(){
+        return checkBoxMyObInSalesGraph.isDisplayed();
+    }
+    public boolean verifyWooComCheckBoxChecked(){
+        return checkBoxMyObInSalesGraph.isSelected();
+    }
+    public boolean verifyMyObCheckBoxChecked(){
+        return checkBoxMyObInSalesGraph.isSelected();
+    }
 }
