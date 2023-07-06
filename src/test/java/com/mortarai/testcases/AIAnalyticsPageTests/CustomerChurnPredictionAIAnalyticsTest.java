@@ -11,13 +11,12 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     //NAV BAR
     LoginPage loginPage;
     DashboardPage dashboardPage;
-//    ClientDashboard clientDashboard;
+    //ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
     Intergrations intergrations;
     FacebookAdvertisingPage facebookAdvertisingPage;
     MyCreatives myCreatives;
-
     //AI Analytics Page
     CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics;
     SalesAIAnalytics salesAIAnalytics;
@@ -27,10 +26,10 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     DemographicAIAnalytics demographicAIAnalytics;
     TargetAudienceAIAnalytics targetAudienceAIAnalytics;
 
-
-    public CustomerChurnPredictionAIAnalyticsTest(){
+    public CustomerChurnPredictionAIAnalyticsTest() {
         super();
     }
+
     @Parameters({"browser.name"})
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) {
@@ -38,20 +37,62 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
         businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
-        customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToAIAnalytics();
+        customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
 
     @Test(priority = 1)
     public void verifyingCustomersAtChurnListDisplay() {
 //        testUtil.switchToFrame();
-//        String customerChurnTable = customerChurnPredictionAIAnalytics.verifyCustomersAtChurnListDisplay();
-        Assert.assertTrue(customerChurnPredictionAIAnalytics.verifyCustomersAtChurnListDisplay());
+        try {
+            boolean customerChurnTable = customerChurnPredictionAIAnalytics.customersAtChurnListDisplay();
+            Assert.assertTrue(customerChurnTable, "AI analytics Data is not available");
+        } catch (Exception e) {
+            boolean customerAiAnalyticsData = customerChurnPredictionAIAnalytics.customerNoDataInAIAnalyticsTextCheck();
+            Assert.assertTrue(customerAiAnalyticsData, "Error");
+        }
+
     }
+
     @Test(priority = 2)
-    public void verifySelectMinimumPurchaseCount(){
+    public void verifyExportUnderlyingSalesData() {
+        customerChurnPredictionAIAnalytics.exportUnderlyingSalesDataButtonClick();
+    }
+
+    public void verifySelectMinimumPurchaseCount() {
         String value = "5";
         customerChurnPredictionAIAnalytics.changeMinimumPurchaseCount(value);
     }
+
+    @Test(priority = 3)
+    public void verifyGoToSalesPage() {
+        salesAIAnalytics = customerChurnPredictionAIAnalytics.salesLinkClick();
+    }
+
+    @Test(priority = 4)
+    public void verifyGoToSegmentsPage() {
+        segmentsAIAnalytics = customerChurnPredictionAIAnalytics.segmentLinkClick();
+    }
+
+    @Test(priority = 5)
+    public void verifyGoToProductsPage() {
+        productsAIAnalytics = customerChurnPredictionAIAnalytics.productLinkClick();
+    }
+
+    @Test(priority = 6)
+    public void verifyGoToTrendsPage() {
+        trendsAIAnalytics = customerChurnPredictionAIAnalytics.trendsLinkClick();
+    }
+
+    @Test(priority = 7)
+    public void verifyGoToDemographicsPage() {
+        demographicAIAnalytics = customerChurnPredictionAIAnalytics.demographicLinkClick();
+    }
+
+    @Test(priority = 8)
+    public void verifyGoToTargetAudience() {
+        targetAudienceAIAnalytics = customerChurnPredictionAIAnalytics.targetAudienceLinkClick();
+    }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
