@@ -169,6 +169,7 @@ public class BusinessOverview extends TestBase {
 
     public CreatNewCampaignPage clickOnGoToCreatNewCampaignPage() {
         navDigitalMediaBuyingLink.click();
+
         campaignCreatingPageLink.click();
         return new CreatNewCampaignPage();
     }

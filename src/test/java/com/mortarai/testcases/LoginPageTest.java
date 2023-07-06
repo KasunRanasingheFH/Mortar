@@ -61,8 +61,7 @@ public class LoginPageTest extends TestBase {
     }
     @Test(priority = 7)
     public void accountManagerLoginWithValidCredentialsTest() {
-        dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
-    }
+        dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));}
 
     @Test(priority = 8)
     public void accountManagerLoginWithInvalidEmailCredentials() {
