@@ -1,6 +1,7 @@
 package com.mortarportal.qa.base;
 
 
+import com.google.common.collect.ImmutableList;
 import com.mortarportal.qa.util.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +17,8 @@ import org.testng.annotations.BeforeSuite;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     //Web driver Static
@@ -49,10 +50,12 @@ public class TestBase {
 //        String browser = prop.getProperty("browser");
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("remote-allow-origins=*");
             options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
             //            Maximize the browser
             options.addArguments("test-type");
             options.addArguments("start-maximized");
+            options.setExperimentalOption("excludeSwitches", ImmutableList.of("disable-popup-blocking"));
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
@@ -94,8 +97,10 @@ public class TestBase {
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
+//        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICITY_WAIT));
 
         driver.get(prop.getProperty("url"));
     }
