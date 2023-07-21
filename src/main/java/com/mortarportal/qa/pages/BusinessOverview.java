@@ -64,6 +64,7 @@ public class BusinessOverview extends TestBase {
     //PopUp
     @FindBy(css = "div[role='document'] img")
     WebElement userVerificationPopup;
+
     //Graphs
     @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
     WebElement conversionGraphHeading;
@@ -79,6 +80,7 @@ public class BusinessOverview extends TestBase {
     WebElement basketSummaryGraphHeader;
     @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
     WebElement bestPerformingProductGraphHeader;
+
     ///
     @FindBy(css = "[class='d-flex w-100 resizing'] [class='card mb-4 ng-star-inserted']" +
             " [class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
@@ -247,6 +249,7 @@ public class BusinessOverview extends TestBase {
 
     public boolean verifyWooComIsInSalesDataGraph() {
         return wooCommerceDataInSalesGraph.isDisplayed();
+
     }
 
     public boolean verifyMyObIsInSalesDataGraph() {
@@ -275,6 +278,7 @@ public class BusinessOverview extends TestBase {
     public boolean verifyWooComDataInMailingGraph(){
         return wooComDataInMailingGraph.isDisplayed();
     }
+
     public boolean verifyMyObDataInMailing(){
         return myObDataInMailingGraph.isDisplayed();
     }
@@ -289,12 +293,14 @@ public class BusinessOverview extends TestBase {
     }
 
     //Best Performing Product graph
+
     public boolean verifyBestPerformingProductsInQuantity(){
         return quantityRadioButtonInBestPerformanceGraph.isSelected();
     }
     public boolean verifyBestPerformingProductsInRevenue(){
         return revenueRadioButtonInBestPerformanceGraph.isSelected();
     }
+
     public void verifyQuantityRadioButtonClick(){
         quantityRadioButtonInBestPerformanceGraph.click();
     }
