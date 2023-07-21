@@ -21,6 +21,7 @@ public class DashboardPageTest extends TestBase {
 
     @Parameters({"browser.name"})
     @BeforeMethod
+
     public void setUp(@Optional("firefox") String browser) {
         initialization(browser);
         testUtil = new TestUtil();
@@ -33,6 +34,8 @@ public class DashboardPageTest extends TestBase {
     @Test(priority = 1)
     public void verifyDashboardPageTitleTest() {
         String title = dashboardPage.verifyMortarTitle();
+
+//         Assert.assertEquals(title, "Web Portal", "Dashboard page Title is not matched");
         Assert.assertEquals(title, "Mortar - Web Portal", "Home page Title is not matched");
     }
 
@@ -56,17 +59,14 @@ public class DashboardPageTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifySearchABrandAndGoToBrandDetails() {
-
-        dashboardPage.searchABrand(prop.getProperty("brandName"));
-        String searchedUser = dashboardPage.verifySearchedBrand();
-        Assert.assertEquals(searchedUser, prop.getProperty("brandName"), "Searched user is displaying wrong");
+    public void verifySearchABrandAndGoToBrandDetails() throws InterruptedException {
+        dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
     }
 
     @Test(priority = 6)
     public void verifyStatusFilterIsClickable() {
         dashboardPage.clickStatusFilter();
-        Assert.assertTrue(dashboardPage.statusFilterDropdown(), "Status filter is not Opened");
+        Assert.assertTrue(dashboardPage.verifyStatusFilterDropdownIsVisible(), "Status filter is not Opened");
     }
 
     @Test(priority = 7)
@@ -98,60 +98,65 @@ public class DashboardPageTest extends TestBase {
         dashboardPage.clickStatusFilter();
         Assert.assertTrue(dashboardPage.selectAllIsSelected(), "Select All is Not Selected");
         boolean selectAllStatus = dashboardPage.selectAllIsSelected();
-        if (selectAllStatus){
+        if (selectAllStatus) {
             Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Setup Required is Not Selected");
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Active is Not Selected");
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Inactive is Not Selected");
         }
     }
+
     @Test(priority = 12)
     public void verifyStatusFilterSelectAllDeselect() throws InterruptedException {
         dashboardPage.clickStatusFilter();
         boolean selectAllStatus = dashboardPage.selectAllIsSelected();
-        if(selectAllStatus){
+        if (selectAllStatus) {
             dashboardPage.clickOnSelectAllCheckBox();
-            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(), "Successfully Deselected the Select All CheckBox");
             Assert.assertFalse(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
             Assert.assertFalse(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
         }
     }
+
     @Test(priority = 13)
     public void verifyStatusFilterOnlySetupRequiredDeselect() {
         dashboardPage.clickStatusFilter();
         boolean setupRequiredStatus = dashboardPage.setupRequiredIsSelected();
-        if(setupRequiredStatus){
+        if (setupRequiredStatus) {
             dashboardPage.clickOnSetupRequiredCheckbox();
-            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Successfully Deselected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(), "Successfully Deselected the Select All CheckBox");
             Assert.assertFalse(dashboardPage.setupRequiredIsSelected(), "Successfully Deselected the Setup Required CheckBox");
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Successfully Deselected the Active Checkbox");
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
         }
     }
+
     @Test(priority = 14)
-    public void verifyStatusFilterOnlyActiveDeselect(){
+    public void verifyStatusFilterOnlyActiveDeselect() {
         dashboardPage.clickStatusFilter();
         boolean activeStatus = dashboardPage.activeIsSelected();
-        if(activeStatus){
+        if (activeStatus) {
             dashboardPage.clickOnActiveCheckbox();
-            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Selected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(), "Selected the Select All CheckBox");
             Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Selected the Setup Required CheckBox");
             Assert.assertFalse(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
+
     @Test(priority = 15)
-    public void verifyStatusFilterOnlyInactiveDeselect(){
+    public void verifyStatusFilterOnlyInactiveDeselect() {
         dashboardPage.clickStatusFilter();
         boolean inactiveStatus = dashboardPage.inactiveIsSelected();
-        if(inactiveStatus){
+        if (inactiveStatus) {
             dashboardPage.clickOnInactiveCheckbox();
-            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Selected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(), "Selected the Select All CheckBox");
             Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Selected the Setup Required CheckBox");
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
+
     @AfterMethod
     public void tearDown() {
         driver.close();

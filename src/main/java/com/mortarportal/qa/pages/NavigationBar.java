@@ -1,6 +1,7 @@
 package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.WebElement;
@@ -9,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NavigationBar extends TestBase {
     //Nav BAr
-    //Business Overview Button
     @FindBy(xpath = "//span[contains(text(),'Business Overview')]")
     WebElement navBusinessOverviewLink;
 
@@ -24,7 +24,6 @@ public class NavigationBar extends TestBase {
     //Integration From Nav Bar
     @FindBy(xpath = "//span[contains(text(),'Integrations')]")
     WebElement navIntegrationsLink;
-
     //Emails & Journeys From Nav Bar
     @FindBy(xpath = "//span[contains(text(),'Emails & Journeys')]")
     WebElement navEmailsAndJourneyLink;
@@ -47,6 +46,10 @@ public class NavigationBar extends TestBase {
     public BusinessOverview clickOnGoToBusinessOverview() {
         navBusinessOverviewLink.click();
         return new BusinessOverview();
+    }
+    public CustomerChurnPredictionAIAnalytics clickOnGoToCustomerChurnPredictionAIAnalytics() {
+        navAiAnalyticsLink.click();
+        return new CustomerChurnPredictionAIAnalytics();
     }
         public MyCustomer clickOnGoToMyCustomer() {
         navMyCustomersLink.click();

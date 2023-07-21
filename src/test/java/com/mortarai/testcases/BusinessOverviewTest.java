@@ -13,6 +13,7 @@ import org.testng.annotations.*;
 
 public class BusinessOverviewTest extends TestBase {
     LoginPage loginPage;
+    NavigationBar navigationBar;
     DashboardPage dashboardPage;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
@@ -71,15 +72,15 @@ public class BusinessOverviewTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifyClickGoToAIAnalyticsPageTest() {
+    public void verifyAIAnalyticsPageTest() {
 //        testUtil.switchToFrame();
-        customerChurnPredictionAIAnalyticsTest = businessOverview.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        customerChurnPredictionAIAnalyticsTest = navigationBar.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
 
     @Test(priority = 6)
     public void verifyClickGoToMyCustomerPageTest() {
 //        testUtil.switchToFrame();
-        myCustomer = businessOverview.clickOnGoToMyCustomer();
+        myCustomer = navigationBar.clickOnGoToMyCustomer();
     }
 
     @Test(priority = 7)
@@ -200,7 +201,7 @@ public class BusinessOverviewTest extends TestBase {
                 "Available in Sales graph");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 24)
     public void verifiedMailChimpInSalesGraph() {
         businessOverview.verifyClickOnSelectOptionDropDown();
         Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
@@ -208,14 +209,14 @@ public class BusinessOverviewTest extends TestBase {
 
     }
 
-    @Test(priority = 22)
+    @Test(priority = 25)
     public void verifiedWooComDataIsSelectedInSalesGraph() {
         businessOverview.verifyClickOnSelectOptionDropDown();
         Assert.assertTrue(businessOverview.verifyWooComCheckBoxCheckedInSales(), "Woocommerce Data is not " +
                 "Selected in Sales graph");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 26)
     public void verifiedMyObDataIsSelectedInSalesGraph() throws InterruptedException {
         businessOverview.verifyClickOnSelectOptionDropDown();
         Thread.sleep(2000);
@@ -223,42 +224,44 @@ public class BusinessOverviewTest extends TestBase {
         Assert.assertTrue(isSelected, "Myob Data is not " +
                 "Selected in Sales graph");
     }
-    @Test(priority = 23)
-    public void verifiedUnselectWooComDataInSales(){
+
+    @Test(priority = 27)
+    public void verifiedUnselectWooComDataInSales() {
         businessOverview.verifyClickOnSelectOptionDropDown();
         boolean isSelected = businessOverview.verifyUnselectWooComCheckBox();
-        Assert.assertFalse(isSelected,"Woocommerce data is checkbox didnt unselected");
+        Assert.assertFalse(isSelected, "Woocommerce data is checkbox didnt unselected");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 28)
     public void verifiedUnselectMyObDataInSales() {
         businessOverview.verifyClickOnSelectOptionDropDown();
-        boolean isSelected = businessOverview. verifyUnselectMyObCheckBox();
-        Assert.assertFalse(isSelected,"Myob data is checkbox didnt unselected");
+        boolean isSelected = businessOverview.verifyUnselectMyObCheckBox();
+        Assert.assertFalse(isSelected, "Myob data is checkbox didnt unselected");
     }
+
     //Mailing List Subscription Graph
-    @Test(priority = 22)
+    @Test(priority = 29)
     public void verifiedWooComDataInMailing() {
         businessOverview.verifyClickOnSelectOptionDropdownInMailing();
         Assert.assertTrue(businessOverview.verifyWooComDataInMailingGraph(), "Woocommerce Data is not " +
                 "Available in Mailing graph");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 30)
     public void verifiedMyObDataInMailing() {
         businessOverview.verifyClickOnSelectOptionDropdownInMailing();
         Assert.assertTrue(businessOverview.verifyMyObDataInMailing(), "Myob Data is not " +
                 "Available in Sales graph");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 31)
     public void verifiedOmniSendInMailing() {
         businessOverview.verifyClickOnSelectOptionDropdownInMailing();
         Assert.assertTrue(businessOverview.verifyOmniSendDataInMailing(), "Omnisend Data is not " +
                 "Available in Sales graph");
     }
 
-    @Test(priority = 22)
+    @Test(priority = 32)
     public void verifiedWooComDataIsSelectedInMailing() throws InterruptedException {
         businessOverview.verifyClickOnSelectOptionDropdownInMailing();
         Thread.sleep(2500);
@@ -266,7 +269,7 @@ public class BusinessOverviewTest extends TestBase {
                 "Selected in Mailing graph");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 33)
     public void verifiedMyObDataIsSelectedInMailing() throws InterruptedException {
         businessOverview.verifyClickOnSelectOptionDropdownInMailing();
         Thread.sleep(2000);
@@ -275,7 +278,28 @@ public class BusinessOverviewTest extends TestBase {
                 "Selected in Mailing graph");
 
     }
-
+    @Test(priority = 34)
+    public void verifiedBestPerformingProductsIsInQuantity() {
+        boolean isSelect = businessOverview.verifyBestPerformingProductsInQuantity();
+        Assert.assertTrue(isSelect,"Best Performing Products data are not in Quantity");
+    }
+    @Test(priority = 35)
+    public void verifiedBestPerformingProductsIsInRevenue() {
+        boolean isSelect = businessOverview.verifyBestPerformingProductsInRevenue();
+        Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
+    }
+    @Test(priority = 36)
+    public void verifiedSelectBestPerformingProductsToQuantity() {
+        businessOverview.verifyQuantityRadioButtonClick();
+        boolean isSelect = businessOverview.verifyBestPerformingProductsInQuantity();
+        Assert.assertTrue(isSelect,"Best Performing Products data are not in Quantity");
+    }
+    @Test(priority = 37)
+    public void verifiedSelectBestPerformingProductsToRevenue() {
+        businessOverview.verifyRevenueRadioButtonClick();
+        boolean isSelect = businessOverview.verifyBestPerformingProductsInRevenue();
+        Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
+    }
 
     @AfterMethod
     public void tearDown() {
