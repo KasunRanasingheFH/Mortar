@@ -13,15 +13,15 @@ public class DashboardPage extends TestBase {
     // xpath=//h1[contains(.,'DashboardPage')]
 
     //B&M-SankaXYZ Button to go to dashboard
-    @FindBy(xpath = "//tr[4]/td[3]/button")
+    @FindBy(css = ".btn.btn-client-dashboard")
     WebElement goToBrandDashboardDirectButton;
-    @FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[3]/div/" +
-            "div/div/div/div/div[2]/div/div/div/div[2]/div/table/tbody/tr/td[3]/button")
+    @FindBy(css = ".btn.btn-client-dashboard")
+//    @FindBy(css = ".btn.btn-client-dashboard.ng-star-inserted.ng-tns-c198-4")
     WebElement goToSearchedDashboardButton;
-    @FindBy(xpath = "/html/body/app-root/app-admin-layout-sidebar-large/div/div[2]/app-managers-default/div/div[3]" +
-            "/div/div/div/div/div/div[2]/div/div/div/div[2]/div/table/tbody/tr[1]/td[1]")
-    WebElement searchedCustomer;
-    @FindBy(xpath = "//tr[1]/td[3]/button")
+    @FindBy(css = "[class='table-space ng-tns-c198-4 ng-star-inserted']")
+    WebElement searchedCustomerName;
+    @FindBy(css = "tbody [class='ng-tns-c198-4 ng-star-inserted']:nth-of-type(1) " +
+            "[class='btn btn-client-dashboard ng-tns-c198-4 ng-star-inserted']")
     WebElement goToSearchedClient;
 
     @FindBy(id = "search")
@@ -32,8 +32,8 @@ public class DashboardPage extends TestBase {
     @FindBy(id = "submitButton")
     WebElement brandSearchButton;
     @FindBy(id = "dropdownBasic1")
-    WebElement dropDownStatusFilter;
-    @FindBy(xpath = "//div[2]/div/div")
+    WebElement dropDownStatusFilterOpenButton;
+    @FindBy(css = "[class='p-3 ng-tns-c198-0']")
     WebElement dropDownPanel;
     @FindBy(id = "check-all")
     WebElement selectAllInDropDown;
@@ -85,9 +85,9 @@ if(isSelected == false) {
     }
 
     public void clickStatusFilter() {
-        dropDownStatusFilter.click();
+        dropDownStatusFilterOpenButton.click();
     }
-    public boolean statusFilterDropdown(){
+    public boolean verifyStatusFilterDropdownIsVisible(){
         return dropDownPanel.isDisplayed();
     }
     public boolean selectAllIsSelected(){
@@ -124,7 +124,7 @@ if(isSelected == false) {
     }
 
     public String verifySearchedBrand() {
-        return searchedCustomer.getText();
+        return searchedCustomerName.getText();
     }
 
 

@@ -13,6 +13,7 @@ import org.testng.annotations.*;
 
 public class BusinessOverviewTest extends TestBase {
     LoginPage loginPage;
+    NavigationBar navigationBar;
     DashboardPage dashboardPage;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
@@ -71,15 +72,15 @@ public class BusinessOverviewTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifyClickGoToAIAnalyticsPageTest() {
+    public void verifyAIAnalyticsPageTest() {
 //        testUtil.switchToFrame();
-        customerChurnPredictionAIAnalyticsTest = businessOverview.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        customerChurnPredictionAIAnalyticsTest = navigationBar.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
 
     @Test(priority = 6)
     public void verifyClickGoToMyCustomerPageTest() {
 //        testUtil.switchToFrame();
-        myCustomer = businessOverview.clickOnGoToMyCustomer();
+        myCustomer = navigationBar.clickOnGoToMyCustomer();
     }
 
     @Test(priority = 7)
@@ -288,19 +289,17 @@ public class BusinessOverviewTest extends TestBase {
         Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
     }
     @Test(priority = 36)
-    public void verifiedSelectBestPerformingProductsToQuantity(){
+    public void verifiedSelectBestPerformingProductsToQuantity() {
         businessOverview.verifyQuantityRadioButtonClick();
         boolean isSelect = businessOverview.verifyBestPerformingProductsInQuantity();
         Assert.assertTrue(isSelect,"Best Performing Products data are not in Quantity");
     }
     @Test(priority = 37)
-    public void verifiedSelectBestPerformingProductsToRevenue(){
+    public void verifiedSelectBestPerformingProductsToRevenue() {
         businessOverview.verifyRevenueRadioButtonClick();
         boolean isSelect = businessOverview.verifyBestPerformingProductsInRevenue();
         Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
     }
-
-
 
     @AfterMethod
     public void tearDown() {

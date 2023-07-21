@@ -10,6 +10,7 @@ import org.testng.annotations.*;
 public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     //NAV BAR
     LoginPage loginPage;
+    NavigationBar navigationBar;
     DashboardPage dashboardPage;
     //ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
