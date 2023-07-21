@@ -115,8 +115,9 @@ if(isSelected == false) {
         inactiveInDropdownCheckBox.click();
     }
 
-    public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) {
+    public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) throws InterruptedException {
         placeholderSearchClient.sendKeys(brandName);
+        Thread.sleep(2000);
         brandSearchButton.click();
         goToSearchedDashboardButton.click();
         return new BusinessOverview();

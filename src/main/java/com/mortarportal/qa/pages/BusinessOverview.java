@@ -12,11 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.nio.file.WatchEvent;
-
 public class BusinessOverview extends TestBase {
-    @FindBy(xpath = "//h1[@innertext='Business Overview']")
-    WebElement BusinessOverviewPageText;
+    @FindBy(css = ".ng-star-inserted > .Overview")
+    WebElement verifyBusinessOverviewPage;
     @FindBy(xpath = "//li[contains(text(),'B&M-SankaXYZ')]")
     WebElement businessOwnerID;
     //NAVBAR//////////////
@@ -52,7 +50,7 @@ public class BusinessOverview extends TestBase {
     //Digital Media Buying From Nav Bar
     @FindBy(css = "[data-intercom-target='Digital Media Buying'] .nav-text")
     WebElement navDigitalMediaBuyingLink;
-    @FindBy(css = "[href='\\/digital-media-buying\\/campaigns'] .item-name")
+    @FindBy(css = "li:nth-of-type(1) > .ng-star-inserted > .item-name.lvl1")
     WebElement campaignReportingPageLink;
     @FindBy(css = ".childNav .ng-star-inserted:nth-of-type(2) .item-name")
     WebElement campaignCreatingPageLink;
@@ -60,6 +58,9 @@ public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'My Creatives')]")
     WebElement navMyCreativesLink;
     ///
+    //PopUp
+    @FindBy(css = "div[role='document'] img")
+    WebElement userVerificationPopup;
     //Graphs
     @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
     WebElement conversionGraphHeading;
@@ -75,19 +76,41 @@ public class BusinessOverview extends TestBase {
     WebElement basketSummaryGraphHeader;
     @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
     WebElement bestPerformingProductGraphHeader;
-///
-    @FindBy(css = "[class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
-    WebElement selectOptionDropDown;
-    @FindBy(css = "[for='sales-woocommerce'] .checkmark")
-    WebElement checkBoxWooComInSalesGraph;
-    @FindBy(css = "[for='sales-myob'] .checkmark")
-    WebElement checkBoxMyObInSalesGraph;
+    ///
+    @FindBy(css = "[class='d-flex w-100 resizing'] [class='card mb-4 ng-star-inserted']" +
+            " [class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
+    WebElement selectOptionDropDownInSalesGraph;
+    //DATA
+    //Sales Graph Data
+    @FindBy(css = "[for='sales-woocommerce']")
+    WebElement wooCommerceDataInSalesGraph;
+    @FindBy(css = "[for='sales-myob']")
+    WebElement myObDataInSalesGraph;
+    @FindBy(css = "[for='sales-mailchimp']")
+    WebElement mailChimpDataInSalesGraph;
+    @FindBy(id="sales-woocommerce")
+    WebElement checkBoxWooComInSales;
+    @FindBy(id="sales-myob")
+    WebElement checkBoxMyObInSales;
+    //Mailing Graph Data
+    @FindBy(css = ".card.mb-4.ng-star-inserted.pr-0 > .bg-white.card-footer > .row > .col-md-12 > .form-row > " +
+            ".btn-group.col-md-12 > .btn.btn-gray.dropdown-toggle.form-control.mx-1.text-left")
+    WebElement selectOptionDropdownMailingListSubscriptionGraph;
+    @FindBy(css = "[for='mailing-omnisend']")
+    WebElement omniSendDataInMailingGraph;
+    @FindBy(css = "[for='mailing-woocommerce']")
+    WebElement wooComDataInMailingGraph;
+    @FindBy(css = "[for='mailing-myob']")
+    WebElement myObDataInMailingGraph;
     @FindBy(css = "[for='mailing-mailchimp']")
+    WebElement mailChimpInMailing;
+    @FindBy(id="mailing-mailchimp")
     WebElement checkBoxMailChimpInMailingGraph;
-    @FindBy(css = "[for='mailing-woocommerce'] .checkmark")
+    @FindBy(id = "mailing-woocommerce")
     WebElement checkBoxWooComInMailingGraph;
-    @FindBy(css = "[for='mailing-myob'] .checkmark")
+    @FindBy(id = "mailing-myob")
     WebElement checkBoxMyObInMailingGraph;
+    //Best Performing Product graph
     @FindBy(id = "inlineRadio1")
     WebElement quantityRadioButtonInBestPerformanceGraph;
     @FindBy(id = "inlineRadio2")
@@ -97,13 +120,16 @@ public class BusinessOverview extends TestBase {
     public BusinessOverview() {
         PageFactory.initElements(driver, this);
     }
-
     public String validateBusinessOverviewPageTitle() {
         return driver.getTitle();
     }
 
-    public String verifyBusinessOverviewPageText() {
-        return BusinessOverviewPageText.getText();
+    public boolean verifyUserVerificationPopup() {
+        return userVerificationPopup.isDisplayed();
+    }
+
+    public boolean verifyBusinessOverviewPageText() {
+        return verifyBusinessOverviewPage.isDisplayed();
     }
 
     /*public boolean verifyClientName(String brandNameVerify) {
@@ -181,10 +207,12 @@ public class BusinessOverview extends TestBase {
     public boolean verifyConversionGraphHeader() {
         return conversionGraphHeading.isDisplayed();
     }
-    public boolean verifySalesGraphInConversionHeader(){
+
+    public boolean verifySalesGraphInConversionHeader() {
         return salesGraphInConversionHeader.isDisplayed();
     }
-    public boolean verifyMailingListSubscriptionGraphInConversionHeader(){
+
+    public boolean verifyMailingListSubscriptionGraphInConversionHeader() {
         return mailingListSubscriptionGraphHeader.isDisplayed();
     }
 
@@ -199,22 +227,64 @@ public class BusinessOverview extends TestBase {
     public boolean verifyBasketSummaryGraphHeading() {
         return basketSummaryGraphHeader.isDisplayed();
     }
-    public boolean verifyBestPerformingProductGraphHeading(){
+
+    public boolean verifyBestPerformingProductGraphHeading() {
         return bestPerformingProductGraphHeader.isDisplayed();
     }
-    public void verifyClickOnSelectOptionDropDown(){
-        selectOptionDropDown.click();
+
+    //Sales Graph
+    public void verifyClickOnSelectOptionDropDown() {
+        selectOptionDropDownInSalesGraph.click();
     }
-    public boolean verifyWooComIsInSalesDataGraph(){
-        return checkBoxWooComInSalesGraph.isDisplayed();
+
+    public boolean verifyWooComIsInSalesDataGraph() {
+        return wooCommerceDataInSalesGraph.isDisplayed();
     }
-    public boolean verifyMyObIsInSalesDataGraph(){
-        return checkBoxMyObInSalesGraph.isDisplayed();
+
+    public boolean verifyMyObIsInSalesDataGraph() {
+        return myObDataInSalesGraph.isDisplayed();
     }
-    public boolean verifyWooComCheckBoxChecked(){
-        return checkBoxMyObInSalesGraph.isSelected();
+    public boolean verifyWooComCheckBoxCheckedInSales() {
+        return checkBoxWooComInSales.isSelected();
     }
-    public boolean verifyMyObCheckBoxChecked(){
-        return checkBoxMyObInSalesGraph.isSelected();
+    public boolean verifyMyObCheckBoxCheckedSales() {
+        return checkBoxMyObInSales.isSelected();
+    }
+    public boolean verifyUnselectWooComCheckBox(){
+        wooCommerceDataInSalesGraph.click();
+        return checkBoxWooComInSales.isSelected();
+
+    }
+    public boolean verifyUnselectMyObCheckBox(){
+        myObDataInSalesGraph.click();
+        return checkBoxMyObInSales.isSelected();
+    }
+
+    //Mailing List Subscription
+    public void verifyClickOnSelectOptionDropdownInMailing(){
+        selectOptionDropdownMailingListSubscriptionGraph.click();
+    }
+    public boolean verifyWooComDataInMailingGraph(){
+        return wooComDataInMailingGraph.isDisplayed();
+    }
+    public boolean verifyMyObDataInMailing(){
+        return myObDataInMailingGraph.isDisplayed();
+    }
+    public boolean verifyOmniSendDataInMailing(){
+        return omniSendDataInMailingGraph.isDisplayed();
+    }
+    public boolean verifyWooComCheckBoxCheckedInMailing() {
+        return checkBoxWooComInMailingGraph.isSelected();
+    }
+    public boolean verifyMyObCheckBoxCheckedMailing() {
+        return checkBoxMyObInMailingGraph.isSelected();
+    }
+
+    //Best Performing Product graph
+    public void verifyQuantityRadioButtonClick(){
+        quantityRadioButtonInBestPerformanceGraph.click();
+    }
+    public void verifyRevenueRadioButtonClick(){
+        revenueRadioButtonInBestPerformanceGraph.click();
     }
 }

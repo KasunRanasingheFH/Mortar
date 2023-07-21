@@ -4,10 +4,13 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
+import com.mortarportal.qa.util.TestUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class LoginPageTest extends TestBase {
     LoginPage loginPage;
@@ -22,7 +25,7 @@ public class LoginPageTest extends TestBase {
 
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome-headless") String browser) {
+    public void setUp(@Optional("chrome") String browser) {
         initialization(browser);
         loginPage = new LoginPage();
     }
@@ -36,9 +39,9 @@ public class LoginPageTest extends TestBase {
     }
 
     @Test(priority = 2)
-    public void loginPageImageTest() {
-        boolean pic = loginPage.validateLoginPageImage();
-        Assert.assertTrue(pic);
+    public void verifyLoginPageTitleHeader(){
+        boolean header = loginPage.validateLogInPageHeaderTitle();
+        Assert.assertTrue(header,"Login page header title is not available");
     }
 
     @Test(priority = 3)
@@ -71,7 +74,7 @@ public class LoginPageTest extends TestBase {
       /*  loginPage.getErrorMessage();
         System.out.println("Login Error");*/
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
 //        Assert.assertTrue(loginPage.getErrorMessage(),"Login failed! Please check your username and password and try again.");
     }
 
@@ -80,12 +83,17 @@ public class LoginPageTest extends TestBase {
         String invalidPassword = "Sankaw233@dmk";
         loginPage.login(prop.getProperty("AdminUsername"), invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
+
     }
 
     @Test(priority = 10)
-    public void businessOwnerLoginWithValidCredentials() {
+    public void businessOwnerLoginWithValidCredentials() throws InterruptedException {
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), prop.getProperty("Password"));
+        Thread.sleep(5000);
+        boolean popupVerify = businessOverview.verifyUserVerificationPopup();
+        Assert.assertTrue(popupVerify,"User verify Popup didn't Showed");
+
     }
 
     @Test(priority = 11)
@@ -93,7 +101,7 @@ public class LoginPageTest extends TestBase {
         String invalidPassword = "Sankaw233@dmk";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg,"Error Message not popped up");
     }
 
     @Test(priority = 12)
@@ -101,7 +109,7 @@ public class LoginPageTest extends TestBase {
         String invalidEmail = "Sankaw233@dmk";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidEmail);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
     }
 
     @Test(priority = 13)
@@ -109,7 +117,7 @@ public class LoginPageTest extends TestBase {
         String invalidEmail = "";
         businessOverview = loginPage.loginAsUser(invalidEmail, prop.getProperty("Password"));
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
 
     }
 
@@ -118,7 +126,7 @@ public class LoginPageTest extends TestBase {
         String invalidPassword = "";
         businessOverview = loginPage.loginAsUser(prop.getProperty("Username"), invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
     }
 
     @Test(priority = 15)
@@ -127,7 +135,7 @@ public class LoginPageTest extends TestBase {
         String invalidPassword = "";
         businessOverview = loginPage.loginAsUser(invalidEmail, invalidPassword);
         boolean errorMsg = loginPage.getErrorMessage();
-        Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
+        Assert.assertTrue(errorMsg, "Error Message not popped up");
     }
 
 
