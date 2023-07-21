@@ -32,7 +32,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
 
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome") String browser) throws InterruptedException {
         initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));

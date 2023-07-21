@@ -35,7 +35,7 @@ public class BusinessOverviewTest extends TestBase {
     //  after each test case -- close the browser
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome") String browser) throws InterruptedException {
         initialization(browser);
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
@@ -49,11 +49,11 @@ public class BusinessOverviewTest extends TestBase {
     }
 
     @Test(priority = 2)
-    public void verifyClientDashboardTest() {
+    public void verifyBusinessOverviewPage() {
 //        testUtil.switchToFrame();
 
-        String businessOverviewPageText = businessOverview.verifyBusinessOverviewPageText();
-        Assert.assertEquals(businessOverviewPageText, "Business Overview", "Not in the Business Overview Page");
+        boolean businessOverviewPageText = businessOverview.verifyBusinessOverviewPageText();
+        Assert.assertTrue(businessOverviewPageText, "Not in the Business Overview Page");
 
     }
 
@@ -134,114 +134,145 @@ public class BusinessOverviewTest extends TestBase {
         myCreatives = businessOverview.clickOnGoToMyCreatives();
     }
 
+
+    //Verify Graphs Available
     @Test(priority = 16)
     public void verifiedConversionGraphsHeading() {
-        try {
-            Assert.assertTrue(businessOverview.verifyConversionGraphHeader(), "Conversion graph  not displaying");
-        } catch (Exception e) {
-            System.out.println("Conversion Graph is Not displaying");
-        }
+        Assert.assertTrue(businessOverview.verifyConversionGraphHeader(), "Conversion graph  not displaying");
     }
 
     @Test(priority = 16)
     public void verifiedSalesGraphInConversionHeading() {
-        try {
-            Assert.assertTrue(businessOverview.verifySalesGraphInConversionHeader(), "Sales Graph not displaying");
-        } catch (Exception e) {
-            System.out.println("Sales Graph not displaying");
-        }
+
+        Assert.assertTrue(businessOverview.verifySalesGraphInConversionHeader(), "Sales Graph not displaying");
     }
 
     @Test(priority = 17)
     public void verifiedMailingListSubscriptionGraphInHeading() {
-        try {
-            Assert.assertTrue(businessOverview.verifyMailingListSubscriptionGraphInConversionHeader(), "Mailing List " +
-                    "Subscription Graph is Not displaying");
-        } catch (Exception e) {
-            System.out.println("Mailing List Subscription Graph is Not displaying");
-        }
+
+        Assert.assertTrue(businessOverview.verifyMailingListSubscriptionGraphInConversionHeader(), "Mailing List " +
+                "Subscription Graph is Not displaying");
+
     }
 
     @Test(priority = 18)
     public void verifiedNewContactGraphHeading() {
-        try {
-            String errorMessage = "New Contact Graph not displaying";
-            Assert.assertTrue(businessOverview.verifyNewContactGraph(), "New Contact graph is not displaying");
-        } catch (Exception e) {
-            System.out.println("New Contact Graph is Not displaying");
-        }
+
+        String errorMessage = "New Contact Graph not displaying";
+        Assert.assertTrue(businessOverview.verifyNewContactGraph(), "New Contact graph is not displaying");
+
     }
 
     @Test(priority = 19)
     public void verifiedCustomerSpendersGraphHeading() {
-        try {
-            String errorMessage = "Customer(Spenders) Graph not displaying";
-            Assert.assertTrue(businessOverview.verifyCustomerSpendersGraphHeading(), errorMessage);
-        } catch (Exception e) {
-            System.out.println("Customer(Spenders) Graph is Not displaying");
-        }
+
+        String errorMessage = "Customer(Spenders) Graph not displaying";
+        Assert.assertTrue(businessOverview.verifyCustomerSpendersGraphHeading(), errorMessage);
     }
 
     @Test(priority = 20)
     public void verifiedBasketSummaryGraphHeading() {
-        try {
-            Assert.assertTrue(businessOverview.verifyBasketSummaryGraphHeading(), "Basket Summary is " +
-                    "Graph not displaying");
-        } catch (Exception e) {
-            System.out.println("Basket Summary is Graph not displaying");
-        }
+
+        Assert.assertTrue(businessOverview.verifyBasketSummaryGraphHeading(), "Basket Summary is " +
+                "Graph not displaying");
     }
 
     @Test(priority = 21)
-    public void verifiedBestPerformingProductGraph() {
-        try {
-            Assert.assertTrue(businessOverview.verifyBestPerformingProductGraphHeading(), "Best " +
-                    "performing product is Graph not displaying");
-        } catch (Exception e) {
-            System.out.println("Best performing product is Graph not displaying");
-        }
+    public void verifiedBestPerformingProductGraphHeading() {
+        Assert.assertTrue(businessOverview.verifyBestPerformingProductGraphHeading(), "Best " +
+                "performing product is Graph not displaying");
     }
 
+    //Sales Graph
     @Test(priority = 22)
     public void verifiedWooComDataInSalesGraph() {
         businessOverview.verifyClickOnSelectOptionDropDown();
-        try {
-            Assert.assertTrue(businessOverview.verifyWooComIsInSalesDataGraph(), "Woocommerce Data is not " +
-                    "Available in Sales graph");
-        } catch (Exception e) {
-            System.out.println("Woocommerce Data is not Available in Sales graph");
-        }
+        Assert.assertTrue(businessOverview.verifyWooComIsInSalesDataGraph(), "Woocommerce Data is not " +
+                "Available in Sales graph");
+
     }
 
     @Test(priority = 23)
     public void verifiedMyObDataInSalesGraph() {
         businessOverview.verifyClickOnSelectOptionDropDown();
-        try {
-            Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
-                    "Available in Sales graph");
-        } catch (Exception e) {
-            System.out.println("Myob Data is not Available in Sales graph");
-        }
+
+        Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
+                "Available in Sales graph");
+    }
+
+    @Test(priority = 23)
+    public void verifiedMailChimpInSalesGraph() {
+        businessOverview.verifyClickOnSelectOptionDropDown();
+        Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
+                "Available in Sales graph");
+
     }
 
     @Test(priority = 22)
     public void verifiedWooComDataIsSelectedInSalesGraph() {
-        try {
-            Assert.assertTrue(businessOverview.verifyWooComCheckBoxChecked(), "Woocommerce Data is not " +
-                    "Available in Sales graph");
-        } catch (Exception e) {
-            System.out.println("Woocommerce Data is not Available in Sales graph");
-        }
+        businessOverview.verifyClickOnSelectOptionDropDown();
+        Assert.assertTrue(businessOverview.verifyWooComCheckBoxCheckedInSales(), "Woocommerce Data is not " +
+                "Selected in Sales graph");
     }
 
     @Test(priority = 23)
-    public void verifiedMyObDataIsSelectedInSalesGraph() {
-        boolean isSelected = businessOverview.verifyWooComCheckBoxChecked();
-        if (isSelected) {
-            Assert.assertTrue(businessOverview.verifyMyObCheckBoxChecked(), "Myob Data is not " +
-                    "Available in Sales graph");
-        }
-        System.out.println("Myob Data is not Available in Sales graph");
+    public void verifiedMyObDataIsSelectedInSalesGraph() throws InterruptedException {
+        businessOverview.verifyClickOnSelectOptionDropDown();
+        Thread.sleep(2000);
+        boolean isSelected = businessOverview.verifyMyObCheckBoxCheckedSales();
+        Assert.assertTrue(isSelected, "Myob Data is not " +
+                "Selected in Sales graph");
+    }
+    @Test(priority = 23)
+    public void verifiedUnselectWooComDataInSales(){
+        businessOverview.verifyClickOnSelectOptionDropDown();
+        boolean isSelected = businessOverview.verifyUnselectWooComCheckBox();
+        Assert.assertFalse(isSelected,"Woocommerce data is checkbox didnt unselected");
+    }
+
+    @Test(priority = 23)
+    public void verifiedUnselectMyObDataInSales() {
+        businessOverview.verifyClickOnSelectOptionDropDown();
+        boolean isSelected = businessOverview. verifyUnselectMyObCheckBox();
+        Assert.assertFalse(isSelected,"Myob data is checkbox didnt unselected");
+    }
+    //Mailing List Subscription Graph
+    @Test(priority = 22)
+    public void verifiedWooComDataInMailing() {
+        businessOverview.verifyClickOnSelectOptionDropdownInMailing();
+        Assert.assertTrue(businessOverview.verifyWooComDataInMailingGraph(), "Woocommerce Data is not " +
+                "Available in Mailing graph");
+    }
+
+    @Test(priority = 23)
+    public void verifiedMyObDataInMailing() {
+        businessOverview.verifyClickOnSelectOptionDropdownInMailing();
+        Assert.assertTrue(businessOverview.verifyMyObDataInMailing(), "Myob Data is not " +
+                "Available in Sales graph");
+    }
+
+    @Test(priority = 23)
+    public void verifiedOmniSendInMailing() {
+        businessOverview.verifyClickOnSelectOptionDropdownInMailing();
+        Assert.assertTrue(businessOverview.verifyOmniSendDataInMailing(), "Omnisend Data is not " +
+                "Available in Sales graph");
+    }
+
+    @Test(priority = 22)
+    public void verifiedWooComDataIsSelectedInMailing() throws InterruptedException {
+        businessOverview.verifyClickOnSelectOptionDropdownInMailing();
+        Thread.sleep(2500);
+        Assert.assertTrue(businessOverview.verifyWooComCheckBoxCheckedInMailing(), "Woocommerce Data is not " +
+                "Selected in Mailing graph");
+    }
+
+    @Test(priority = 23)
+    public void verifiedMyObDataIsSelectedInMailing() throws InterruptedException {
+        businessOverview.verifyClickOnSelectOptionDropdownInMailing();
+        Thread.sleep(2000);
+        boolean isSelected = businessOverview.verifyMyObCheckBoxCheckedMailing();
+        Assert.assertTrue(isSelected, "Myob Data is not " +
+                "Selected in Mailing graph");
 
     }
 

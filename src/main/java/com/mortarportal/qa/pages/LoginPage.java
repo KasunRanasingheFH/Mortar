@@ -13,10 +13,11 @@ public class LoginPage extends TestBase {
     @FindBy(id = "password")
     WebElement password;
 
-//    @FindBy(xpath = "//button[@type='submit']")
+    //    @FindBy(xpath = "//button[@type='submit']")
     @FindBy(id = "kc-login")
     WebElement loginBtn;
-
+    @FindBy(id = "kc-page-title")
+    WebElement loginPageTitle;
     @FindBy(xpath = "//h3[contains(text(),'Sign In')]")
     WebElement signUpText;
 
@@ -24,6 +25,7 @@ public class LoginPage extends TestBase {
     WebElement mortarLogo;
     @FindBy(id = "input-error")
     WebElement spanErrorMessage;
+
     //Initializing Page Objects
     public LoginPage() {
         PageFactory.initElements(driver, this);
@@ -33,35 +35,46 @@ public class LoginPage extends TestBase {
     public String validateLoginPageTitle() {
         return driver.getTitle();
     }
-    public boolean validateLoginPageImage(){
+
+    public boolean validateLogInPageHeaderTitle() {
+        return loginPageTitle.isDisplayed();
+    }
+
+    public boolean validateLoginPageImage() {
         return mortarLogo.isDisplayed();
     }
-    public boolean loginUserNameFieldVisibility(){
+
+    public boolean loginUserNameFieldVisibility() {
         return username.isDisplayed();
     }
-    public boolean loginPasswordFieldVisibility(){
+
+    public boolean loginPasswordFieldVisibility() {
         return password.isDisplayed();
     }
-    public boolean loginButtonVisibility(){
+
+    public boolean loginButtonVisibility() {
         return loginBtn.isDisplayed();
     }
-    public void loginButtonClickable(){
+
+    public void loginButtonClickable() {
         loginBtn.click();
     }
-    public DashboardPage login(String uname, String pwd){
+
+    public DashboardPage login(String uname, String pwd) {
         username.sendKeys(uname);
         password.sendKeys(pwd);
         loginBtn.click();
         return new DashboardPage();
     }
-    public BusinessOverview loginAsUser(String uname, String pwd){
+
+    public BusinessOverview loginAsUser(String uname, String pwd) {
         username.sendKeys(uname);
         password.sendKeys(pwd);
         loginBtn.click();
         return new BusinessOverview();
     }
-    public boolean getErrorMessage()
-    {
+
+    public boolean getErrorMessage() {
         return spanErrorMessage.isDisplayed();
     }
 
