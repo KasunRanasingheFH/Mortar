@@ -129,6 +129,7 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     }
 
     public boolean customersAtChurnListDisplay(){
+
         return customersAtChurnList.isDisplayed();
     }
     public void exportUnderlyingSalesDataButtonClick(){
