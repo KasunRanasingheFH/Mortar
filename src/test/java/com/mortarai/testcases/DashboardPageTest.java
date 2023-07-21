@@ -21,7 +21,8 @@ public class DashboardPageTest extends TestBase {
 
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+
+    public void setUp(@Optional("firefox") String browser) {
         initialization(browser);
         testUtil = new TestUtil();
         businessOverview = new BusinessOverview();
@@ -33,7 +34,9 @@ public class DashboardPageTest extends TestBase {
     @Test(priority = 1)
     public void verifyDashboardPageTitleTest() {
         String title = dashboardPage.verifyMortarTitle();
-        Assert.assertEquals(title, "Web Portal", "Dashboard page Title is not matched");
+
+//         Assert.assertEquals(title, "Web Portal", "Dashboard page Title is not matched");
+        Assert.assertEquals(title, "Mortar - Web Portal", "Home page Title is not matched");
     }
 
     @Test(priority = 2)
