@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.nio.file.WatchEvent;
+
 public class BusinessOverview extends TestBase {
     @FindBy(css = ".ng-star-inserted > .Overview")
     WebElement verifyBusinessOverviewPage;
@@ -58,24 +60,11 @@ public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'My Creatives')]")
     WebElement navMyCreativesLink;
     ///
+
     //PopUp
     @FindBy(css = "div[role='document'] img")
     WebElement userVerificationPopup;
-    //Graphs
-    @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
-    WebElement conversionGraphHeading;
-    @FindBy(xpath = "//p[contains(text(),'Sales')]")
-    WebElement salesGraphInConversionHeader;
-    @FindBy(css = "[class='font-weight-bold font-size-topic mb-0 p-0']")
-    WebElement mailingListSubscriptionGraphHeader;
-    @FindBy(xpath = "//h4[contains(text(),'New Contacts')]")
-    WebElement newContactsGraphHeading;
-    @FindBy(xpath = "//h4[contains(text(),'Customers (Spenders)')]")
-    WebElement customerSpendersGraphHeader;
-    @FindBy(xpath = "//h4[contains(.,'Basket Summary')]")
-    WebElement basketSummaryGraphHeader;
-    @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
-    WebElement bestPerformingProductGraphHeader;
+
     ///
     @FindBy(css = "[class='d-flex w-100 resizing'] [class='card mb-4 ng-star-inserted']" +
             " [class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
@@ -111,6 +100,7 @@ public class BusinessOverview extends TestBase {
     @FindBy(id = "mailing-myob")
     WebElement checkBoxMyObInMailingGraph;
     //Best Performing Product graph
+
     @FindBy(id = "inlineRadio1")
     WebElement quantityRadioButtonInBestPerformanceGraph;
     @FindBy(id = "inlineRadio2")
@@ -209,11 +199,13 @@ public class BusinessOverview extends TestBase {
         return conversionGraphHeading.isDisplayed();
     }
 
+
     public boolean verifySalesGraphInConversionHeader() {
         return salesGraphInConversionHeader.isDisplayed();
     }
 
     public boolean verifyMailingListSubscriptionGraphInConversionHeader() {
+
         return mailingListSubscriptionGraphHeader.isDisplayed();
     }
 
@@ -228,6 +220,7 @@ public class BusinessOverview extends TestBase {
     public boolean verifyBasketSummaryGraphHeading() {
         return basketSummaryGraphHeader.isDisplayed();
     }
+
 
     public boolean verifyBestPerformingProductGraphHeading() {
         return bestPerformingProductGraphHeader.isDisplayed();
@@ -287,5 +280,6 @@ public class BusinessOverview extends TestBase {
     }
     public void verifyRevenueRadioButtonClick(){
         revenueRadioButtonInBestPerformanceGraph.click();
+
     }
 }

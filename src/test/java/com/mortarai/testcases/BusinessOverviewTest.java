@@ -134,6 +134,7 @@ public class BusinessOverviewTest extends TestBase {
         myCreatives = businessOverview.clickOnGoToMyCreatives();
     }
 
+
     //Verify Graphs Available
     @Test(priority = 16)
     public void verifiedConversionGraphsHeading() {
@@ -142,29 +143,36 @@ public class BusinessOverviewTest extends TestBase {
 
     @Test(priority = 16)
     public void verifiedSalesGraphInConversionHeading() {
+
         Assert.assertTrue(businessOverview.verifySalesGraphInConversionHeader(), "Sales Graph not displaying");
     }
 
     @Test(priority = 17)
     public void verifiedMailingListSubscriptionGraphInHeading() {
+
         Assert.assertTrue(businessOverview.verifyMailingListSubscriptionGraphInConversionHeader(), "Mailing List " +
                 "Subscription Graph is Not displaying");
+
     }
 
     @Test(priority = 18)
     public void verifiedNewContactGraphHeading() {
+
         String errorMessage = "New Contact Graph not displaying";
         Assert.assertTrue(businessOverview.verifyNewContactGraph(), "New Contact graph is not displaying");
+
     }
 
     @Test(priority = 19)
     public void verifiedCustomerSpendersGraphHeading() {
+
         String errorMessage = "Customer(Spenders) Graph not displaying";
         Assert.assertTrue(businessOverview.verifyCustomerSpendersGraphHeading(), errorMessage);
     }
 
     @Test(priority = 20)
     public void verifiedBasketSummaryGraphHeading() {
+
         Assert.assertTrue(businessOverview.verifyBasketSummaryGraphHeading(), "Basket Summary is " +
                 "Graph not displaying");
     }
@@ -181,11 +189,13 @@ public class BusinessOverviewTest extends TestBase {
         businessOverview.verifyClickOnSelectOptionDropDown();
         Assert.assertTrue(businessOverview.verifyWooComIsInSalesDataGraph(), "Woocommerce Data is not " +
                 "Available in Sales graph");
+
     }
 
     @Test(priority = 23)
     public void verifiedMyObDataInSalesGraph() {
         businessOverview.verifyClickOnSelectOptionDropDown();
+
         Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
                 "Available in Sales graph");
     }
@@ -195,6 +205,7 @@ public class BusinessOverviewTest extends TestBase {
         businessOverview.verifyClickOnSelectOptionDropDown();
         Assert.assertTrue(businessOverview.verifyMyObIsInSalesDataGraph(), "Myob Data is not " +
                 "Available in Sales graph");
+
     }
 
     @Test(priority = 22)
@@ -262,6 +273,7 @@ public class BusinessOverviewTest extends TestBase {
         boolean isSelected = businessOverview.verifyMyObCheckBoxCheckedMailing();
         Assert.assertTrue(isSelected, "Myob Data is not " +
                 "Selected in Mailing graph");
+
     }
 
 

@@ -1,20 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="MortarAI-Smoke-Test-Suite">
-    <test name="all-tests-chrome-pom">
-        <parameter name="browser.name" value="chrome"/>
-        <classes>
-            <class name="com.mortarai.testcases.LoginPageTest"/>
-            <class name="com.mortarai.testcases.DashboardPageTest"/>
-<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
-            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
-        </classes>
-    </test>
+
     <test name="all-tests-chrome-headless-pom">
         <parameter name="browser.name" value="chrome-headless"/>
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+    <test name="all-tests-chrome-pom">
+        <parameter name="browser.name" value="chrome"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
@@ -23,7 +24,7 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
@@ -32,7 +33,7 @@
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
             <class name="com.mortarai.testcases.DashboardPageTest"/>
-<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
