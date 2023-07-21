@@ -64,7 +64,21 @@ public class BusinessOverview extends TestBase {
     //PopUp
     @FindBy(css = "div[role='document'] img")
     WebElement userVerificationPopup;
-
+    //Graphs
+    @FindBy(xpath = "//h4[contains(text(),'Conversions')]")
+    WebElement conversionGraphHeading;
+    @FindBy(xpath = "//p[contains(text(),'Sales')]")
+    WebElement salesGraphInConversionHeader;
+    @FindBy(css = "[class='font-weight-bold font-size-topic mb-0 p-0']")
+    WebElement mailingListSubscriptionGraphHeader;
+    @FindBy(xpath = "//h4[contains(text(),'New Contacts')]")
+    WebElement newContactsGraphHeading;
+    @FindBy(xpath = "//h4[contains(text(),'Customers (Spenders)')]")
+    WebElement customerSpendersGraphHeader;
+    @FindBy(xpath = "//h4[contains(.,'Basket Summary')]")
+    WebElement basketSummaryGraphHeader;
+    @FindBy(xpath = "//h4[contains(.,'Best Performing Products')]")
+    WebElement bestPerformingProductGraphHeader;
     ///
     @FindBy(css = "[class='d-flex w-100 resizing'] [class='card mb-4 ng-star-inserted']" +
             " [class='btn mx-1 form-control btn-gray dropdown-toggle text-left']")
@@ -275,6 +289,12 @@ public class BusinessOverview extends TestBase {
     }
 
     //Best Performing Product graph
+    public boolean verifyBestPerformingProductsInQuantity(){
+        return quantityRadioButtonInBestPerformanceGraph.isSelected();
+    }
+    public boolean verifyBestPerformingProductsInRevenue(){
+        return revenueRadioButtonInBestPerformanceGraph.isSelected();
+    }
     public void verifyQuantityRadioButtonClick(){
         quantityRadioButtonInBestPerformanceGraph.click();
     }
