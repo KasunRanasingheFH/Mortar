@@ -7,12 +7,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,70 +41,73 @@ public class TestBase {
         }
     }
 
-    @BeforeSuite
-    public void beforeSuite() {
-        WebDriverManager.chromedriver().setup();
-        WebDriverManager.firefoxdriver().setup();
-    }
+//    @BeforeSuite
+//    public void beforeSuite() {
+//        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.firefoxdriver().setup();
+//    }
 
 
     public static void initialization(String browser) {
-
-//        String browser = prop.getProperty("browser");
-        if (browser.equalsIgnoreCase("chrome")) {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("remote-allow-origins=*");
-            options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-            //            Maximize the browser
-            options.addArguments("test-type");
-            options.addArguments("start-maximized");
-            options.setExperimentalOption("excludeSwitches", ImmutableList.of("disable-popup-blocking"));
-            driver = new ChromeDriver(options);
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("ie")) {
-
-        } else if (browser.equalsIgnoreCase("edge")) {
-
-        } else if (browser.equalsIgnoreCase("safari")) {
-
-        } else if (browser.equalsIgnoreCase("chrome-headless")) {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("headless");
-            driver = new ChromeDriver(options);
-
-        } else if (browser.equalsIgnoreCase("firefox-headless")) {
-            FirefoxBinary firefoxBinary = new FirefoxBinary();
-            firefoxBinary.addCommandLineOptions("--headless");
-            FirefoxOptions options = new FirefoxOptions();
-            options.setBinary(firefoxBinary);
-            driver = new FirefoxDriver(options);
-
-        } else {
-            System.exit(-1);
+        if (browser == null || browser.isEmpty()) {
+            browser = "chrome"; // Set Chrome as default if no browser is provided
         }
-
-//        String browser = prop.getProperty("browser");
-
-//        if (browser.equalsIgnoreCase("chrome")) {
-//            /*System.setProperty("webdriver.chrome.driver", "H:\\Firehouse\\Mortar\\MortarNew\\MortarPOM\\WebDriver\\chromedriver_win113\\chromedriver.exe");
-//            driver = new ChromeDriver();*/
-////            WebDriverManager.chromedriver().setup();
-//
-//            driver = new ChromeDriver();
-//        } else if (browser.equalsIgnoreCase("chrome-headless")) {
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("headless");
-//            driver = new ChromeDriver(options);
-//        }
+        switch (browser.toLowerCase()) {
+            case "chrome" -> {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("remote-allow-origins=*");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                chromeOptions.addArguments("test-type");
+                chromeOptions.addArguments("start-maximized");
+                chromeOptions.setExperimentalOption("excludeSwitches", ImmutableList.of("disable-popup-blocking"));
+                driver = new ChromeDriver(chromeOptions);
+            }
+            case "firefox" -> {
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            }
+            case "ie" -> {
+                WebDriverManager.iedriver().setup();
+                InternetExplorerOptions ieOptions = new InternetExplorerOptions();
+                // IE configuration options
+                driver = new InternetExplorerDriver(ieOptions);
+            }
+            case "edge" -> {
+                WebDriverManager.edgedriver().setup();
+                // Edge configuration options
+                driver = new EdgeDriver();
+            }
+            case "safari" ->
+                // SafariDriver is automatically installed on macOS Safari
+                    driver = new SafariDriver();
+            case "chrome-headless" -> {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions headlessOptions = new ChromeOptions();
+                headlessOptions.addArguments("headless");
+                driver = new ChromeDriver(headlessOptions);
+            }
+            case "firefox-headless" -> {
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions headlessFirefoxOptions = new FirefoxOptions();
+                headlessFirefoxOptions.addArguments("--headless");
+                driver = new FirefoxDriver(headlessFirefoxOptions);
+            }
+            default -> System.exit(-1);
+        }
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-//        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-//        driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICITY_WAIT));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICITLY_WAIT));
 
-        driver.get(prop.getProperty("url"));
+        driver.get(prop.getProperty("BASE_URL"));
+    }
+    @AfterMethod
+    protected void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

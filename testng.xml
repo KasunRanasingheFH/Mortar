@@ -37,6 +37,33 @@
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
+    <test name="all-tests-edge-pom">
+        <parameter name="browser.name" value="edge"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+    <test name="all-tests-ie-pom">
+        <parameter name="browser.name" value="ie"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+    <test name="all-tests-safari-pom">
+        <parameter name="browser.name" value="safari"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
