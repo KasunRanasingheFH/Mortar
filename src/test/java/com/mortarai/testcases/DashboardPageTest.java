@@ -49,7 +49,11 @@ public class DashboardPageTest extends TestBase {
     public void verifySearchABrandTest() {
 //        testUtil.switchToFrame();
 //        dashboardPage.searchABrand("B&M-SankaXYZ");
-        dashboardPage.searchABrand("B&M-SankaXYZ2");
+        dashboardPage.searchABrand(prop.getProperty("brandName"));
+        String firstOnList = dashboardPage.verifySearchedCustomerIsAvailable();
+        System.out.println(firstOnList);
+        Assert.assertEquals(prop.getProperty("brandName"), firstOnList, "Searched Customer is not available");
+
     }
 
     @Test(priority = 4)
@@ -61,6 +65,11 @@ public class DashboardPageTest extends TestBase {
     @Test(priority = 5)
     public void verifySearchABrandAndGoToBrandDetails() throws InterruptedException {
         dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+        String firstOnList = dashboardPage.verifySearchedCustomerIsAvailable();
+        System.out.println(firstOnList);
+        Assert.assertEquals(prop.getProperty("brandName"), firstOnList, "Searched Customer is not available");
+//        String brandName = dashboardPage.verifySearchedBrand();
+//        Assert.assertEquals(brandName,prop.getProperty("brandName"),"Entered customer is not searched");
     }
 
     @Test(priority = 6)
@@ -155,6 +164,34 @@ public class DashboardPageTest extends TestBase {
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
+    }
+
+    @Test(priority = 16)
+    public void verifiedPreviousDisableWhenLoggedIntoDashboard() throws InterruptedException {
+        Thread.sleep(10000);
+        try {
+            boolean isUnclickable = dashboardPage.verifyPreviousButtonIsDisableInDashboardForFirstTime();
+            Assert.assertTrue(isUnclickable, "Not in the first page when logged in the first time");
+        }catch (Exception e){
+            System.err.println("Not in the first page when logged in the first time");
+        }
+    }
+
+    @Test(priority = 17)
+    public void verifyNextButtonIsClickableWhenMultiplePagesAreAvailable() {
+        boolean isUnclickable = dashboardPage.verifyNextButtonIsDisableInDashboardsLastPage();
+        Assert.assertTrue(isUnclickable, "Next Button is unclickable ");
+        dashboardPage.clickOnNextButtonOnPagination();
+    }
+
+    @Test(priority = 17)
+    public void verifyNextButtonIsClickable() {
+        dashboardPage.clickOnNextButtonOnPagination();
+
+    }
+    @Test(priority = 19)
+    public void verifiedNavigateToAllPagesFromNavigation() throws InterruptedException {
+        dashboardPage.verifyNavigateToAllAvailablePages();
     }
 
     @AfterMethod

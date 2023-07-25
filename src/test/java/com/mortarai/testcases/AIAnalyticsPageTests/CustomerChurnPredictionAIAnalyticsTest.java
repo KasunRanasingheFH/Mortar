@@ -53,6 +53,11 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         }
 
     }
+    @Test(priority = 2)
+    public void verifiedCustomerAtChurnListHeader(){
+        String heading = customerChurnPredictionAIAnalytics.verifyCustomerAtChurnListHeaderName();
+        Assert.assertEquals(heading,"Customers at risk of churn","Customer at risk churn list header is not available");
+    }
 
     @Test(priority = 2)
     public void verifyExportUnderlyingSalesData() {
