@@ -1,6 +1,5 @@
 package com.mortarportal.qa.base;
 
-
 import com.google.common.collect.ImmutableList;
 import com.mortarportal.qa.util.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,6 +27,7 @@ public class TestBase {
     public static WebDriver driver;
     public static Properties prop;
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
+
     public TestBase() {
         try {
             prop = new Properties();
@@ -41,17 +41,11 @@ public class TestBase {
         }
     }
 
-//    @BeforeSuite
-//    public void beforeSuite() {
-//        WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
-//    }
-
-
     public static void initialization(String browser) {
         if (browser == null || browser.isEmpty()) {
             browser = "chrome"; // Set Chrome as default if no browser is provided
         }
+
         switch (browser.toLowerCase()) {
             case "chrome" -> {
                 WebDriverManager.chromedriver().setup();
@@ -78,9 +72,10 @@ public class TestBase {
                 // Edge configuration options
                 driver = new EdgeDriver();
             }
-            case "safari" ->
+            case "safari" -> {
                 // SafariDriver is automatically installed on macOS Safari
-                    driver = new SafariDriver();
+                driver = new SafariDriver();
+            }
             case "chrome-headless" -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions headlessOptions = new ChromeOptions();
@@ -95,6 +90,7 @@ public class TestBase {
             }
             default -> System.exit(-1);
         }
+
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -103,6 +99,7 @@ public class TestBase {
 
         driver.get(prop.getProperty("BASE_URL"));
     }
+
     @AfterMethod
     protected void closeBrowser() {
         if (driver != null) {
