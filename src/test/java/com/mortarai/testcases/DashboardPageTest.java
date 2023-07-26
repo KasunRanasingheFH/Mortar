@@ -36,7 +36,7 @@ public class DashboardPageTest extends TestBase {
         String title = dashboardPage.verifyMortarTitle();
 
 //         Assert.assertEquals(title, "Web Portal", "Dashboard page Title is not matched");
-        Assert.assertEquals(title, "Mortar - Web Portal", "Home page Title is not matched");
+        Assert.assertEquals(title, "Web Portal", "Home page Title is not matched");
     }
 
     @Test(priority = 2)
@@ -49,7 +49,7 @@ public class DashboardPageTest extends TestBase {
     public void verifySearchABrandTest() {
 //        testUtil.switchToFrame();
 //        dashboardPage.searchABrand("B&M-SankaXYZ");
-        dashboardPage.searchABrand("B&M-SankaXYZ2");
+        dashboardPage.searchABrand(prop.getProperty("brandName"));
     }
 
     @Test(priority = 4)
