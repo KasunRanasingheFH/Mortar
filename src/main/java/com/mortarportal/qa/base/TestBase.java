@@ -19,12 +19,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     //Web driver Static
     public static WebDriver driver;
     public static Properties prop;
     private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
+
     public TestBase() {
         try {
             prop = new Properties();
@@ -97,10 +99,8 @@ public class TestBase {
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-//        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-//        driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICITY_WAIT));
+        driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
 
         driver.get(prop.getProperty("url"));
     }

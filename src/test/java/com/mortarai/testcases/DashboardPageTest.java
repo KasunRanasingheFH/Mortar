@@ -22,7 +22,7 @@ public class DashboardPageTest extends TestBase {
     @Parameters({"browser.name"})
     @BeforeMethod
 
-    public void setUp(@Optional("firefox") String browser) {
+    public void setUp(@Optional("chrome") String browser) {
         initialization(browser);
         testUtil = new TestUtil();
         businessOverview = new BusinessOverview();
