@@ -68,15 +68,14 @@ public class DashboardPage extends TestBase {
 
     /**
      * Validate Checkbox isSelected method and click
-     * <p>
-     * WebElement checkBoxElement = driver.findElement(By.cssSelector("label[for='hobbies-checkbox-1']"));
-     * boolean isSelected = checkBoxElement.isSelected();
-     * <p>
-     * //performing click operation if element is not checked
-     * if(isSelected == false) {
-     * checkBoxElement.click();
-     * }
-     */
+
+    WebElement checkBoxElement = driver.findElement(By.cssSelector("label[for='hobbies-checkbox-1']"));
+    boolean isSelected = checkBoxElement.isSelected();
+
+//performing click operation if element is not checked
+if(isSelected == false) {
+        checkBoxElement.click();
+    }*/
 
     //Initializing the Page Objects;
     public DashboardPage() {
@@ -107,36 +106,28 @@ public class DashboardPage extends TestBase {
     public boolean verifyStatusFilterDropdownIsVisible() {
         return dropDownPanel.isDisplayed();
     }
-
-    public boolean selectAllIsSelected() {
+    public boolean selectAllIsSelected(){
         return selectAllInDropDown.isSelected();
     }
-
-    public boolean setupRequiredIsSelected() {
+    public boolean setupRequiredIsSelected(){
         return setupRequiredInDropDown.isSelected();
     }
-
-    public boolean activeIsSelected() {
+    public boolean activeIsSelected(){
         return activeInDropDown.isSelected();
     }
-
-    public boolean inactiveIsSelected() {
+    public boolean inactiveIsSelected(){
         return inactiveInDropDown.isSelected();
     }
-
-    public void clickOnSelectAllCheckBox() {
+    public void clickOnSelectAllCheckBox(){
         selectAllInDropDownCheckBox.click();
     }
-
-    public void clickOnSetupRequiredCheckbox() {
+  public void clickOnSetupRequiredCheckbox(){
         setupRequiredDropdownCheckBox.click();
-    }
-
-    public void clickOnActiveCheckbox() {
+  }
+    public void clickOnActiveCheckbox(){
         activeInDropdownCheckBox.click();
     }
-
-    public void clickOnInactiveCheckbox() {
+    public void clickOnInactiveCheckbox(){
         inactiveInDropdownCheckBox.click();
     }
 
@@ -155,6 +146,7 @@ public class DashboardPage extends TestBase {
     public String verifySearchedCustomerIsAvailable() {
         return searchedCustomer.getText();
     }
+
 
 
     public DashboardPage enterSearchedBrand() {

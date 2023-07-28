@@ -1,16 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="MortarAI-Smoke-Test-Suite">
-
-    <test name="all-tests-firefox-pom">
-        <parameter name="browser.name" value="firefox"/>
-        <classes>
-            <class name="com.mortarai.testcases.LoginPageTest"/>
-            <class name="com.mortarai.testcases.DashboardPageTest"/>
-            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
-            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
-        </classes>
-    </test>
-    <test name="all-tests-firefox-headless-pom">
+    <test name="all-tests-firefox-headless-pom" parallel="tests" thread-count="3">
         <parameter name="browser.name" value="firefox-headless"/>
         <classes>
             <class name="com.mortarai.testcases.LoginPageTest"/>
@@ -28,6 +18,15 @@
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
+    <test name="all-tests-firefox-pom">
+        <parameter name="browser.name" value="firefox"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
     <test name="all-tests-chrome-pom">
         <parameter name="browser.name" value="chrome"/>
         <classes>
@@ -37,6 +36,33 @@
             <class name="com.mortarai.testcases.BusinessOverviewTest"/>
         </classes>
     </test>
+    <test name="all-tests-edge-pom">
+        <parameter name="browser.name" value="edge"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+    <test name="all-tests-ie-pom">
+        <parameter name="browser.name" value="ie"/>
+        <classes>
+            <class name="com.mortarai.testcases.LoginPageTest"/>
+            <class name="com.mortarai.testcases.DashboardPageTest"/>
+            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>
+            <class name="com.mortarai.testcases.BusinessOverviewTest"/>
+        </classes>
+    </test>
+<!--    <test name="all-tests-safari-pom">-->
+<!--        <parameter name="browser.name" value="safari"/>-->
+<!--        <classes>-->
+<!--            <class name="com.mortarai.testcases.LoginPageTest"/>-->
+<!--            <class name="com.mortarai.testcases.DashboardPageTest"/>-->
+<!--            <class name="com.mortarai.testcases.AIAnalyticsPageTests.CustomerChurnPredictionAIAnalyticsTest"/>-->
+<!--            <class name="com.mortarai.testcases.BusinessOverviewTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
