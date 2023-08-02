@@ -8,10 +8,7 @@ import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class SalesAIAnalyticsTest extends TestBase {
     LoginPage loginPage;
@@ -56,4 +53,30 @@ public class SalesAIAnalyticsTest extends TestBase {
         boolean isDisplaying = salesAIAnalytics.verifyYearlySalesByQuarter();
         Assert.assertTrue(isDisplaying,"Yearly Sales By Quarter graph is not available");
     }
+    @Test(priority = 6)
+    public void verifiedSelectYear2020InYearlySalesByQuarter() throws InterruptedException {
+        String value = salesAIAnalytics.verifyValueYear2020InYearlySalesByQuarter();
+        Thread.sleep(10000);
+        Assert.assertEquals(value,"true","Not selected 2020");
+    }
+    @Test(priority = 6)
+    public void verifiedSelectYear2021InYearlySalesByQuarter(){
+        String value = salesAIAnalytics.verifyValueYear2021InYearlySalesByQuarter();
+        Assert.assertEquals(value,"true","Not selected 2020");
+    }
+    @Test(priority = 6)
+    public void verifiedSelectYear2022InYearlySalesByQuarter(){
+        String value = salesAIAnalytics.verifyValue2022InYearlySalesByQuarter();
+        Assert.assertEquals(value,"true","Not selected 2020");
+    }
+    @Test(priority = 6)
+    public void verifiedSelectYear2023InYearlySalesByQuarter(){
+        String value = salesAIAnalytics.verifyValue2023InYearlySalesByQuarter();
+        Assert.assertEquals(value,"true","Not selected 2020");
+    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
 }

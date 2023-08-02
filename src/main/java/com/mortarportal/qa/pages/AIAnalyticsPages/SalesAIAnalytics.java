@@ -16,7 +16,7 @@ public class SalesAIAnalytics extends TestBase {
     @FindBy(css = "[class] [class='col-xl-6 mb-4 ng-star-inserted']:nth-of-type(4) [class='m-0 p-3 text-left dis-block']")
     WebElement yearlySalesByQuarter;
 //Yearly Sales by Quarter Years Checkbox
-    @FindBy(id = "year-2020")
+   @FindBy(id = "year-2020")
     WebElement year2020Checkbox;
     @FindBy(id = "year-2021")
     WebElement year2021Checkbox;
@@ -42,16 +42,29 @@ public class SalesAIAnalytics extends TestBase {
     public boolean verifyYearlySalesByQuarter(){
         return yearlySalesByQuarter.isDisplayed();
     }
-    public boolean verifySelectYear2020InYearlySalesByQuarter(){
-      return year2020Checkbox.isSelected();
+    public String verifyValueYear2020InYearlySalesByQuarter(){
+        return year2020Checkbox.getAttribute("value");
     }
-    public boolean verifySelectYear2021InYearlySalesByQuarter(){
-        return year2021Checkbox.isSelected();
+    public String verifyValueYear2021InYearlySalesByQuarter(){
+        return year2021Checkbox.getAttribute("value");
     }
-    public boolean verifySelect2022InYearlySalesByQuarter(){
-        return year2022Checkbox.isSelected();
+    public String verifyValue2022InYearlySalesByQuarter(){
+        return year2022Checkbox.getAttribute("value");
     }
-    public boolean verifySelect2023InYearlySalesByQuarter(){
-        return year2023Checkbox.isSelected();
+    public String verifyValue2023InYearlySalesByQuarter(){
+        return year2023Checkbox.getAttribute("value");
+    }
+    //
+    public void verifySelectYear2020InYearlySalesByQuarter(){
+         year2020Checkbox.click();
+    }
+    public void verifySelectYear2021InYearlySalesByQuarter(){
+        year2021Checkbox.click();
+    }
+    public void verifySelect2022InYearlySalesByQuarter(){
+        year2022Checkbox.click();
+    }
+    public void verifySelect2023InYearlySalesByQuarter(){
+        year2023Checkbox.click();
     }
 }
