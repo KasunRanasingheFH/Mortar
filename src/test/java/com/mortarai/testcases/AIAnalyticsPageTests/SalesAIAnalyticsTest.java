@@ -74,6 +74,7 @@ public class SalesAIAnalyticsTest extends TestBase {
         String value = salesAIAnalytics.verifyValue2023InYearlySalesByQuarter();
         Assert.assertEquals(value,"true","Not selected 2020");
     }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
