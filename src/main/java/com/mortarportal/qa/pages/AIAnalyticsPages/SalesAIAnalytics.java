@@ -3,6 +3,7 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 import com.mortarportal.qa.base.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SalesAIAnalytics extends TestBase {
 //Graphs
@@ -23,5 +24,34 @@ public class SalesAIAnalytics extends TestBase {
     WebElement year2022Checkbox;
     @FindBy(id = "year-2023")
     WebElement year2023Checkbox;
-
+    public SalesAIAnalytics() {
+        PageFactory.initElements(driver, this);
+    }
+    public String verifyMortarTitleSalesTab() {
+        return driver.getTitle();
+    }
+    public boolean verifyAverageHourlySalesGraphHeader(){
+        return averageHourlySalesGraphHeader.isDisplayed();
+    }
+    public boolean verifyAverageDailySalesGraphHeader(){
+        return averageDailySalesGraphHeader.isDisplayed();
+    }
+    public boolean verifyAverageMonthlySalesGraphHeader(){
+        return averageMonthlySalesGraphHeader.isDisplayed();
+    }
+    public boolean verifyYearlySalesByQuarter(){
+        return yearlySalesByQuarter.isDisplayed();
+    }
+    public boolean verifySelectYear2020InYearlySalesByQuarter(){
+      return year2020Checkbox.isSelected();
+    }
+    public boolean verifySelectYear2021InYearlySalesByQuarter(){
+        return year2021Checkbox.isSelected();
+    }
+    public boolean verifySelect2022InYearlySalesByQuarter(){
+        return year2022Checkbox.isSelected();
+    }
+    public boolean verifySelect2023InYearlySalesByQuarter(){
+        return year2023Checkbox.isSelected();
+    }
 }

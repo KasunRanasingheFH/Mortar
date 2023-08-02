@@ -57,7 +57,8 @@ public class DashboardPage extends TestBase {
     @FindBy(css = ".ng-star-inserted.pagination-previous")
     WebElement previousButtonOnPagination;
     //    @FindBy(css = ".ng-star-inserted.pagination-next")
-    @FindBy(xpath = "//pagination-controls[@id='listing_users']/pagination-template/ul/li[11]/a")
+//    @FindBy(css = ".ng-star-inserted.pagination-next")
+    @FindBy(xpath = "//pagination-controls[@id='listing_users']/pagination-template/ul/li[5]/a")
     WebElement nextButtonOnPagination;
     @FindBy(css = ".disabled.ng-star-inserted.pagination-next")
     WebElement disableNextButtonOnPagination;
