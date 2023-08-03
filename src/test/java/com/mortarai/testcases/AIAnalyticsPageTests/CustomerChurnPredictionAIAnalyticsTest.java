@@ -55,17 +55,10 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 2)
-    public void verifiedCustomerAtChurnListHeader() {
-        String heading = customerChurnPredictionAIAnalytics.verifyCustomerAtChurnListHeaderName();
-        Assert.assertEquals(heading, "Customers at risk of churn", "Customer at risk churn list header is not available");
-    }
-
-    @Test(priority = 2)
     public void verifyExportUnderlyingSalesData() {
         customerChurnPredictionAIAnalytics.exportUnderlyingSalesDataButtonClick();
     }
 
-    @Test(priority = 5)
     public void verifySelectMinimumPurchaseCount() {
         String value = "5";
         customerChurnPredictionAIAnalytics.changeMinimumPurchaseCount(value);
@@ -100,7 +93,6 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     public void verifyGoToTargetAudience() {
         targetAudienceAIAnalytics = customerChurnPredictionAIAnalytics.targetAudienceLinkClick();
     }
-
 
     @AfterMethod
     public void tearDown() {

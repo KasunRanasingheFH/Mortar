@@ -79,7 +79,7 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     @FindBy(id = "ngb-nav-6")
     WebElement targetAudienceLink;
 
-    @FindBy(css = "[class='col-md-6 col-lg-6 bm-aligned-middle bm-mobile-aligned'] h5")
+    @FindBy(xpath = "//div[2]/div/div/div/div/h5[contains(text(),'Customers at risk of churn')]")
             //[contains(text(),'Customers at risk of churn')]
     WebElement customersAtChurnList;
     @FindBy(css = "[class='text-36 subheading mb-3 ng-star-inserted']")
@@ -129,12 +129,8 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     }
 
     public boolean customersAtChurnListDisplay(){
+
         return customersAtChurnList.isDisplayed();
-    }
-    public String verifyCustomerAtChurnListHeaderName(){
-        String text = customersAtChurnList.getText();
-        System.out.println(text);
-        return text;
     }
     public void exportUnderlyingSalesDataButtonClick(){
         exportUnderlyingSalesDataButton.click();
