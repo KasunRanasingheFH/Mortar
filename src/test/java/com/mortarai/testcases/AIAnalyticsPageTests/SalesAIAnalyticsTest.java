@@ -88,39 +88,42 @@ public class SalesAIAnalyticsTest extends TestBase {
     @Test(priority = 7)
     public void verifiedSelectYear2020InYearlySalesByQuarterIfNotSelected() {
         String value = salesAIAnalytics.verifyValueYear2020InYearlySalesByQuarter();
-        if(value.equals("false")){
+        if (value.equals("false")) {
             salesAIAnalytics.verifySelectYear2020InYearlySalesByQuarter();
-        }else{
+        } else {
             Assert.assertEquals(value, "true", "Not selected 2020");
             System.out.println("Already selected 2020 in graph");
         }
     }
+
     @Test(priority = 7)
     public void verifiedSelectYear2021InYearlySalesByQuarterIfNotSelected() {
         String value = salesAIAnalytics.verifyValueYear2021InYearlySalesByQuarter();
-        if(value.equals("false")){
+        if (value.equals("false")) {
             salesAIAnalytics.verifySelectYear2021InYearlySalesByQuarter();
-        }else{
+        } else {
             Assert.assertEquals(value, "true", "Not selected 2021");
             System.out.println("Already selected 2021 in graph");
         }
     }
+
     @Test(priority = 7)
     public void verifiedSelectYear2022InYearlySalesByQuarterIfNotSelected() {
         String value = salesAIAnalytics.verifyValue2022InYearlySalesByQuarter();
-        if(value.equals("false")){
+        if (value.equals("false")) {
             salesAIAnalytics.verifySelect2022InYearlySalesByQuarter();
-        }else{
+        } else {
             Assert.assertEquals(value, "true", "Not selected 2022");
             System.out.println("Already selected 2022 in graph");
         }
     }
+
     @Test(priority = 7)
-    public void verifiedSelectYear2023InYearlySalesByQuarterIfNotSelected() {
+    public void verifiedSelectYear2023InYearlySalesByQuarterIfNotSelected() throws InterruptedException {
         String value = salesAIAnalytics.verifyValue2023InYearlySalesByQuarter();
-        if(value.equals("false")){
+        if (value.equals("false")) {
             salesAIAnalytics.verifySelect2023InYearlySalesByQuarter();
-        }else{
+        } else {
             Assert.assertEquals(value, "true", "Not selected 2023");
             System.out.println("Already selected 2023 in graph");
         }

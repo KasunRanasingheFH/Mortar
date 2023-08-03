@@ -17,6 +17,15 @@ public class SalesAIAnalytics extends TestBase {
     WebElement yearlySalesByQuarter;
 //Yearly Sales by Quarter Years Checkbox
    @FindBy(id = "year-2020")
+    WebElement year2020CheckboxValue;
+    @FindBy(id = "year-2021")
+    WebElement year2021CheckboxValue;
+    @FindBy(id = "year-2022")
+    WebElement year2022CheckboxValue;
+    @FindBy(id = "year-2023")
+    WebElement year2023CheckboxValue;
+//    @FindBy(xpath = "(//span[@class='check__marked'])[1]")
+    @FindBy(css = ".custom__checkboxes:nth-child(1)")
     WebElement year2020Checkbox;
     @FindBy(id = "year-2021")
     WebElement year2021Checkbox;
@@ -43,20 +52,20 @@ public class SalesAIAnalytics extends TestBase {
         return yearlySalesByQuarter.isDisplayed();
     }
     public String verifyValueYear2020InYearlySalesByQuarter(){
-        return year2020Checkbox.getAttribute("value");
+        return year2020CheckboxValue.getAttribute("value");
     }
     public String verifyValueYear2021InYearlySalesByQuarter(){
-        return year2021Checkbox.getAttribute("value");
+        return year2021CheckboxValue.getAttribute("value");
     }
     public String verifyValue2022InYearlySalesByQuarter(){
-        return year2022Checkbox.getAttribute("value");
+        return year2022CheckboxValue.getAttribute("value");
     }
     public String verifyValue2023InYearlySalesByQuarter(){
-        return year2023Checkbox.getAttribute("value");
+        return year2023CheckboxValue.getAttribute("value");
     }
     //
     public void verifySelectYear2020InYearlySalesByQuarter(){
-         year2020Checkbox.click();
+        year2020Checkbox.click();
     }
     public void verifySelectYear2021InYearlySalesByQuarter(){
         year2021Checkbox.click();
