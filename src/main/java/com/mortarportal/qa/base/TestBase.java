@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     public enum BrowserType {
@@ -71,6 +72,19 @@ public class TestBase {
             System.exit(-1);
         }
 
+//        String browser = prop.getProperty("browser");
+
+//        if (browser.equalsIgnoreCase("chrome")) {
+//            /*System.setProperty("webdriver.chrome.driver", "H:\\Firehouse\\Mortar\\MortarNew\\MortarPOM\\WebDriver\\chromedriver_win113\\chromedriver.exe");
+//            driver = new ChromeDriver();*/
+////            WebDriverManager.chromedriver().setup();
+//
+//            driver = new ChromeDriver();
+//        } else if (browser.equalsIgnoreCase("chrome-headless")) {
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("headless");
+//            driver = new ChromeDriver(options);
+//        }
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
