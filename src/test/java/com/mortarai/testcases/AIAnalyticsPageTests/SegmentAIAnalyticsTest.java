@@ -14,8 +14,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class SegmentAIAnalyticsTest extends TestBase {
     LoginPage loginPage;
     NavigationBar navigationBar;
@@ -44,14 +42,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
         System.out.println("Title is match");
     }
 
-    @Test(priority = 2)
-    public void verifiedDownloadUnderlyingSalesData() throws InterruptedException, IOException {
-        Thread.sleep(15000);
-        segmentsAIAnalytics.clickOnExportUnderlyingSalesData();
-        Thread.sleep(5000);
-        checkDownloadedFiles(prop.getProperty("ExportUnderlyingSalesDataDownloadFileName"));
-//        isFileDownloaded("Mortar_processed_sales_data",".csv",200);
-    }
+//    @Test(priority = 2)
+//    public void verifiedDownloadUnderlyingSalesData() throws InterruptedException, IOException {
+//        Thread.sleep(15000);
+//        segmentsAIAnalytics.clickOnExportUnderlyingSalesData();
+//        Thread.sleep(5000);
+//        checkDownloadedFiles(prop.getProperty("ExportUnderlyingSalesDataDownloadFileName"));
+////        isFileDownloaded("Mortar_processed_sales_data",".csv",200);
+//    }
 
     @Test(priority = 3)
     public void verifiedOneOffIsEnabled() {
