@@ -8,13 +8,10 @@ import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
-import com.mortarportal.qa.util.TestUtil;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.IOException;
-import java.time.Duration;
 
 public class SegmentAIAnalyticsTest extends TestBase {
     LoginPage loginPage;
@@ -69,17 +66,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 3)
     public void verifiedOneOffIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkOneOffIsSelected();
-        System.out.println(isSelected);
-        Assert.assertTrue(isSelected, "One-Off is Not Selected");
-
-    /*    String isEnable = segmentsAIAnalytics.checkOneOffIsSelected();
-        if(isEnable.equals("false")){
-            System.out.println(isEnable);
-            System.out.println("One-Off is Enabled");
-        }
-        System.err.println("One-Off is Disabled");
-    }*/
+        //Verify One Off Page is Selected
+        segmentsAIAnalytics.verifyOneOffPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalOneOffCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 3)
@@ -88,12 +82,22 @@ public class SegmentAIAnalyticsTest extends TestBase {
         boolean isSelected = segmentsAIAnalytics.checkOneOffIsSelected();
         if (!isDisable && !isSelected) {
             segmentsAIAnalytics.clickOnOneOffTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalOneOffCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to One-Off Page");
+            segmentsAIAnalytics.verifyOneOffPage();
+            segmentsAIAnalytics.verifyTotalOneOffCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("One-Off is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalOneOffCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to One-Off Page");
+            //Verify One Off Page is Selected
+            segmentsAIAnalytics.verifyOneOffPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalOneOffCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("One-Off is Disable");
         }
@@ -108,8 +112,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 4)
     public void verifiedLapsedIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkLapsedIsSelected();
-        Assert.assertTrue(isSelected, "Lapsed is Not Selected");
+        //Verify Lapsed Page
+        segmentsAIAnalytics.verifyLapsedPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalLapsedCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 4)
@@ -121,12 +131,26 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if ((!isDisable) && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnLapsedTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalLapsedCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Lapsed Page");
+            //Verify Lapsed Page
+            segmentsAIAnalytics.verifyLapsedPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalLapsedCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("Lapsed is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalLapsedCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Lapsed Page");
+            boolean isDisplaying = segmentsAIAnalytics.totalLapsedCustomerPageHeaderIsDisplaying();
+            Assert.assertTrue(isDisplaying, "Not in the Navigated to Lapsed Page");
+            //Verify Lapsed Page
+            segmentsAIAnalytics.verifyLapsedPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalLapsedCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("Lapsed is Disable");
         }
@@ -141,8 +165,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 5)
     public void verifiedDormantIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkDormantIsSelected();
-        Assert.assertTrue(isSelected, "Dormant is Not Selected");
+        //Verify Dormant Page
+        segmentsAIAnalytics.verifyDormantPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalDormantCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 5)
@@ -152,17 +182,30 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if (!isDisable && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnDormantTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalDormantCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Dormant Page");
+            //Verify Dormant Page
+            segmentsAIAnalytics.verifyDormantPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalDormantCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("Dormant is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalDormantCustomerCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Dormant Page");
+            //Verify Dormant Page
+            segmentsAIAnalytics.verifyDormantPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalDormantCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("Dormant is Disable");
         }
 
     }
+
     @Test(priority = 6)
     public void verifiedNewIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkNewIsDisable();
@@ -171,8 +214,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 6)
     public void verifiedNewIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkNewIsSelected();
-        Assert.assertTrue(isSelected, "New is Not Selected");
+        //Verify New Page
+        segmentsAIAnalytics.verifyNewPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalNewCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 6)
@@ -182,12 +231,24 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if (!isDisable && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnNewTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalNewCustomersIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to New Page");
+            //Verify New Page
+            segmentsAIAnalytics.verifyNewPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalNewCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("New is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalNewCustomersIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to New Page");
+            //Verify New Page
+            segmentsAIAnalytics.verifyNewPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalNewCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("New is Disable");
         }
@@ -202,8 +263,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 7)
     public void verifiedCommittedIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkCommittedIsSelected();
-        Assert.assertTrue(isSelected, "Committed is Not Selected");
+        //Verify Committed Page
+        segmentsAIAnalytics.verifyCommittedPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalCommittedCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 7)
@@ -213,16 +280,29 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if (!isDisable && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnCommittedTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalCommittedCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Committed Page");
+            //Verify Committed Page
+            segmentsAIAnalytics.verifyCommittedPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalCommittedCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("Committed is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalCommittedCardIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Committed Page");
+            //Verify Committed Page
+            segmentsAIAnalytics.verifyCommittedPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalCommittedCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("Committed is Disable");
         }
     }
+
     @Test(priority = 8)
     public void verifiedVIPIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkVIPIsDisable();
@@ -231,8 +311,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 8)
     public void verifiedVIPIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkVIPIsSelected();
-        Assert.assertTrue(isSelected, "VIP is Not Selected");
+        //Verify VIP Page
+        segmentsAIAnalytics.verifyVIPPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalVIPCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 8)
@@ -242,17 +328,30 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if (!isDisable && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnVIPTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalVIPCustomersIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to VIP Page");
+            //Verify VIP Page
+            segmentsAIAnalytics.verifyVIPPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalVIPCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("VIP is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalVIPCustomersIsDisplaying();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to VIP Page");
+            //Verify VIP Page
+            segmentsAIAnalytics.verifyVIPPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalVIPCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("VIP is Disable");
         }
 
     }
+
     @Test(priority = 9)
     public void verifiedSporadicVIPIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkSporadicVIPIsDisable();
@@ -261,8 +360,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     @Test(priority = 9)
     public void verifiedSporadicVIPIsSelected() {
-        boolean isSelected = segmentsAIAnalytics.checkSporadicVIPIsSelected();
-        Assert.assertTrue(isSelected, "Sporadic VIP is Not Selected");
+        //Verify Sporadic VIP Page
+        segmentsAIAnalytics.verifySporadicVIPPage();
+        //Total Customer Card
+        segmentsAIAnalytics.verifyTotalSporadicVIPCustomersCardDisplaying();
+        //Common Cards
+        segmentsAIAnalytics.verifyCommonCardsDisplaying();
+        //Common Graphs
+        segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
     }
 
     @Test(priority = 9)
@@ -272,17 +377,30 @@ public class SegmentAIAnalyticsTest extends TestBase {
         if (!isDisable && !isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickOnSporadicVIPTab();
-            boolean isDisplaying = segmentsAIAnalytics.totalSporadicVIPCustomers();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Sporadic VIP Page");
+            //Verify Sporadic VIP Page
+            segmentsAIAnalytics.verifySporadicVIPPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalSporadicVIPCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isSelected) {
             System.out.println("Sporadic VIP is Already selected");
-            boolean isDisplaying = segmentsAIAnalytics.totalSporadicVIPCustomers();
-            Assert.assertTrue(isDisplaying,"Not in the Navigated to Sporadic VIP Page");
+            //Verify Sporadic VIP Page
+            segmentsAIAnalytics.verifySporadicVIPPage();
+            //Total Customer Card
+            segmentsAIAnalytics.verifyTotalSporadicVIPCustomersCardDisplaying();
+            //Common Cards
+            segmentsAIAnalytics.verifyCommonCardsDisplaying();
+            //Common Graphs
+            segmentsAIAnalytics.verifyGraphsInSegmentDisplaying();
         } else if (isDisable) {
             System.err.println("Sporadic VIP is Disable");
         }
 
     }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();

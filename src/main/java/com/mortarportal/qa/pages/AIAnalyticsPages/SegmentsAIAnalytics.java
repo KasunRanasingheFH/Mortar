@@ -2,14 +2,9 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 
 import com.mortarportal.qa.base.TestBase;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import org.testng.Assert;
 
 public class SegmentsAIAnalytics extends TestBase {
     @FindBy(css = ".btn.btn-secondary.fill-dark")
@@ -205,36 +200,243 @@ public class SegmentsAIAnalytics extends TestBase {
         sporadicVipTab.click();
     }
 
-    public boolean totalLapsedCustomerIsDisplaying() {
-        return totalLapsedCustomerCard.isDisplayed();
+    //Test Common Cards
+    public boolean ofTheTotalDatabasePercentageCardIsDisplaying() {
+        return ofTheTotalDatabasePercentage.isDisplayed();
     }
 
+    public boolean avgNumberOfYearsSinceTheirLastPurchaseCardIsDisplaying() {
+        return avgNumberOfYearsSinceTheirLastPurchase.isDisplayed();
+    }
+
+    public boolean avgRevenuePerCustomerCardIsDisplaying() {
+        return avgRevenuePerCustomer.isDisplayed();
+    }
+
+    public boolean avgNumberOfPurchasesCardIsDisplaying() {
+        return avgNumberOfPurchases.isDisplayed();
+    }
+
+    //Total Customers Cards
     public boolean totalOneOffCustomerCardIsDisplaying() {
-        return oneOffCustomerPageHeader.isDisplayed();
+        return totalOneOffCustomers.isDisplayed();
     }
 
     public boolean totalLapsedCustomerCardIsDisplaying() {
-        return lapsedCustomerPageHeader.isDisplayed();
+        return totalLapsedCustomerCard.isDisplayed();
     }
 
     public boolean totalDormantCustomerCardIsDisplaying() {
+        return totalDormantCustomers.isDisplayed();
+    }
+
+    public boolean totalCommittedCustomerCardIsDisplaying() {
+        return totalCommittedCustomers.isDisplayed();
+    }
+
+    public boolean totalNewCustomerCardIsDisplaying() {
+        return totalNewCustomers.isDisplayed();
+    }
+
+    public boolean totalVIPCustomerCardIsDisplaying() {
+        return totalVIPCustomers.isDisplayed();
+    }
+
+    public boolean totalSporadicVIPCustomerCardIsDisplaying() {
+        return totalSporadicVIPCustomers.isDisplayed();
+    }
+
+    //Graphs Displaying
+    public boolean sourceGraphHeaderIsDisplaying() {
+        return sourceGraphHeader.isDisplayed();
+    }
+
+    public boolean top5ProductsHeaderIsDisplaying() {
+        return top5ProductsGraphHeader.isDisplayed();
+    }
+
+    public boolean demographicLocationsGraphsHeaderIsDisplaying() {
+        return demographicLocationsGraphsHeader.isDisplayed();
+    }
+
+    public boolean demographicLocationTableCanvasIsDisplaying() {
+        return demographicLocationTableCanvas.isDisplayed();
+    }
+
+    public boolean demographicLocationMapCanvasIsDisplaying() {
+        return demographicLocationMapCanvas.isDisplayed();
+    }
+
+    //Page Headers
+    public boolean totalOneOffCustomerPageHeaderIsDisplaying() {
+        return oneOffCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalLapsedCustomerPageHeaderIsDisplaying() {
+        return lapsedCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalDormantCustomerPageHeaderIsDisplaying() {
         return dormantCustomerPageHeader.isDisplayed();
     }
 
-    public boolean totalCommittedCardIsDisplaying() {
+    public boolean totalCommittedCardPageHeaderIsDisplaying() {
         return committedCustomerPageHeader.isDisplayed();
     }
 
-    public boolean totalNewCustomersIsDisplaying() {
+    public boolean totalNewCustomersPageHeaderIsDisplaying() {
         return newCustomerPageHeader.isDisplayed();
     }
 
-    public boolean totalVIPCustomersIsDisplaying() {
+    public boolean totalVIPCustomersPageHeaderIsDisplaying() {
         return vipCustomerPageHeader.isDisplayed();
     }
 
-    public boolean totalSporadicVIPCustomers() {
+    public boolean totalSporadicVIPCustomersPageHeaderIsDisplaying() {
         return sporadicVIPCustomerPageHeader.isDisplayed();
+    }
+    //Verify Page navigations
+    public void verifyOneOffPage(){
+        boolean isSelected = checkOneOffIsSelected();
+        Assert.assertTrue(isSelected, "One-Off is Not Selected");
+        System.out.println("Selected One-Off Page");
+        boolean isDisplayingOneOff = totalOneOffCustomerPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingOneOff,"Not in the Navigated to One-Off Page");
+        System.out.println("One-Off Page");
+    }
+    public void verifyLapsedPage(){
+        boolean isSelected = checkLapsedIsSelected();
+        Assert.assertTrue(isSelected, "Lapsed is Not Selected");
+        System.out.println("Selected Lapsed Page");
+        boolean isDisplayingLapsed = totalLapsedCustomerPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingLapsed,"Not in the Navigated to Lapsed Page");
+    }
+    public void verifyDormantPage(){
+        boolean isSelected = checkDormantIsSelected();
+        Assert.assertTrue(isSelected, "Dormant is Not Selected");
+        System.out.println("Selected Dormant Page");
+        boolean isDisplayingDormant = totalDormantCustomerPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingDormant,"Not in the Navigated to Dormant Page");
+    }
+    public void verifyCommittedPage(){
+        boolean isSelected = checkCommittedIsSelected();
+        Assert.assertTrue(isSelected, "Committed is Not Selected");
+        System.out.println("Selected Committed Page");
+        boolean isDisplayingCommitted = totalCommittedCardPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingCommitted,"Not in the Navigated to Committed Page");
+    }
+    public void verifyNewPage(){
+        boolean isSelected = checkNewIsSelected();
+        Assert.assertTrue(isSelected, "New is Not Selected");
+        System.out.println("Selected New Page");
+        boolean isDisplayingNew = totalNewCustomersPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingNew,"Not in the Navigated to New Page");
+    }
+    public void verifyVIPPage(){
+        boolean isSelected = checkVIPIsSelected();
+        Assert.assertTrue(isSelected, "VIP is Not Selected");
+        System.out.println("Selected VIP Page");
+        boolean isDisplayingVIP = totalVIPCustomersPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingVIP,"Not in the Navigated to VIP Page");
+    }
+    public void verifySporadicVIPPage(){
+        boolean isSelected = checkSporadicVIPIsSelected();
+        Assert.assertTrue(isSelected, "Sporadic VIP is Not Selected");
+        System.out.println("Selected Sporadic VIP Page");
+        boolean isDisplayingSporadicVIP = totalSporadicVIPCustomersPageHeaderIsDisplaying();
+        Assert.assertTrue(isDisplayingSporadicVIP,"Not in the Navigated to Sporadic VIP Page");
+    }
+
+    //Verify Total Customer Cards
+    public void verifyTotalOneOffCustomersCardDisplaying() {
+        boolean isDisplayingTotalOneOff = totalOneOffCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalOneOff, "Total One-Off Customer card is not Displaying");
+        System.out.println("Total One-Off Customer card is Displaying");
+    }
+
+    public void verifyTotalLapsedCustomersCardDisplaying() {
+        boolean isDisplayingTotalLapsed = totalLapsedCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalLapsed, "Total Lapsed Customer card is not Displaying");
+        System.out.println("Total Lapsed Customer card is Displaying");
+    }
+
+    public void verifyTotalDormantCustomersCardDisplaying() {
+        boolean isDisplayingTotalDormant = totalDormantCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalDormant, "Total Dormant Customer card is not Displaying");
+        System.out.println("Total Dormant Customer card is Displaying");
+    }
+
+    public void verifyTotalCommittedCustomersCardDisplaying() {
+        boolean isDisplayingTotalCommitted = totalCommittedCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalCommitted, "Total Committed Customer card is not Displaying");
+        System.out.println("Total Committed Customer card is Displaying");
+    }
+
+    public void verifyTotalNewCustomersCardDisplaying() {
+        boolean isDisplayingTotalNew = totalNewCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalNew, "Total New Customer card is not Displaying");
+        System.out.println("Total New Customer card is Displaying");
+    }
+
+    public void verifyTotalVIPCustomersCardDisplaying() {
+        boolean isDisplayingTotalVIP = totalVIPCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalVIP, "Total VIP Customer card is not Displaying");
+        System.out.println("Total VIP Customer card is Displaying");
+    }
+
+    public void verifyTotalSporadicVIPCustomersCardDisplaying() {
+        boolean isDisplayingTotalSporadicVIP = totalSporadicVIPCustomerCardIsDisplaying();
+        Assert.assertTrue(isDisplayingTotalSporadicVIP, "Total Sporadic VIP Customer card is not Displaying");
+        System.out.println("Total Sporadic VIP Customer card is Displaying");
+    }
+
+    public void verifyCommonCardsDisplaying() {
+        //Of the total DB card
+        boolean isDisplayingOfTheTotalDatabasePercentage = ofTheTotalDatabasePercentageCardIsDisplaying();
+        softAssertion.assertTrue(isDisplayingOfTheTotalDatabasePercentage, "Of the total Database percentage Card is not displaying");
+        System.out.println("Of the total Database percentage Card is displaying");
+        //AVG number of days since their last purchase card
+        boolean isDisplayingAvgNumberOfYearsSinceTheirLastPurchase = avgNumberOfYearsSinceTheirLastPurchaseCardIsDisplaying();
+        softAssertion.assertTrue(isDisplayingAvgNumberOfYearsSinceTheirLastPurchase, "AVG number of days since their " +
+                "last purchase Card is not displaying");
+        System.out.println("AVG number of days since their " +
+                "last purchase Card is displaying");
+        //AVG revenue per customer card
+        boolean isDisplayingAvgRevenuePerCustomer = avgRevenuePerCustomerCardIsDisplaying();
+        softAssertion.assertTrue(isDisplayingAvgRevenuePerCustomer, "AVG revenue per customer Card is not displaying");
+        System.out.println("AVG revenue per customer Card is displaying");
+        //AVG number of purchases card
+        boolean isDisplayingAvgNumberOfPurchases = avgNumberOfPurchasesCardIsDisplaying();
+        softAssertion.assertTrue(isDisplayingAvgNumberOfPurchases, "AVG number of purchases Card is not displaying");
+        System.out.println("AVG number of purchases Card is displaying");
+        softAssertion.assertAll();
+    }
+
+    public void verifyGraphsInSegmentDisplaying() {
+        //SourceGraphHeader
+        boolean isDisplayingSourceGraphHeader = sourceGraphHeaderIsDisplaying();
+        softAssertion.assertTrue(isDisplayingSourceGraphHeader, "Source Graph Header is not Available");
+        System.out.println("Source Graph Header is Available");
+        //Top 5 product header
+        boolean isDisplayingTop5ProductsHeader = top5ProductsHeaderIsDisplaying();
+        softAssertion.assertTrue(isDisplayingTop5ProductsHeader, "Top 5 Product graph header is not Available");
+        System.out.println("Top 5 Product graph header is Available");
+        //Demographic Locations Graphs Header
+        boolean isDisplayingDemographicLocationsGraphsHeader = demographicLocationsGraphsHeaderIsDisplaying();
+        softAssertion.assertTrue(isDisplayingDemographicLocationsGraphsHeader, "Demographic Locations Graphs Header " +
+                "is not Available");
+        System.out.println("Demographic Locations Graphs Header " +
+                "is not Available");
+        //Demographic Location Table Canvas
+        boolean isDisplayingDemographicLocationTableCanvas = demographicLocationTableCanvasIsDisplaying();
+        softAssertion.assertTrue(isDisplayingDemographicLocationTableCanvas, "Demographic Location Table Canvas " +
+                "is Available");
+        System.out.println("Demographic Location Table Canvas " +
+                "is Available");
+        //Demographic Location Map Canvas
+        boolean isDisplayingDemographicLocationMapCanvas = demographicLocationMapCanvasIsDisplaying();
+        softAssertion.assertTrue(isDisplayingDemographicLocationMapCanvas, "Demographic Location Map Canvas is not Available");
+        System.out.println("Demographic Location Map Canvas is not Available");
     }
 
 }

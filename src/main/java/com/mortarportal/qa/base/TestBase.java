@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,6 +47,7 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
+    public static SoftAssert softAssertion= new SoftAssert();
 
     public TestBase() {
         try {
