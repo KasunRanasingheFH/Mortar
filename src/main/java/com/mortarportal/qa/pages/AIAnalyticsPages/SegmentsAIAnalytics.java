@@ -2,8 +2,14 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 
 import com.mortarportal.qa.base.TestBase;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SegmentsAIAnalytics extends TestBase {
     @FindBy(css = ".btn.btn-secondary.fill-dark")
@@ -22,9 +28,9 @@ public class SegmentsAIAnalytics extends TestBase {
     WebElement lapsedTab;
     @FindBy(id = "ngb-nav-11")
     WebElement dormantTab;
-    @FindBy(id = "ngb-nav-12")
-    WebElement newTab;
     @FindBy(id = "ngb-nav-13")
+    WebElement newTab;
+    @FindBy(id = "ngb-nav-12")
     WebElement committedTab;
     @FindBy(id = "ngb-nav-14")
     WebElement vipTab;
@@ -50,6 +56,21 @@ public class SegmentsAIAnalytics extends TestBase {
     WebElement totalVIPCustomers;
     @FindBy(css = "[class] [role='tabpanel']:nth-of-type(7) [class='col-lg-6 col-md-12 segement-data-cards mb-4']:nth-of-type(1) .row [class] div")
     WebElement totalSporadicVIPCustomers;
+    //
+    @FindBy(xpath = "//h4[contains(text(),'Who are One-Off Customer Segment')]")
+    WebElement oneOffCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are Lapsed Customer Segment')]")
+    WebElement lapsedCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are Dormant Customer Segment')]")
+    WebElement dormantCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are Committed Customer Segment')]")
+    WebElement committedCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are New Customer Segment')]")
+    WebElement newCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are VIP Customer Segment')]")
+    WebElement vipCustomerPageHeader;
+    @FindBy(xpath = "//h4[contains(text(),'Who are Sporadic VIP Customer Segment')]")
+    WebElement sporadicVIPCustomerPageHeader;
 
     //Commons
     @FindBy(css = "[class='col-md-12 md-4 segment_tabs'] [role='tabpanel']:nth-of-type(1) [class='col-lg-6 col-md-12 segement-data-cards mb-4']:nth-of-type(2) .row [class] div")
@@ -128,7 +149,12 @@ public class SegmentsAIAnalytics extends TestBase {
     }
 
     public void clickOnDormantTab() {
-        dormantTab.click();
+//        explicitWait(dormantTab, timeout);
+        notClickableElementsClick(dormantTab, 10000);
+    }
+
+    public void clickOnDormant1() {
+        elementToBeClicked(dormantTab, 10000);
     }
 
     public boolean checkCommittedIsSelected() {
@@ -140,7 +166,7 @@ public class SegmentsAIAnalytics extends TestBase {
     }
 
     public void clickOnCommittedTab() {
-        committedTab.click();
+        notClickableElementsClick(committedTab, 10000);
     }
 
     public boolean checkNewIsSelected() {
@@ -152,7 +178,7 @@ public class SegmentsAIAnalytics extends TestBase {
     }
 
     public void clickOnNewTab() {
-        newTab.click();
+        notClickableElementsClick(newTab, 10000);
     }
 
     public boolean checkVIPIsSelected() {
@@ -179,5 +205,36 @@ public class SegmentsAIAnalytics extends TestBase {
         sporadicVipTab.click();
     }
 
+    public boolean totalLapsedCustomerIsDisplaying() {
+        return totalLapsedCustomerCard.isDisplayed();
+    }
+
+    public boolean totalOneOffCustomerCardIsDisplaying() {
+        return oneOffCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalLapsedCustomerCardIsDisplaying() {
+        return lapsedCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalDormantCustomerCardIsDisplaying() {
+        return dormantCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalCommittedCardIsDisplaying() {
+        return committedCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalNewCustomersIsDisplaying() {
+        return newCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalVIPCustomersIsDisplaying() {
+        return vipCustomerPageHeader.isDisplayed();
+    }
+
+    public boolean totalSporadicVIPCustomers() {
+        return sporadicVIPCustomerPageHeader.isDisplayed();
+    }
 
 }

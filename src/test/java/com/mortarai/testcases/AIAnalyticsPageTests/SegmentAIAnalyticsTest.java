@@ -8,13 +8,13 @@ import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
+import com.mortarportal.qa.util.TestUtil;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class SegmentAIAnalyticsTest extends TestBase {
     LoginPage loginPage;
@@ -88,8 +88,12 @@ public class SegmentAIAnalyticsTest extends TestBase {
         boolean isSelected = segmentsAIAnalytics.checkOneOffIsSelected();
         if (!isDisable && !isSelected) {
             segmentsAIAnalytics.clickOnOneOffTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalOneOffCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to One-Off Page");
         } else if (isSelected) {
             System.out.println("One-Off is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalOneOffCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to One-Off Page");
         } else if (isDisable) {
             System.err.println("One-Off is Disable");
         }
@@ -112,11 +116,17 @@ public class SegmentAIAnalyticsTest extends TestBase {
     public void verifySelectLapsedWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkLapsedIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkLapsedIsSelected();
-        if (!isDisable && !isSelected) {
-            segmentsAIAnalytics.clickOnLapsedTab();
+        System.out.println(!isSelected);
+        System.out.println(isDisable);
+        if ((!isDisable) && !isSelected) {
             Thread.sleep(5000);
+            segmentsAIAnalytics.clickOnLapsedTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalLapsedCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Lapsed Page");
         } else if (isSelected) {
             System.out.println("Lapsed is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalLapsedCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Lapsed Page");
         } else if (isDisable) {
             System.err.println("Lapsed is Disable");
         }
@@ -136,13 +146,18 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifySelectDormantWhenNotSelectedAndEnabled() {
+    public void verifySelectDormantWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkDormantIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkDormantIsSelected();
         if (!isDisable && !isSelected) {
+            Thread.sleep(5000);
             segmentsAIAnalytics.clickOnDormantTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalDormantCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Dormant Page");
         } else if (isSelected) {
             System.out.println("Dormant is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalDormantCustomerCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Dormant Page");
         } else if (isDisable) {
             System.err.println("Dormant is Disable");
         }
@@ -161,13 +176,18 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 6)
-    public void verifySelectNewWhenNotSelectedAndEnabled() {
+    public void verifySelectNewWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkNewIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkNewIsSelected();
         if (!isDisable && !isSelected) {
+            Thread.sleep(5000);
             segmentsAIAnalytics.clickOnNewTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalNewCustomersIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to New Page");
         } else if (isSelected) {
             System.out.println("New is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalNewCustomersIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to New Page");
         } else if (isDisable) {
             System.err.println("New is Disable");
         }
@@ -187,13 +207,18 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 7)
-    public void verifySelectCommittedWhenNotSelectedAndEnabled() {
+    public void verifySelectCommittedWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkCommittedIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkCommittedIsSelected();
         if (!isDisable && !isSelected) {
+            Thread.sleep(5000);
             segmentsAIAnalytics.clickOnCommittedTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalCommittedCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Committed Page");
         } else if (isSelected) {
             System.out.println("Committed is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalCommittedCardIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Committed Page");
         } else if (isDisable) {
             System.err.println("Committed is Disable");
         }
@@ -211,13 +236,18 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 8)
-    public void verifySelectVIPWhenNotSelectedAndEnabled() {
+    public void verifySelectVIPWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkVIPIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkVIPIsSelected();
         if (!isDisable && !isSelected) {
+            Thread.sleep(5000);
             segmentsAIAnalytics.clickOnVIPTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalVIPCustomersIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to VIP Page");
         } else if (isSelected) {
             System.out.println("VIP is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalVIPCustomersIsDisplaying();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to VIP Page");
         } else if (isDisable) {
             System.err.println("VIP is Disable");
         }
@@ -236,18 +266,26 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 9)
-    public void verifySelectSporadicVIPWhenNotSelectedAndEnabled() {
+    public void verifySelectSporadicVIPWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkSporadicVIPIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkSporadicVIPIsSelected();
         if (!isDisable && !isSelected) {
+            Thread.sleep(5000);
             segmentsAIAnalytics.clickOnSporadicVIPTab();
+            boolean isDisplaying = segmentsAIAnalytics.totalSporadicVIPCustomers();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Sporadic VIP Page");
         } else if (isSelected) {
             System.out.println("Sporadic VIP is Already selected");
+            boolean isDisplaying = segmentsAIAnalytics.totalSporadicVIPCustomers();
+            Assert.assertTrue(isDisplaying,"Not in the Navigated to Sporadic VIP Page");
         } else if (isDisable) {
             System.err.println("Sporadic VIP is Disable");
         }
 
     }
-
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 
 }
