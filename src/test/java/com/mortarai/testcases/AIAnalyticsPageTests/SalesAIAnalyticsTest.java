@@ -7,6 +7,8 @@ import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+import org.bouncycastle.math.Primes;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -122,6 +124,54 @@ public class SalesAIAnalyticsTest extends TestBase {
     public void verifiedSelectYear2023InYearlySalesByQuarterIfNotSelected() throws InterruptedException {
         String value = salesAIAnalytics.verifyValue2023InYearlySalesByQuarter();
         if (value.equals("false")) {
+            salesAIAnalytics.verifySelect2023InYearlySalesByQuarter();
+        } else {
+            Assert.assertEquals(value, "true", "Not selected 2023");
+            System.out.println("Already selected 2023 in graph");
+        }
+    }
+
+    @Test(priority = 8)
+    public void verifiedUnselectYear2020InYearlySalesByQuarterIfSelected() throws InterruptedException {
+        String value = salesAIAnalytics.verifyValueYear2020InYearlySalesByQuarter();
+        System.out.println(value);
+        if (value.equals("true")) {
+            Thread.sleep(1000);
+            salesAIAnalytics.verifySelectYear2020InYearlySalesByQuarter();
+            Thread.sleep(10000);
+        } else {
+            Assert.assertEquals(value, "true", "Not selected 2020");
+            System.out.println("Already selected 2020 in graph");
+
+        }
+    }
+
+    @Test(priority = 8)
+    public void verifiedUnselectYear2021InYearlySalesByQuarterIfSelected() {
+        String value = salesAIAnalytics.verifyValueYear2021InYearlySalesByQuarter();
+        if (value.equals("true")) {
+            salesAIAnalytics.verifySelectYear2021InYearlySalesByQuarter();
+        } else {
+            Assert.assertEquals(value, "true", "Not selected 2021");
+            System.out.println("Already selected 2021 in graph");
+        }
+    }
+
+    @Test(priority = 8)
+    public void verifiedUnselectYear2022InYearlySalesByQuarterIfSelected() {
+        String value = salesAIAnalytics.verifyValue2022InYearlySalesByQuarter();
+        if (value.equals("true")) {
+            salesAIAnalytics.verifySelect2022InYearlySalesByQuarter();
+        } else {
+            Assert.assertEquals(value, "true", "Not selected 2022");
+            System.out.println("Already selected 2022 in graph");
+        }
+    }
+
+    @Test(priority = 8)
+    public void verifiedUnselectYear2023InYearlySalesByQuarterIfSelected() {
+        String value = salesAIAnalytics.verifyValue2023InYearlySalesByQuarter();
+        if (value.equals("true")) {
             salesAIAnalytics.verifySelect2023InYearlySalesByQuarter();
         } else {
             Assert.assertEquals(value, "true", "Not selected 2023");

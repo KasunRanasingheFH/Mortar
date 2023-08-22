@@ -22,6 +22,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
     CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics;
     SalesAIAnalytics salesAIAnalytics;
     SegmentsAIAnalytics segmentsAIAnalytics;
+    CustomerSegmentByProductCategoryInSegment customerSegmentByProductCategoryInSegment;
 
     @Parameters({"browser.name"})
     @BeforeMethod
@@ -51,6 +52,54 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 3)
+    public void verifiedCustomerSegmentByRFMTIsEnabled() {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
+    }
+
+    @Test(priority = 3)
+    public void verifiedCustomerSegmentByRFMTIsSelected() {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
+        boolean isSelected = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsSelected();
+        Assert.assertTrue(isSelected, "Customer Segment By RFMT is not Selected");
+    }
+
+    @Test(priority = 3)
+    public void verifiedClickOnCustomerSegmentByRFMT() {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
+        segmentsAIAnalytics.clickCustomerSegmentByRFMT();
+        boolean isSelected = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsSelected();
+        Assert.assertTrue(isSelected, "Customer Segment By RFMT is not Selected");
+    }
+
+    @Test(priority = 3)
+    public void verifiedCustomerSegmentByProductIsEnabled() {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
+    }
+
+    @Test(priority = 4)
+    public void verifiedCustomerSegmentByProductsIsSelected() {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
+        boolean isSelected = segmentsAIAnalytics.checkCustomerSegmentByProductIsSelected();
+        Assert.assertTrue(isSelected, "Customer Segment By Product is not Selected");
+    }
+
+    @Test(priority = 3)
+    public CustomerSegmentByProductCategoryInSegment verifiedClickOnCustomerSegmentByProduct() throws InterruptedException {
+        boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
+        Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
+        Thread.sleep(5000);
+        segmentsAIAnalytics.clickOnCustomerSegmentByProduct();
+        boolean isSelected = segmentsAIAnalytics.checkCustomerSegmentByProductIsSelected();
+        Assert.assertTrue(isSelected, "Customer Segment By Product is not Selected");
+        return new CustomerSegmentByProductCategoryInSegment();
+    }
+
+    @Test(priority = 3)
     public void verifiedOneOffIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkOneOffIsDisable();
         Assert.assertFalse(isDisable, "One-Off is Disable");
@@ -73,6 +122,36 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyCardsOneOff();
         //Common Graphs
         segmentsAIAnalytics.verifyGraphsOneOff();
+    }
+
+    @Test(priority = 4)
+    public void verifiedTotalCustomerRadioButtonIsSelected() {
+        boolean isSelected = segmentsAIAnalytics.isSelectedTotalCustomerRadioBut();
+        System.out.println(isSelected);
+        segmentsAIAnalytics.isSelectedTotalCustomerRadioBut();
+        Assert.assertTrue(isSelected, "Total Customer of One-Off is not selected");
+
+    }
+
+    @Test(priority = 4)
+    public void verifiedBasedOnMarketingPreferencesRadioButtonIsSelected() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        System.out.println(isSelected);
+        Assert.assertTrue(isSelected, "Based On Marketing Preferences of One-Off is not selected");
+    }
+
+    @Test(priority = 4)
+    public void verifiedYesIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedYes, "Yes Is selected on Based on Marketing Preferences");
+        } else {
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedYes, "Yes Is selected on Based on Marketing Preferences");
+        }
     }
 
     @Test(priority = 5)
@@ -407,5 +486,6 @@ public class SegmentAIAnalyticsTest extends TestBase {
     public void tearDown() {
         driver.quit();
     }
+
 
 }

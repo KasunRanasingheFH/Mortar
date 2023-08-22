@@ -3,6 +3,7 @@ package com.mortarportal.qa.base;
 import com.google.common.collect.ImmutableList;
 import com.mortarportal.qa.util.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,8 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class TestBase {
     public enum BrowserType {
