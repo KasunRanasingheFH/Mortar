@@ -17,6 +17,8 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -262,7 +264,12 @@ public class TestBase {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
     }
-
+public static void fluentWaitMethod(){
+    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+            .withTimeout(Duration.ofSeconds(30))
+            .pollingEvery(Duration.ofSeconds(5))
+            .ignoring(NoSuchElementException.class);
+}
     @AfterTest
     public static void closeBrowser() {
         if (driver != null) {

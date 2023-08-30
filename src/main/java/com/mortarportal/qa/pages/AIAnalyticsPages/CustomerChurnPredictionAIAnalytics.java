@@ -2,6 +2,7 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
+import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
 import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.By;

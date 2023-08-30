@@ -141,17 +141,572 @@ public class SegmentAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 4)
+    public void verifiedTotalCustomerRadioButtonSelectWhenNotSelect() {
+        boolean isSelected = segmentsAIAnalytics.isSelectedTotalCustomerRadioBut();
+        System.out.println(isSelected);
+        if (!isSelected) {
+            segmentsAIAnalytics.clickTotalCustomerRadioBut();
+            Assert.assertTrue(isSelected, "Total Customer of One-Off is not selected");
+            System.out.println("Total Customer of One-Off is selected");
+        } else {
+            Assert.assertTrue(isSelected, "Total Customer of One-Off is not selected");
+            System.out.println("Total Customer of One-Off is already selected");
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedBasedOnMarketingPreferencesSelectWhenNotSelected() {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        System.out.println(isSelected);
+        if (!isSelected) {
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is already selected");
+        }
+    }
+
+    @Test(priority = 4)
     public void verifiedYesIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
             Thread.sleep(5000);
             segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
             boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
-            Assert.assertTrue(isSelectedYes, "Yes Is selected on Based on Marketing Preferences");
+            Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedNoIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedNo, "No Is not selected on Based on Marketing Preferences");
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedNo, "No Is not selected on Based on Marketing Preferences");
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedUnknownIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+            Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfYesNotSelectedInBasedOnMarketingPreferencesSelectYes() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (!isSelectedYes) {
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is selected");
+            } else {
+                Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already selected");
+            }
+
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (!isSelectedYes) {
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is selected");
+            } else {
+                Assert.assertTrue(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfYesISSelectedInBasedOnMarketingPreferencesUnselectYes() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (isSelectedYes) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                boolean isSelectedYes1 = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedYes1, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is Unselected");
+            } else {
+                Assert.assertFalse(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already unselected selected");
+            }
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (isSelectedYes) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                boolean isSelectedYes1 = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedYes1, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is Unselected");
+            } else {
+                Assert.assertFalse(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already unselected selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfNoISNotSelectedInBasedOnMarketingPreferencesSelectNo() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            if (!isSelectedNo) {
+                segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is selected");
+            } else {
+                Assert.assertTrue(isSelectedNo, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is already selected");
+            }
+
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            if (!isSelectedNo) {
+                segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is selected");
+            } else {
+                Assert.assertTrue(isSelectedNo, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is already selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfNoISSelectedInBasedOnMarketingPreferencesUnselectNo() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            if (isSelectedNo) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is Unselected");
+            } else {
+                Assert.assertFalse(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                System.out.println("No Is already unselected selected");
+            }
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            if (isSelectedNo) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                System.out.println("No Is Unselected");
+            } else {
+                Assert.assertFalse(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                System.out.println("No Is already unselected selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfUnknownISNotSelectedInBasedOnMarketingPreferencesSelectUnknown() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+            if (!isSelectedUnknown) {
+                segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is selected");
+            } else {
+                Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is already selected");
+            }
+
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+            if (!isSelectedUnknown) {
+                segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is selected");
+            } else {
+                Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is already selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedIfUnknownISSelectedInBasedOnMarketingPreferencesUnselectUnknown() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+            if (isSelectedUnknown) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is Unselected");
+            } else {
+                Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is already unselected selected");
+            }
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+            if (isSelectedUnknown) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is Unselected");
+
+            } else {
+                Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                System.out.println("Unknown Is already unselected selected");
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedSelectAllWhenNotSelectedAllInBasedOnMarketingPreferencesSelect() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (isSelectedYes) {
+                System.out.println("Yes is Selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (!isSelectedNo) {
+                    Thread.sleep(5000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                } else {
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is Already selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        Thread.sleep(5000);
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                }
+            } else {
+                System.out.println("Yes is already Selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is Already selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                } else {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                }
+            }
+
+        } else {
+            Assert.assertTrue(isSelected, "Based on Marketing Preferences is Not selected");
+            System.out.println("Based on Marketing Preferences is selected");
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (isSelectedYes) {
+                System.out.println("Yes is Selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (!isSelectedNo) {
+                    Thread.sleep(5000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                } else {
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is Already selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        Thread.sleep(5000);
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                }
+            } else {
+                System.out.println("Yes is already Selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo1, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is Already selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                } else {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    Assert.assertTrue(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (!isSelectedUnknown) {
+                        segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertTrue(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is selected");
+                    } else {
+                        Assert.assertTrue(isSelectedUnknown, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already selected");
+                    }
+                }
+            }
+        }
+    }
+
+    @Test(priority = 4)
+    public void verifiedUnSelectAllWhenSelectedAllInBasedOnMarketingPreferencesUnSelect() throws InterruptedException {
+        boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
+        if (!isSelected) {
+            Thread.sleep(5000);
+            segmentsAIAnalytics.clickBasedOnMarketingPreferencesRadioBut();
+            boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+            if (isSelectedYes) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                boolean isSelectedYes1 = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedYes1, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is Unselected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                    System.out.println("No Is Unselected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                } else {
+                    Assert.assertFalse(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is already unselected selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                }
+
+            } else {
+                Assert.assertFalse(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already unselected selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                    System.out.println("No Is Unselected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                }
+            }
         } else {
             boolean isSelectedYes = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
-            Assert.assertTrue(isSelectedYes, "Yes Is selected on Based on Marketing Preferences");
+            if (isSelectedYes) {
+                Thread.sleep(1000);
+                segmentsAIAnalytics.clickYesInBasedOnMarketingPreferences();
+                boolean isSelectedYes1 = segmentsAIAnalytics.isCheckedYesInBasedOnMarketingPreferences();
+                Assert.assertFalse(isSelectedYes1, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is Unselected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                    System.out.println("No Is Unselected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                } else {
+                    Assert.assertFalse(isSelectedNo, "No Is selected on Based on Marketing Preferences");
+                    System.out.println("No Is already unselected selected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                }
+
+            } else {
+                Assert.assertFalse(isSelectedYes, "Yes Is not selected on Based on Marketing Preferences");
+                System.out.println("Yes Is already unselected selected");
+                boolean isSelectedNo = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                if (isSelectedNo) {
+                    Thread.sleep(1000);
+                    segmentsAIAnalytics.clickNoInBasedOnMarketingPreferences();
+                    boolean isSelectedNo1 = segmentsAIAnalytics.isCheckedNoInBasedOnMarketingPreferences();
+                    Assert.assertFalse(isSelectedNo1, "No Is not selected on Based on Marketing Preferences");
+                    System.out.println("No Is Unselected");
+                    boolean isSelectedUnknown = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                    if (isSelectedUnknown) {
+                        Thread.sleep(1000);
+                        segmentsAIAnalytics.clickUnknownInBasedOnMarketingPreferences();
+                        boolean isSelectedUnknown1 = segmentsAIAnalytics.isCheckedUnknownInBasedOnMarketingPreferences();
+                        Assert.assertFalse(isSelectedUnknown1, "Unknown Is not selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is Unselected");
+                    } else {
+                        Assert.assertFalse(isSelectedUnknown, "Unknown Is selected on Based on Marketing Preferences");
+                        System.out.println("Unknown Is already unselected selected");
+                    }
+                }
+            }
+
         }
+
     }
 
     @Test(priority = 5)

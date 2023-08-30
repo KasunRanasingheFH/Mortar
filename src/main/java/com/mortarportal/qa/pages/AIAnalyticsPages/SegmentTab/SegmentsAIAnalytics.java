@@ -12,15 +12,36 @@ public class SegmentsAIAnalytics extends TestBase {
 
     //Customer segment by RFMT
     //Navigations
-    @FindBy(id = "ngb-nav-48")
+    @FindBy(id = "ngb-nav-7")
     WebElement customerSegmentByRFMT;
     //Customer segment by product category
-    @FindBy(id = " ngb-nav-49")
+    @FindBy(id = "ngb-nav-8")
     WebElement customerSegmentByProductCategory;
 
     //One-Off//
     @FindBy(id = "ngb-nav-9")
     WebElement oneOffTab;
+    @FindBy(id = "total_cust_0")
+    WebElement totalCustomerRadioButOneOffCheck;
+    @FindBy(css = "[for='total_cust_0']")
+    WebElement totalCustomerRadioButOneOff;
+    @FindBy(id = "based_cust_0")
+    WebElement basedOnMarketingPreferenceRadioButOneOffCheck;
+    @FindBy(css = "[for='based_cust_0']")
+    WebElement basedOnMarketingPreferenceRadioButOneOff;
+    @FindBy(id = "filtering_data_yes_0")
+    WebElement yesInBOMPCheckbox;
+    @FindBy(css = "[for='filtering_data_yes_0']")
+    WebElement yesInBOMPCheckboxSelect;
+    @FindBy(id = "filtering_data_No_0")
+    WebElement noInBOMPCheckbox;
+    @FindBy(css = "[for='filtering_data_No_0']")
+    WebElement noInBOMPCheckboxSelect;
+    @FindBy(id = "filtering_data_Notset_0")
+    WebElement unknownInBOMPCheckbox;
+    @FindBy(css = "[for='filtering_data_Notset_0']")
+    WebElement unknownInBOMPCheckboxSelect;
+
     @FindBy(css = "[class='col-md-12 md-4 segment_tabs'] [role='tabpanel']:nth-of-type(1) [class='col-lg-6 col-md-12 segement-data-cards mb-4']:nth-of-type(1) .row [class] div")
     WebElement totalOneOffCustomers;
     @FindBy(xpath = "//h4[contains(text(),'Who are One-Off Customer Segment')]")
@@ -278,6 +299,30 @@ public class SegmentsAIAnalytics extends TestBase {
         exportUnderlyingSalesDataButton.click();
     }
 
+    public boolean checkCustomerSegmentByRFMTIsSelected() {
+        return Boolean.parseBoolean(customerSegmentByRFMT.getAttribute("aria-selected"));
+    }
+
+    public boolean checkCustomerSegmentByRFMTIsDisable() {
+        return Boolean.parseBoolean(customerSegmentByRFMT.getAttribute("aria-disabled"));
+    }
+
+    public void clickCustomerSegmentByRFMT() {
+        customerSegmentByRFMT.click();
+    }
+
+    public boolean checkCustomerSegmentByProductIsSelected() {
+        return Boolean.parseBoolean(customerSegmentByProductCategory.getAttribute("aria-selected"));
+    }
+
+    public boolean checkCustomerSegmentByProductIsDisable() {
+        return Boolean.parseBoolean(customerSegmentByProductCategory.getAttribute("aria-disabled"));
+    }
+
+    public void clickOnCustomerSegmentByProduct() {
+        customerSegmentByProductCategory.click();
+    }
+
     //Common Methods
     public boolean ofTheTotalDatabasePercentageCardIsDisplaying(WebElement element) {
         return element.isDisplayed();
@@ -350,7 +395,37 @@ public class SegmentsAIAnalytics extends TestBase {
     public boolean avgNumberOfPurchasesCardIsDisplaying() {
         return avgNumberOfPurchasesOneOff.isDisplayed();
     }*/
-
+    public boolean isSelectedTotalCustomerRadioBut(){
+        return totalCustomerRadioButOneOffCheck.isSelected();
+    }
+    public void clickTotalCustomerRadioBut(){
+        totalCustomerRadioButOneOff.click();
+    }
+    public boolean isSelectedBasedOnMarketingPreferencesRadioBut(){
+        return  basedOnMarketingPreferenceRadioButOneOffCheck.isSelected();
+    }
+    public void  clickBasedOnMarketingPreferencesRadioBut(){
+        notClickableElementsClick(basedOnMarketingPreferenceRadioButOneOff,10000);
+//        basedOnMarketingPreferenceRadioButOneOff.click();
+    }
+    public boolean isCheckedYesInBasedOnMarketingPreferences(){
+        return yesInBOMPCheckbox.isSelected();
+    }
+    public void  clickYesInBasedOnMarketingPreferences(){
+        yesInBOMPCheckboxSelect.click();
+    }
+    public boolean isCheckedNoInBasedOnMarketingPreferences(){
+        return noInBOMPCheckbox.isSelected();
+    }
+    public void clickNoInBasedOnMarketingPreferences(){
+        noInBOMPCheckboxSelect.click();
+    }
+    public boolean isCheckedUnknownInBasedOnMarketingPreferences(){
+        return unknownInBOMPCheckbox.isSelected();
+    }
+    public void clickUnknownInBasedOnMarketingPreferences(){
+        unknownInBOMPCheckboxSelect.click();
+    }
     //Total Customers Cards
     public boolean totalOneOffCustomerCardIsDisplaying() {
         return totalOneOffCustomers.isDisplayed();
