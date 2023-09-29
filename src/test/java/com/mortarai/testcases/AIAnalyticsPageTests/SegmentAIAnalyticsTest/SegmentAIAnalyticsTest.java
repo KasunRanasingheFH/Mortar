@@ -57,7 +57,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void verifiedCustomerSegmentByRFMTIsSelected() {
         boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsDisable();
         Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
@@ -65,7 +65,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         Assert.assertTrue(isSelected, "Customer Segment By RFMT is not Selected");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 5)
     public void verifiedClickOnCustomerSegmentByRFMT() {
         boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByRFMTIsDisable();
         Assert.assertFalse(isDisable, "Customer Segment By RFMT is Disable");
@@ -74,13 +74,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
         Assert.assertTrue(isSelected, "Customer Segment By RFMT is not Selected");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 6)
     public void verifiedCustomerSegmentByProductIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
         Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 7)
     public void verifiedCustomerSegmentByProductsIsSelected() {
         boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
         Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
@@ -88,7 +88,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         Assert.assertTrue(isSelected, "Customer Segment By Product is not Selected");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 8)
     public CustomerSegmentByProductCategoryInSegment verifiedClickOnCustomerSegmentByProduct() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkCustomerSegmentByProductIsDisable();
         Assert.assertFalse(isDisable, "Customer Segment By Product is Disable");
@@ -99,7 +99,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         return new CustomerSegmentByProductCategoryInSegment();
     }
 
-    @Test(priority = 3)
+    @Test(priority = 9)
     public void verifiedOneOffIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkOneOffIsDisable();
         Assert.assertFalse(isDisable, "One-Off is Disable");
@@ -112,7 +112,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         System.err.println("One-Off is Disabled");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 10)
     public void verifiedOneOffIsSelected() throws InterruptedException {
         //Verify One Off Page is Selected
         segmentsAIAnalytics.verifyOneOffPage();
@@ -124,7 +124,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsOneOff();
     }
 
-    @Test(priority = 4)
+    @Test(priority = 11)
     public void verifiedTotalCustomerRadioButtonIsSelected() {
         boolean isSelected = segmentsAIAnalytics.isSelectedTotalCustomerRadioBut();
         System.out.println(isSelected);
@@ -133,14 +133,14 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 4)
+    @Test(priority = 12)
     public void verifiedBasedOnMarketingPreferencesRadioButtonIsSelected() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         System.out.println(isSelected);
         Assert.assertTrue(isSelected, "Based On Marketing Preferences of One-Off is not selected");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 13)
     public void verifiedTotalCustomerRadioButtonSelectWhenNotSelect() {
         boolean isSelected = segmentsAIAnalytics.isSelectedTotalCustomerRadioBut();
         System.out.println(isSelected);
@@ -154,7 +154,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 14)
     public void verifiedBasedOnMarketingPreferencesSelectWhenNotSelected() {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         System.out.println(isSelected);
@@ -168,7 +168,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 15)
     public void verifiedYesIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -184,7 +184,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 16)
     public void verifiedNoIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -200,7 +200,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 17)
     public void verifiedUnknownIsSelectedInBasedOnMarketingPreferences() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -216,7 +216,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 18)
     public void verifiedIfYesNotSelectedInBasedOnMarketingPreferencesSelectYes() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -247,7 +247,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 19)
     public void verifiedIfYesISSelectedInBasedOnMarketingPreferencesUnselectYes() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -281,7 +281,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 20)
     public void verifiedIfNoISNotSelectedInBasedOnMarketingPreferencesSelectNo() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -314,7 +314,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 21)
     public void verifiedIfNoISSelectedInBasedOnMarketingPreferencesUnselectNo() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -348,7 +348,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 22)
     public void verifiedIfUnknownISNotSelectedInBasedOnMarketingPreferencesSelectUnknown() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -381,7 +381,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 23)
     public void verifiedIfUnknownISSelectedInBasedOnMarketingPreferencesUnselectUnknown() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -416,7 +416,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 24)
     public void verifiedSelectAllWhenNotSelectedAllInBasedOnMarketingPreferencesSelect() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -569,7 +569,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 4)
+    @Test(priority = 25)
     public void verifiedUnSelectAllWhenSelectedAllInBasedOnMarketingPreferencesUnSelect() throws InterruptedException {
         boolean isSelected = segmentsAIAnalytics.isSelectedBasedOnMarketingPreferencesRadioBut();
         if (!isSelected) {
@@ -709,7 +709,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 25)
     public void verifySelectOneOffWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkOneOffIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkOneOffIsSelected();
@@ -737,13 +737,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 6)
+    @Test(priority = 26)
     public void verifiedLapsedIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkLapsedIsDisable();
         Assert.assertFalse(isDisable, "Lapsed is Disable");
     }
 
-    @Test(priority = 7)
+    @Test(priority = 27)
     public void verifiedLapsedIsSelected() throws InterruptedException {
         //Verify Lapsed Page
         segmentsAIAnalytics.verifyLapsedPage();
@@ -755,7 +755,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsLapsed();
     }
 
-    @Test(priority = 8)
+    @Test(priority = 28)
     public void verifySelectLapsedWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkLapsedIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkLapsedIsSelected();
@@ -791,13 +791,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 9)
+    @Test(priority = 29)
     public void verifiedDormantIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkDormantIsDisable();
         Assert.assertFalse(isDisable, "Dormant is Disable");
     }
 
-    @Test(priority = 10)
+    @Test(priority = 30)
     public void verifiedDormantIsSelected() throws InterruptedException {
         //Verify Dormant Page
         segmentsAIAnalytics.verifyDormantPage();
@@ -809,7 +809,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsDormant();
     }
 
-    @Test(priority = 11)
+    @Test(priority = 31)
     public void verifySelectDormantWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkDormantIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkDormantIsSelected();
@@ -840,13 +840,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 12)
+    @Test(priority = 32)
     public void verifiedNewIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkNewIsDisable();
         Assert.assertFalse(isDisable, "New is Disable");
     }
 
-    @Test(priority = 13)
+    @Test(priority = 33)
     public void verifiedNewIsSelected() throws InterruptedException {
         //Verify New Page
         segmentsAIAnalytics.verifyNewPage();
@@ -858,7 +858,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsNew();
     }
 
-    @Test(priority = 14)
+    @Test(priority = 34)
     public void verifySelectNewWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkNewIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkNewIsSelected();
@@ -889,13 +889,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 15)
+    @Test(priority = 35)
     public void verifiedCommittedIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkCommittedIsDisable();
         Assert.assertFalse(isDisable, "Committed is Disable");
     }
 
-    @Test(priority = 16)
+    @Test(priority = 36)
     public void verifiedCommittedIsSelected() throws InterruptedException {
         //Verify Committed Page
         segmentsAIAnalytics.verifyCommittedPage();
@@ -907,7 +907,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsCommitted();
     }
 
-    @Test(priority = 17)
+    @Test(priority = 37)
     public void verifySelectCommittedWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkCommittedIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkCommittedIsSelected();
@@ -937,13 +937,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
         }
     }
 
-    @Test(priority = 18)
+    @Test(priority = 38)
     public void verifiedVIPIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkVIPIsDisable();
         Assert.assertFalse(isDisable, "VIP is Disable");
     }
 
-    @Test(priority = 19)
+    @Test(priority = 39)
     public void verifiedVIPIsSelected() throws InterruptedException {
         //Verify VIP Page
         segmentsAIAnalytics.verifyVIPPage();
@@ -955,7 +955,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsVIP();
     }
 
-    @Test(priority = 20)
+    @Test(priority = 40)
     public void verifySelectVIPWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkVIPIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkVIPIsSelected();
@@ -987,13 +987,13 @@ public class SegmentAIAnalyticsTest extends TestBase {
 
     }
 
-    @Test(priority = 21)
+    @Test(priority = 41)
     public void verifiedSporadicVIPIsEnabled() {
         boolean isDisable = segmentsAIAnalytics.checkSporadicVIPIsDisable();
         Assert.assertFalse(isDisable, "Sporadic VIP is Disable");
     }
 
-    @Test(priority = 22)
+    @Test(priority = 42)
     public void verifiedSporadicVIPIsSelected() throws InterruptedException {
         //Verify Sporadic VIP Page
         segmentsAIAnalytics.verifySporadicVIPPage();
@@ -1005,7 +1005,7 @@ public class SegmentAIAnalyticsTest extends TestBase {
         segmentsAIAnalytics.verifyGraphsSporadicVIP();
     }
 
-    @Test(priority = 23)
+    @Test(priority = 43)
     public void verifySelectSporadicVIPWhenNotSelectedAndEnabled() throws InterruptedException {
         boolean isDisable = segmentsAIAnalytics.checkSporadicVIPIsDisable();
         boolean isSelected = segmentsAIAnalytics.checkSporadicVIPIsSelected();

@@ -319,8 +319,9 @@ public class SegmentsAIAnalytics extends TestBase {
         return Boolean.parseBoolean(customerSegmentByProductCategory.getAttribute("aria-disabled"));
     }
 
-    public void clickOnCustomerSegmentByProduct() {
+    public CustomerSegmentByProductCategoryInSegment clickOnCustomerSegmentByProduct() {
         customerSegmentByProductCategory.click();
+        return new CustomerSegmentByProductCategoryInSegment();
     }
 
     //Common Methods

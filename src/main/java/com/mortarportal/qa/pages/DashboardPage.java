@@ -136,6 +136,7 @@ if(isSelected == false) {
         placeholderSearchClient.sendKeys(brandName);
         Thread.sleep(2000);
         brandSearchButton.click();
+        Thread.sleep(2000);
         goToSearchedDashboardButton.click();
         return new BusinessOverview();
     }

@@ -4,6 +4,7 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -16,7 +17,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     //ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
-    Intergrations intergrations;
+    Integrations intergrations;
     FacebookAdvertisingPage facebookAdvertisingPage;
     MyCreatives myCreatives;
     //AI Analytics Page

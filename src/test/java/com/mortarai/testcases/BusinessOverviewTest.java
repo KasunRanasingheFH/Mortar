@@ -5,7 +5,8 @@ import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CampaignReportingPage;
 import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CreatNewCampaignPage;
-import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.GoogleAnalyticsPage;
 import org.testng.Assert;
@@ -17,7 +18,7 @@ public class BusinessOverviewTest extends TestBase {
     DashboardPage dashboardPage;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
-    Intergrations intergrations;
+    Integrations integrations;
     SingleMailingPage singleMailingPage;
     FacebookAdvertisingPage facebookAdvertisingPage;
     GoogleAnalyticsPage googleAnalyticsPage;
@@ -41,6 +42,7 @@ public class BusinessOverviewTest extends TestBase {
         loginPage = new LoginPage();
         dashboardPage = loginPage.login(prop.getProperty("AdminUsername"), prop.getProperty("AdminPassword"));
         businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+        navigationBar = new NavigationBar();
     }
 
     @Test(priority = 1)
@@ -72,9 +74,11 @@ public class BusinessOverviewTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifyAIAnalyticsPageTest() {
+    public void verifyAIAnalyticsPageTest() throws InterruptedException {
 //        testUtil.switchToFrame();
-        customerChurnPredictionAIAnalyticsTest = navigationBar.clickOnGoToCustomerChurnPredictionAIAnalytics();
+//        customerChurnPredictionAIAnalyticsTest = navigationBar.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        customerChurnPredictionAIAnalyticsTest = businessOverview.clickOnGoToCustomerChurnPredictionAIAnalytics();
+        Thread.sleep(2000);
     }
 
     @Test(priority = 6)
@@ -86,7 +90,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 7)
     public void verifyClickGoToIntegrationsPageTest() {
 //        testUtil.switchToFrame();
-        intergrations = businessOverview.clickOnGoToIntergrations();
+        integrations = businessOverview.clickOnGoToIntergrations();
     }
 
     @Test(priority = 8)
@@ -109,7 +113,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 11)
     public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
-        googleAnalyticsPage = businessOverview.clickOnGoToAIAnalyticsPage();
+        googleAnalyticsPage = businessOverview.clickOnGoToAIAnalyticsReportingPage();
     }
 
     @Test(priority = 12)

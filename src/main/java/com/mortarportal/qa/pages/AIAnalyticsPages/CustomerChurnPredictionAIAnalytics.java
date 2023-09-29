@@ -3,7 +3,8 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
-import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -111,9 +112,9 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
         navMyCustomersLink.click();
         return new MyCustomer();
     }
-    public Intergrations clickOnGoToIntergrations() {
+    public Integrations clickOnGoToIntergrations() {
         navIntegrationsLink.click();
-        return new Intergrations();
+        return new Integrations();
     }
     public SingleMailingPage clickOnGoToEmailsAndJourneys() {
         navEmailsAndJourneyLink.click();

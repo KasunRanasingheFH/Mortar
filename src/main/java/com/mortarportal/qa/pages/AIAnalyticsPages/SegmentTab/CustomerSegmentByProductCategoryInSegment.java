@@ -3,6 +3,7 @@ package com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab;
 import com.mortarportal.qa.base.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CustomerSegmentByProductCategoryInSegment extends TestBase {
     @FindBy(xpath = "//h4[contains(text(),'Product Category Creator')]")
@@ -39,5 +40,13 @@ public class CustomerSegmentByProductCategoryInSegment extends TestBase {
     WebElement productCategoryName;
     @FindBy(xpath = "//a[contains(text(),productCatName)]")
     WebElement selectAFavouriteProduct;
-
+    public CustomerSegmentByProductCategoryInSegment() {
+        PageFactory.initElements(driver, this);
+    }
+    public String verifyPageTitle() {
+        return driver.getTitle();
+    }
+    public boolean verifyHeaderOfCustomerSegmentByProductCategory() {
+        return customerSegmentByProductHeader.isDisplayed();
+    }
 }

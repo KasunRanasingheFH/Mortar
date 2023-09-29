@@ -52,7 +52,7 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
-    public static SoftAssert softAssertion= new SoftAssert();
+    public static SoftAssert softAssertion = new SoftAssert();
 
     public TestBase() {
         try {
@@ -155,9 +155,10 @@ public class TestBase {
             default:
                 logger.error("Unsupported browser type: " + browserType);
                 return null;
-            }
         }
     }
+
+
 
     public void checkDownloadedFiles(String fileName) throws InterruptedException {
         String FILES_DIRECTORY = ("C:\\Users\\SankaKodda\\Downloads");
@@ -195,7 +196,8 @@ public class TestBase {
         }*/
 
     }
-//    public static boolean isFileDownloaded(String expectedFileName, String fileExtension, int timeOut) throws IOException
+
+    //    public static boolean isFileDownloaded(String expectedFileName, String fileExtension, int timeOut) throws IOException
 //    {
 //        // Download Folder Path
 ////        String folderName = System.getProperty("user.dir") + File.separator + "downloads";
@@ -259,17 +261,19 @@ public class TestBase {
         element.click();
     }
 
-    public static void notClickableElementsClick(WebElement element,int timeout) {
+    public static void notClickableElementsClick(WebElement element, int timeout) {
         //new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.elementToBeClickable(element));
         Actions actions = new Actions(driver);
         actions.moveToElement(element).click().build().perform();
     }
-public static void fluentWaitMethod(){
-    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-            .withTimeout(Duration.ofSeconds(30))
-            .pollingEvery(Duration.ofSeconds(5))
-            .ignoring(NoSuchElementException.class);
-}
+
+    public static void fluentWaitMethod() {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class);
+    }
+
     @AfterTest
     public static void closeBrowser() {
         if (driver != null) {

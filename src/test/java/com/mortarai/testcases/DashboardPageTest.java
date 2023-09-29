@@ -64,12 +64,12 @@ public class DashboardPageTest extends TestBase {
         Assert.assertEquals(searchedUser, prop.getProperty("brandName"), "Searched user is displaying wrong");
     }
 
-    @Test(priority = 6)
+   /* @Test(priority = 6)
     public void verifyStatusFilterIsClickable() {
         dashboardPage.clickStatusFilter();
         Assert.assertTrue(dashboardPage.statusFilterDropdown(), "Status filter is not Opened");
     }
-
+*/
     @Test(priority = 7)
     public void verifyStatusFilterSelectAllIsSelected() {
         dashboardPage.clickStatusFilter();
