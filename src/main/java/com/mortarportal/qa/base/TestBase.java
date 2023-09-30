@@ -3,8 +3,10 @@ package com.mortarportal.qa.base;
 import com.google.common.collect.ImmutableList;
 import com.mortarportal.qa.util.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,17 +14,27 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.asserts.SoftAssert;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class TestBase {
     public enum BrowserType {
@@ -40,6 +52,7 @@ public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
+    public static SoftAssert softAssertion = new SoftAssert();
 
     public TestBase() {
         try {
@@ -71,6 +84,19 @@ public class TestBase {
             System.exit(-1);
         }
 
+//        String browser = prop.getProperty("browser");
+
+//        if (browser.equalsIgnoreCase("chrome")) {
+//            /*System.setProperty("webdriver.chrome.driver", "H:\\Firehouse\\Mortar\\MortarNew\\MortarPOM\\WebDriver\\chromedriver_win113\\chromedriver.exe");
+//            driver = new ChromeDriver();*/
+////            WebDriverManager.chromedriver().setup();
+//
+//            driver = new ChromeDriver();
+//        } else if (browser.equalsIgnoreCase("chrome-headless")) {
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("headless");
+//            driver = new ChromeDriver(options);
+//        }
         // Maximise the Browser
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -130,6 +156,122 @@ public class TestBase {
                 logger.error("Unsupported browser type: " + browserType);
                 return null;
         }
+    }
+
+
+
+    public void checkDownloadedFiles(String fileName) throws InterruptedException {
+        String FILES_DIRECTORY = ("C:\\Users\\SankaKodda\\Downloads");
+        File folder = new File(FILES_DIRECTORY);
+        // capture time before looking for files in directory
+        // last modified time of previous files will always less than start time
+        // this is basically to ignore previous downloaded files
+//    File[] allFiles = new File(folder.getPath()).listFiles();
+        File[] allFiles = folder.listFiles();
+        for (int i = 0; i < allFiles.length; i++) {
+            String eachFile = allFiles[i].getName();
+            if (eachFile.contains(fileName)) {
+                System.out.println("Verified: File : " + fileName + " Has Been Download.");
+            } else continue;
+        }
+       /* File directory = new File("C:\\Users\\SankaKodda\\Downloads");
+        boolean downloadinFilePresence = false;
+        File[] filesList =null;
+        LOOP:
+        while(true) {
+            filesList =  directory.listFiles();
+            for (File file : filesList) {
+                downloadinFilePresence = file.getName().contains(fileName);
+                System.out.println();
+            }
+            if(downloadinFilePresence) {
+                for(;downloadinFilePresence;) {
+                    sleep(5);
+                    System.out.println(downloadinFilePresence+"Downloaded");
+                    continue LOOP;
+                }
+            }else {
+                break;
+            }
+        }*/
+
+    }
+
+    //    public static boolean isFileDownloaded(String expectedFileName, String fileExtension, int timeOut) throws IOException
+//    {
+//        // Download Folder Path
+////        String folderName = System.getProperty("user.dir") + File.separator + "downloads";
+//        String folderName = ("C:\\Users\\SankaKodda\\Downloads");
+//        // Array to Store List of Files in Directory
+//        File[] listOfFiles;
+//
+//        // Store File Name
+//        String fileName;
+//
+//        //  Consider file is not downloaded
+//        boolean fileDownloaded = false;
+//
+//        // capture time before looking for files in directory
+//        // last modified time of previous files will always less than start time
+//        // this is basically to ignore previous downloaded files
+//        long startTime = Instant.now().toEpochMilli();
+//
+//        // Time to wait for download to finish
+//        long waitTime = startTime + timeOut;
+//
+//        // while current time is less than wait time
+//        while (Instant.now().toEpochMilli() < waitTime)
+//        {
+//            System.out.println(Instant.now().toEpochMilli());
+//            System.out.println("dddds1");
+//            // get all the files of the folder
+//            listOfFiles = new File(folderName).listFiles();
+//
+//            // iterate through each file
+//            for (File file : listOfFiles)
+//            {
+//                // get the name of the current file
+//                fileName = file.getName().toLowerCase();
+//                System.out.println("dddds12");
+//                // condition 1 - Last Modified Time > Start Time
+//                // condition 2 - till the time file is completely downloaded extension will be crdownload
+//                // Condition 3 - Current File name contains expected Text
+//                // Condition 4 - Current File name contains expected extension
+//                if (file.lastModified() > startTime && !fileName.contains(prop.getProperty("ExportUnderlyingSalesDataDownloadFileName")) &&   fileName.contains(expectedFileName.toLowerCase()) && fileName.contains(fileExtension.toLowerCase()))
+//                {
+//                    // File Found
+//                    fileDownloaded = true;
+//                    System.out.println("dddds123");
+//                    System.out.println("Verified: File : " + fileName + " Has Been Download.");
+//                    break;
+//                }
+//            }
+//            // File Found Break While Loop
+//            if (fileDownloaded)
+//                System.out.println("dddds124");
+//                break;
+//        }
+//        System.out.println("dddds125");
+//        // File Not Found
+//        return fileDownloaded;
+//
+//    }
+    public static void elementToBeClicked(WebElement element, int timeout) {
+        new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+    }
+
+    public static void notClickableElementsClick(WebElement element, int timeout) {
+        //new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.elementToBeClickable(element));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().build().perform();
+    }
+
+    public static void fluentWaitMethod() {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class);
     }
 
     @AfterTest

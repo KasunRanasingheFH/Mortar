@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class DashboardPage extends TestBase {
     @FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
@@ -51,6 +52,21 @@ public class DashboardPage extends TestBase {
     WebElement activeInDropdownCheckBox;
     @FindBy(css = ".custom__checkboxe:nth-child(4) .check__marked")
     WebElement inactiveInDropdownCheckBox;
+    @FindBy(css = ".ng-tns-c198-0:nth-child(1) > .table-space")
+    WebElement searchedCustomer;
+    @FindBy(css = ".ng-star-inserted.pagination-previous")
+    WebElement previousButtonOnPagination;
+    //    @FindBy(css = ".ng-star-inserted.pagination-next")
+//    @FindBy(css = ".ng-star-inserted.pagination-next")
+    @FindBy(xpath = "//pagination-controls[@id='listing_users']/pagination-template/ul/li[5]/a")
+    WebElement nextButtonOnPagination;
+    @FindBy(css = ".disabled.ng-star-inserted.pagination-next")
+    WebElement disableNextButtonOnPagination;
+    @FindBy(css = ".disabled.ng-star-inserted.pagination-previous")
+    WebElement disablePreviousButtonOnPagination;
+    @FindBy(xpath = "//span[contains(text(),'3')]")
+    WebElement pageNumber3;
+
     /**
      * Validate Checkbox isSelected method and click
 
@@ -87,7 +103,8 @@ if(isSelected == false) {
     public void clickStatusFilter() {
         dropDownStatusFilterOpenButton.click();
     }
-    public boolean verifyStatusFilterDropdownIsVisible(){
+
+    public boolean verifyStatusFilterDropdownIsVisible() {
         return dropDownPanel.isDisplayed();
     }
     public boolean selectAllIsSelected(){
@@ -119,12 +136,17 @@ if(isSelected == false) {
         placeholderSearchClient.sendKeys(brandName);
         Thread.sleep(2000);
         brandSearchButton.click();
+        Thread.sleep(2000);
         goToSearchedDashboardButton.click();
         return new BusinessOverview();
     }
 
     public String verifySearchedBrand() {
         return searchedCustomerName.getText();
+    }
+
+    public String verifySearchedCustomerIsAvailable() {
+        return searchedCustomer.getText();
     }
 
 
@@ -148,5 +170,47 @@ if(isSelected == false) {
     public BusinessOverview clickOnGoToSearchedClientDashboard() {
         goToSearchedClient.click();
         return new BusinessOverview();
+    }
+
+    public void clickOnPreviousButtonOnPagination() {
+        previousButtonOnPagination.click();
+    }
+
+    public boolean previousButtonStatus() {
+        return previousButtonOnPagination.isEnabled();
+    }
+
+    public void clickOnNextButtonOnPagination() {
+        nextButtonOnPagination.click();
+    }
+
+    public boolean verifyPreviousButtonIsDisableInDashboardForFirstTime() {
+        return disablePreviousButtonOnPagination.isDisplayed();
+    }
+
+    public boolean verifyNextButtonIsDisableInDashboardsLastPage() {
+        return disableNextButtonOnPagination.isDisplayed();
+    }
+
+    public void goToPageNumber3OnDashboard() {
+        pageNumber3.click();
+    }
+
+    public void verifyNavigateToAllAvailablePages() throws InterruptedException {
+        int pageCount = 1;
+        boolean isUnclickable = false;
+        while (!isUnclickable) {
+            clickOnNextButtonOnPagination();
+            try {
+                isUnclickable = disableNextButtonOnPagination.isDisplayed();
+                pageCount++;
+                System.out.println("Page Count = " + pageCount);
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+                isUnclickable = false;
+                pageCount++;
+                Thread.sleep(1000);
+            }
+        }
     }
 }

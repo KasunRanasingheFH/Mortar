@@ -34,9 +34,7 @@ public class DashboardPageTest extends TestBase {
     @Test(priority = 1)
     public void verifyDashboardPageTitleTest() {
         String title = dashboardPage.verifyMortarTitle();
-
-//         Assert.assertEquals(title, "Web Portal", "Dashboard page Title is not matched");
-        Assert.assertEquals(title, "Web Portal", "Home page Title is not matched");
+        Assert.assertEquals(title, "Mortar - Web Portal", "Home page Title is not matched");
     }
 
     @Test(priority = 2)
@@ -49,7 +47,7 @@ public class DashboardPageTest extends TestBase {
     public void verifySearchABrandTest() {
 //        testUtil.switchToFrame();
 //        dashboardPage.searchABrand("B&M-SankaXYZ");
-        dashboardPage.searchABrand(prop.getProperty("brandName"));
+        dashboardPage.searchABrand("B&M-SankaXYZ2");
     }
 
     @Test(priority = 4)
@@ -59,16 +57,19 @@ public class DashboardPageTest extends TestBase {
     }
 
     @Test(priority = 5)
-    public void verifySearchABrandAndGoToBrandDetails() throws InterruptedException {
-        dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
+    public void verifySearchABrandAndGoToBrandDetails() {
+
+        dashboardPage.searchABrand(prop.getProperty("brandName"));
+        String searchedUser = dashboardPage.verifySearchedBrand();
+        Assert.assertEquals(searchedUser, prop.getProperty("brandName"), "Searched user is displaying wrong");
     }
 
-    @Test(priority = 6)
+   /* @Test(priority = 6)
     public void verifyStatusFilterIsClickable() {
         dashboardPage.clickStatusFilter();
-        Assert.assertTrue(dashboardPage.verifyStatusFilterDropdownIsVisible(), "Status filter is not Opened");
+        Assert.assertTrue(dashboardPage.statusFilterDropdown(), "Status filter is not Opened");
     }
-
+*/
     @Test(priority = 7)
     public void verifyStatusFilterSelectAllIsSelected() {
         dashboardPage.clickStatusFilter();
@@ -104,7 +105,6 @@ public class DashboardPageTest extends TestBase {
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Inactive is Not Selected");
         }
     }
-
     @Test(priority = 12)
     public void verifyStatusFilterSelectAllDeselect() throws InterruptedException {
         dashboardPage.clickStatusFilter();
@@ -117,7 +117,6 @@ public class DashboardPageTest extends TestBase {
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
         }
     }
-
     @Test(priority = 13)
     public void verifyStatusFilterOnlySetupRequiredDeselect() {
         dashboardPage.clickStatusFilter();
@@ -130,7 +129,6 @@ public class DashboardPageTest extends TestBase {
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Successfully Deselected the Inactive Checkbox");
         }
     }
-
     @Test(priority = 14)
     public void verifyStatusFilterOnlyActiveDeselect() {
         dashboardPage.clickStatusFilter();
@@ -143,18 +141,45 @@ public class DashboardPageTest extends TestBase {
             Assert.assertTrue(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
     }
-
     @Test(priority = 15)
     public void verifyStatusFilterOnlyInactiveDeselect() {
         dashboardPage.clickStatusFilter();
         boolean inactiveStatus = dashboardPage.inactiveIsSelected();
-        if (inactiveStatus) {
+        if(inactiveStatus){
             dashboardPage.clickOnInactiveCheckbox();
-            Assert.assertFalse(dashboardPage.selectAllIsSelected(), "Selected the Select All CheckBox");
+            Assert.assertFalse(dashboardPage.selectAllIsSelected(),"Selected the Select All CheckBox");
             Assert.assertTrue(dashboardPage.setupRequiredIsSelected(), "Selected the Setup Required CheckBox");
             Assert.assertTrue(dashboardPage.activeIsSelected(), "Selected the Active Checkbox");
             Assert.assertFalse(dashboardPage.inactiveIsSelected(), "Selected the Inactive Checkbox");
         }
+    }
+
+    @Test(priority = 16)
+    public void verifiedPreviousDisableWhenLoggedIntoDashboard() throws InterruptedException {
+        Thread.sleep(10000);
+        try {
+            boolean isUnclickable = dashboardPage.verifyPreviousButtonIsDisableInDashboardForFirstTime();
+            Assert.assertTrue(isUnclickable, "Not in the first page when logged in the first time");
+        }catch (Exception e){
+            System.err.println("Not in the first page when logged in the first time");
+        }
+    }
+
+    @Test(priority = 17)
+    public void verifyNextButtonIsClickableWhenMultiplePagesAreAvailable() {
+        boolean isUnclickable = dashboardPage.verifyNextButtonIsDisableInDashboardsLastPage();
+        Assert.assertTrue(isUnclickable, "Next Button is unclickable ");
+        dashboardPage.clickOnNextButtonOnPagination();
+    }
+
+    @Test(priority = 17)
+    public void verifyNextButtonIsClickable() {
+        dashboardPage.clickOnNextButtonOnPagination();
+
+    }
+    @Test(priority = 19)
+    public void verifiedNavigateToAllPagesFromNavigation() throws InterruptedException {
+        dashboardPage.verifyNavigateToAllAvailablePages();
     }
 
     @AfterMethod

@@ -3,6 +3,8 @@ package com.mortarai.testcases.AIAnalyticsPageTests;
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
+import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -15,7 +17,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     //ClientDashboard clientDashboard;
     BusinessOverview businessOverview;
     MyCustomer myCustomer;
-    Intergrations intergrations;
+    Integrations intergrations;
     FacebookAdvertisingPage facebookAdvertisingPage;
     MyCreatives myCreatives;
     //AI Analytics Page
@@ -55,10 +57,17 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 2)
+    public void verifiedCustomerAtChurnListHeader() {
+        String heading = customerChurnPredictionAIAnalytics.verifyCustomerAtChurnListHeaderName();
+        Assert.assertEquals(heading, "Customers at risk of churn", "Customer at risk churn list header is not available");
+    }
+
+    @Test(priority = 2)
     public void verifyExportUnderlyingSalesData() {
         customerChurnPredictionAIAnalytics.exportUnderlyingSalesDataButtonClick();
     }
 
+    @Test(priority = 5)
     public void verifySelectMinimumPurchaseCount() {
         String value = "5";
         customerChurnPredictionAIAnalytics.changeMinimumPurchaseCount(value);
@@ -93,6 +102,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
     public void verifyGoToTargetAudience() {
         targetAudienceAIAnalytics = customerChurnPredictionAIAnalytics.targetAudienceLinkClick();
     }
+
 
     @AfterMethod
     public void tearDown() {

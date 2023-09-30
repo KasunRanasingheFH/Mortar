@@ -4,15 +4,14 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CampaignReportingPage;
 import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CreatNewCampaignPage;
-import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.GoogleAnalyticsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.nio.file.WatchEvent;
 
 public class BusinessOverview extends TestBase {
     @FindBy(css = ".ng-star-inserted > .Overview")
@@ -25,7 +24,7 @@ public class BusinessOverview extends TestBase {
     WebElement navBusinessOverviewLink;
 
     //Ai Analytics From Nav Bar
-    @FindBy(xpath = "//span[contains(text(),'AI Analytics')]")
+    @FindBy(css = ".navigation-left li:nth-of-type(2)")
     WebElement navAiAnalyticsLink;
 
     //My Customer From Nav Bar
@@ -163,9 +162,9 @@ public class BusinessOverview extends TestBase {
         return new MyCustomer();
     }
 
-    public Intergrations clickOnGoToIntergrations() {
+    public Integrations clickOnGoToIntergrations() {
         navIntegrationsLink.click();
-        return new Intergrations();
+        return new Integrations();
     }
 
     public SingleMailingPage clickOnGoToEmailsAndJourneys() {
@@ -183,7 +182,7 @@ public class BusinessOverview extends TestBase {
         return new FacebookAdvertisingPage();
     }
 
-    public GoogleAnalyticsPage clickOnGoToAIAnalyticsPage() {
+    public GoogleAnalyticsPage clickOnGoToAIAnalyticsReportingPage() {
         navSocialDisplayAdvertisingLink.click();
         navGoogleAnalyticsPageLink.click();
         return new GoogleAnalyticsPage();

@@ -2,7 +2,9 @@ package com.mortarportal.qa.pages.AIAnalyticsPages;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.*;
-import com.mortarportal.qa.pages.EmailsAndJourneysPages.SingleMailingPage;
+import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
+import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
+import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -79,7 +81,7 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     @FindBy(id = "ngb-nav-6")
     WebElement targetAudienceLink;
 
-    @FindBy(xpath = "//div[2]/div/div/div/div/h5[contains(text(),'Customers at risk of churn')]")
+    @FindBy(css = "[class='col-md-6 col-lg-6 bm-aligned-middle bm-mobile-aligned'] h5")
             //[contains(text(),'Customers at risk of churn')]
     WebElement customersAtChurnList;
     @FindBy(css = "[class='text-36 subheading mb-3 ng-star-inserted']")
@@ -110,9 +112,9 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
         navMyCustomersLink.click();
         return new MyCustomer();
     }
-    public Intergrations clickOnGoToIntergrations() {
+    public Integrations clickOnGoToIntergrations() {
         navIntegrationsLink.click();
-        return new Intergrations();
+        return new Integrations();
     }
     public SingleMailingPage clickOnGoToEmailsAndJourneys() {
         navEmailsAndJourneyLink.click();
@@ -129,8 +131,12 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     }
 
     public boolean customersAtChurnListDisplay(){
-
         return customersAtChurnList.isDisplayed();
+    }
+    public String verifyCustomerAtChurnListHeaderName(){
+        String text = customersAtChurnList.getText();
+        System.out.println(text);
+        return text;
     }
     public void exportUnderlyingSalesDataButtonClick(){
         exportUnderlyingSalesDataButton.click();
