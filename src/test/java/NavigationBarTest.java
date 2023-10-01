@@ -130,8 +130,8 @@ public class NavigationBarTest extends TestBase {
     public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
-        googleAnalyticsPage = businessOverview.clickOnGoToAIAnalyticsReportingPage();
-        System.out.println("Navigate to AI Analytics Reporting");
+        googleAnalyticsPage = businessOverview.clickOnGoToGoogleAnalyticsReportingPage();
+        System.out.println("Navigate to Google Analytics Reporting");
     }
 
     @Test(priority = 12)
