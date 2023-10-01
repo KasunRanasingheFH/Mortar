@@ -122,7 +122,7 @@ public class NavigationBarTest extends TestBase {
     public void verifyClickGoToFacebookAdvertisingPageTest() {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
-        facebookAdvertisingPage = businessOverview.clickOnGoToFacebookAdvertisingPage();
+        facebookAdvertisingPage = navigationBar.clickOnGoToFacebookAdvertisingPage();
         System.out.println("Navigate to Facebook Advertising");
     }
 
@@ -130,36 +130,36 @@ public class NavigationBarTest extends TestBase {
     public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
-        googleAnalyticsPage = businessOverview.clickOnGoToGoogleAnalyticsReportingPage();
+        googleAnalyticsPage = navigationBar.clickOnGoToGoogleAnalyticsReportingPage();
         System.out.println("Navigate to Google Analytics Reporting");
     }
 
     @Test(priority = 12)
     public void VerifyOpeningDigitalMediaBuyingSubNavBar() {
-        businessOverview.clickOnNavDigitalMediaBuying();
+        navigationBar.clickOnNavDigitalMediaBuying();
         System.out.println("Navigate to Digital Media Buying Sub Navigation Bar");
     }
 
     @Test(priority = 13)
     public void verifyClickGoToCampaignReportingPageTest() {
 //        testUtil.switchToFrame();
-        businessOverview.clickOnNavDigitalMediaBuying();
-        campaignReportingPage = businessOverview.clickOnGoToCampaignReportingPage();
+        navigationBar.clickOnNavDigitalMediaBuying();
+        campaignReportingPage = navigationBar.clickOnGoToCampaignReportingPage();
         System.out.println("Navigate to Campaign Reporting");
     }
 
     @Test(priority = 14)
     public void verifyClickGoToCreatACampaignPageTest() {
 //        testUtil.switchToFrame();
-        businessOverview.clickOnNavDigitalMediaBuying();
-        creatNewCampaignPage = businessOverview.clickOnGoToCreatNewCampaignPage();
-        System.out.println("Navigate to Creat New CampaignPage");
+        navigationBar.clickOnNavDigitalMediaBuying();
+        creatNewCampaignPage = navigationBar.clickOnGoToCreatNewCampaignPage();
+        System.out.println("Navigate to Create New CampaignPage");
     }
 
     @Test(priority = 15)
     public void verifyClickGoToMyCreativesTest() {
 //        testUtil.switchToFrame();
-        myCreatives = businessOverview.clickOnGoToMyCreatives();
+        myCreatives = navigationBar.clickOnGoToMyCreatives();
         System.out.println("Navigate to My Creatives");
     }
 

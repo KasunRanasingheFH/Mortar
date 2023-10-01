@@ -2,10 +2,13 @@ package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
+import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CampaignReportingPage;
+import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CreatNewCampaignPage;
 import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
 import com.mortarportal.qa.pages.EmailsAndJourneysPages.Klaviyo;
 import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
+import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.GoogleAnalyticsPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -45,6 +48,10 @@ public class NavigationBar extends TestBase {
     //Digital Media Buying From Nav Bar
     @FindBy(css = ".navigation-left li:nth-of-type(7)")
     WebElement navDigitalMediaBuyingLink;
+    @FindBy(css = "li:nth-of-type(1) > .ng-star-inserted > .item-name.lvl1")
+    WebElement campaignReportingPageLink;
+    @FindBy(css = ".childNav .ng-star-inserted:nth-of-type(2) .item-name")
+    WebElement campaignCreatingPageLink;
 
     //My Creatives From Nav Bar
     @FindBy(css = ".navigation-left li:nth-of-type(8)")
@@ -95,6 +102,33 @@ public class NavigationBar extends TestBase {
 
     public void clickOnOpenSubMenuNavSocialDisplayAdvertising() {
         navSocialDisplayAdvertisingLink.click();
+    }
+    public FacebookAdvertisingPage clickOnGoToFacebookAdvertisingPage() {
+        navSocialDisplayAdvertisingLink.click();
+        facebookAdvertisingDashboardPageLink.click();
+        return new FacebookAdvertisingPage();
+    }
+
+    public GoogleAnalyticsPage clickOnGoToGoogleAnalyticsReportingPage() {
+        navSocialDisplayAdvertisingLink.click();
+        googleAnalyticsDashboardPageLink.click();
+        return new GoogleAnalyticsPage();
+    }
+
+    public void clickOnNavDigitalMediaBuying() {
+        navDigitalMediaBuyingLink.click();
+    }
+
+    public CampaignReportingPage clickOnGoToCampaignReportingPage() {
+        navDigitalMediaBuyingLink.click();
+        campaignReportingPageLink.click();
+        return new CampaignReportingPage();
+    }
+
+    public CreatNewCampaignPage clickOnGoToCreatNewCampaignPage() {
+        navDigitalMediaBuyingLink.click();
+        campaignCreatingPageLink.click();
+        return new CreatNewCampaignPage();
     }
 
     public MyCreatives clickOnGoToMyCreatives() {
