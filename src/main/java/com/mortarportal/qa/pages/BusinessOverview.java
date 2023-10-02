@@ -182,7 +182,7 @@ public class BusinessOverview extends TestBase {
         return new FacebookAdvertisingPage();
     }
 
-    public GoogleAnalyticsPage clickOnGoToAIAnalyticsReportingPage() {
+    public GoogleAnalyticsPage clickOnGoToGoogleAnalyticsReportingPage() {
         navSocialDisplayAdvertisingLink.click();
         navGoogleAnalyticsPageLink.click();
         return new GoogleAnalyticsPage();

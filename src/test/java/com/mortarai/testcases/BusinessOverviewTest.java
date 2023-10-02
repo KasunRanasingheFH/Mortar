@@ -113,7 +113,7 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 11)
     public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
-        googleAnalyticsPage = businessOverview.clickOnGoToAIAnalyticsReportingPage();
+        googleAnalyticsPage = businessOverview.clickOnGoToGoogleAnalyticsReportingPage();
     }
 
     @Test(priority = 12)
