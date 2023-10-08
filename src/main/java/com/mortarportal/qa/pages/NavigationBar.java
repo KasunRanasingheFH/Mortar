@@ -115,7 +115,7 @@ public class NavigationBar extends TestBase {
         return new GoogleAnalyticsPage();
     }
 
-    public void clickOnNavDigitalMediaBuying() {
+    public void clickOnToOpenSubNavDigitalMediaBuying() {
         navDigitalMediaBuyingLink.click();
     }
 

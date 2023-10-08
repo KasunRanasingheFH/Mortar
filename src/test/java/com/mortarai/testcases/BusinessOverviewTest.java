@@ -61,6 +61,13 @@ public class BusinessOverviewTest extends TestBase {
     }
 
     @Test(priority = 3)
+    public void verifiedBusinessOverviewPageHeader() throws InterruptedException {
+        boolean headerIsAvailable = businessOverview.verifyBusinessOverviewPageHeader();
+        Assert.assertTrue(headerIsAvailable, "Business Overview Page is not Available");
+        Thread.sleep(5000);
+    }
+
+    @Test(priority = 3)
     public void verifyBusinessOwnerIDTest() {
 //        testUtil.switchToFrame();
 //        Assert.assertTrue(clientDashboard.verifyBusinessOwnerID("B&M-SankaXYZ"));
@@ -90,53 +97,67 @@ public class BusinessOverviewTest extends TestBase {
     @Test(priority = 7)
     public void verifyClickGoToIntegrationsPageTest() {
 //        testUtil.switchToFrame();
-        integrations = businessOverview.clickOnGoToIntergrations();
+        integrations = navigationBar.clickOnGoToIntegrations();
     }
 
     @Test(priority = 8)
-    public void verifyClickGoToEmailsAndJourneysPageTest() {
+    public void verifyClickToOpenSubMenuOFEmailsAndJourneysTest() {
 //        testUtil.switchToFrame();
-        singleMailingPage = businessOverview.clickOnGoToEmailsAndJourneys();
+        navigationBar.clickOnOpenSubMenuEmailsAndJourneys();
     }
 
     @Test(priority = 9)
-    public void VerifyOpeningSocialDisplayAdvertisingSubNavBar() {
-        businessOverview.clickOnNavSocialDisplayAdvertisingLink();
+    public void verifyClickToOpenEmailsAndJourneyPage() {
+        navigationBar.clickOnOpenSubMenuEmailsAndJourneys();
+        navigationBar.clickOnGoToSingleMailingInEmailsAndJourneyPage();
     }
 
     @Test(priority = 10)
-    public void verifyClickGoToFacebookAdvertisingPageTest() {
-//        testUtil.switchToFrame();
-        facebookAdvertisingPage = businessOverview.clickOnGoToFacebookAdvertisingPage();
+    public void verifyClickToOpenKlaviyoPage() {
+        navigationBar.clickOnOpenSubMenuEmailsAndJourneys();
+        navigationBar.clickOnGoToKlaviyoDashboardPage();
     }
 
     @Test(priority = 11)
-    public void verifyClickGoToGoogleAnalyticsPageTest() {
-//        testUtil.switchToFrame();
-        googleAnalyticsPage = businessOverview.clickOnGoToGoogleAnalyticsReportingPage();
+    public void VerifyOpeningSocialDisplayAdvertisingSubNavBar() {
+        navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
     }
 
     @Test(priority = 12)
-    public void VerifyOpeningDigitalMediaBuyingSubNavBar() {
-        businessOverview.clickOnNavDigitalMediaBuying();
+    public void verifyClickGoToFacebookAdvertisingPageTest() {
+//        testUtil.switchToFrame();
+        facebookAdvertisingPage = navigationBar.clickOnGoToFacebookAdvertisingPage();
     }
 
     @Test(priority = 13)
-    public void verifyClickGoToCampaignReportingPageTest() {
+    public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
-        campaignReportingPage = businessOverview.clickOnGoToCampaignReportingPage();
+        googleAnalyticsPage = navigationBar.clickOnGoToGoogleAnalyticsReportingPage();
     }
 
     @Test(priority = 14)
-    public void verifyClickGoToCreatACampaignPageTest() {
-//        testUtil.switchToFrame();
-        creatNewCampaignPage = businessOverview.clickOnGoToCreatNewCampaignPage();
+    public void VerifyOpeningDigitalMediaBuyingSubNavBar() {
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
     }
 
     @Test(priority = 15)
+    public void verifyClickGoToCampaignReportingPageTest() {
+//        testUtil.switchToFrame();
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
+        campaignReportingPage = navigationBar.clickOnGoToCampaignReportingPage();
+    }
+
+    @Test(priority = 16)
+    public void verifyClickGoToCreatACampaignPageTest() {
+//        testUtil.switchToFrame();
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
+        creatNewCampaignPage = businessOverview.clickOnGoToCreatNewCampaignPage();
+    }
+
+    @Test(priority = 17)
     public void verifyClickGoToMyCreativesTest() {
 //        testUtil.switchToFrame();
-        myCreatives = businessOverview.clickOnGoToMyCreatives();
+        myCreatives = navigationBar.clickOnGoToMyCreatives();
     }
 
 
@@ -282,27 +303,31 @@ public class BusinessOverviewTest extends TestBase {
                 "Selected in Mailing graph");
 
     }
+
     @Test(priority = 34)
     public void verifiedBestPerformingProductsIsInQuantity() {
         boolean isSelect = businessOverview.verifyBestPerformingProductsInQuantity();
-        Assert.assertTrue(isSelect,"Best Performing Products data are not in Quantity");
+        Assert.assertTrue(isSelect, "Best Performing Products data are not in Quantity");
     }
+
     @Test(priority = 35)
     public void verifiedBestPerformingProductsIsInRevenue() {
         boolean isSelect = businessOverview.verifyBestPerformingProductsInRevenue();
-        Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
+        Assert.assertTrue(isSelect, "Best Performing Products data are not in Revenue");
     }
+
     @Test(priority = 36)
     public void verifiedSelectBestPerformingProductsToQuantity() {
         businessOverview.verifyQuantityRadioButtonClick();
         boolean isSelect = businessOverview.verifyBestPerformingProductsInQuantity();
-        Assert.assertTrue(isSelect,"Best Performing Products data are not in Quantity");
+        Assert.assertTrue(isSelect, "Best Performing Products data are not in Quantity");
     }
+
     @Test(priority = 37)
     public void verifiedSelectBestPerformingProductsToRevenue() {
         businessOverview.verifyRevenueRadioButtonClick();
         boolean isSelect = businessOverview.verifyBestPerformingProductsInRevenue();
-        Assert.assertTrue(isSelect,"Best Performing Products data are not in Revenue");
+        Assert.assertTrue(isSelect, "Best Performing Products data are not in Revenue");
     }
 
     @AfterMethod

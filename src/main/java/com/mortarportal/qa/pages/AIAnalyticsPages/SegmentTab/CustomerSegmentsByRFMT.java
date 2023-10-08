@@ -1,12 +1,13 @@
 package com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab;
 
 import com.mortarportal.qa.base.TestBase;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class SegmentsAIAnalytics extends TestBase {
+public class CustomerSegmentsByRFMT extends TestBase {
     @FindBy(css = ".btn.btn-secondary.fill-dark")
     WebElement exportUnderlyingSalesDataButton;
 
@@ -285,14 +286,24 @@ public class SegmentsAIAnalytics extends TestBase {
     WebElement demographicLocationTableSporadicVIP;
     @FindBy(css = "[class] [role='tabpanel']:nth-of-type(7) .ng-star-inserted:nth-of-type(4) [data-zr-dom-id]")
     WebElement demographicLocationMapCanvasSporadicVIP;
-
+    CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics = PageFactory.initElements(driver,
+            CustomerChurnPredictionAIAnalytics.class);
     //
-    public SegmentsAIAnalytics() {
+    public CustomerSegmentsByRFMT() {
         PageFactory.initElements(driver, this);
     }
 
     public String verifyPageTitle() {
         return driver.getTitle();
+    }
+    public boolean validateAIAnalyticsHeader() {
+        return customerChurnPredictionAIAnalytics.analyticsLabel.isDisplayed();
+    }
+    public boolean segmentTabIsEnabled() {
+        return Boolean.parseBoolean(customerChurnPredictionAIAnalytics.segmentLink.getAttribute("aria-disabled"));
+    }
+    public boolean segmentTabIsSelected() {
+        return Boolean.parseBoolean(customerChurnPredictionAIAnalytics.segmentLink.getAttribute("aria-selected"));
     }
 
     public void clickOnExportUnderlyingSalesData() {

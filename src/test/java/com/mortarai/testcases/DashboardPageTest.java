@@ -172,7 +172,7 @@ public class DashboardPageTest extends TestBase {
         dashboardPage.clickOnNextButtonOnPagination();
     }
 
-    @Test(priority = 17)
+    @Test(priority = 18)
     public void verifyNextButtonIsClickable() {
         dashboardPage.clickOnNextButtonOnPagination();
 

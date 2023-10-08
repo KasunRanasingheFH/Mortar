@@ -59,7 +59,8 @@ public class BusinessOverview extends TestBase {
     @FindBy(xpath = "//span[contains(text(),'My Creatives')]")
     WebElement navMyCreativesLink;
     ///
-
+    @FindBy(xpath = "//h1[contains(text(),'Business Overview')]")
+    WebElement businessOverviewHeader;
     //PopUp
     @FindBy(css = "div[role='document'] img")
     WebElement userVerificationPopup;
@@ -92,9 +93,9 @@ public class BusinessOverview extends TestBase {
     WebElement myObDataInSalesGraph;
     @FindBy(css = "[for='sales-mailchimp']")
     WebElement mailChimpDataInSalesGraph;
-    @FindBy(id="sales-woocommerce")
+    @FindBy(id = "sales-woocommerce")
     WebElement checkBoxWooComInSales;
-    @FindBy(id="sales-myob")
+    @FindBy(id = "sales-myob")
     WebElement checkBoxMyObInSales;
     //Mailing Graph Data
     @FindBy(css = ".card.mb-4.ng-star-inserted.pr-0 > .bg-white.card-footer > .row > .col-md-12 > .form-row > " +
@@ -108,7 +109,7 @@ public class BusinessOverview extends TestBase {
     WebElement myObDataInMailingGraph;
     @FindBy(css = "[for='mailing-mailchimp']")
     WebElement mailChimpInMailing;
-    @FindBy(id="mailing-mailchimp")
+    @FindBy(id = "mailing-mailchimp")
     WebElement checkBoxMailChimpInMailingGraph;
     @FindBy(id = "mailing-woocommerce")
     WebElement checkBoxWooComInMailingGraph;
@@ -125,6 +126,7 @@ public class BusinessOverview extends TestBase {
     public BusinessOverview() {
         PageFactory.initElements(driver, this);
     }
+
     public String validateBusinessOverviewPageTitle() {
         return driver.getTitle();
     }
@@ -145,6 +147,10 @@ public class BusinessOverview extends TestBase {
     public boolean verifyBusinessOwnerID(String businessOwnerId) {
         return driver.findElement(By.xpath("//li[contains(" +
                 "text(),'" + businessOwnerId + "')]")).isDisplayed();
+    }
+
+    public boolean verifyBusinessOverviewPageHeader() {
+        return businessOverviewHeader.isDisplayed();
     }
 
     public BusinessOverview clickOnGoToBusinessOverview() {
@@ -254,56 +260,66 @@ public class BusinessOverview extends TestBase {
     public boolean verifyMyObIsInSalesDataGraph() {
         return myObDataInSalesGraph.isDisplayed();
     }
+
     public boolean verifyWooComCheckBoxCheckedInSales() {
         return checkBoxWooComInSales.isSelected();
     }
+
     public boolean verifyMyObCheckBoxCheckedSales() {
         return checkBoxMyObInSales.isSelected();
     }
-    public boolean verifyUnselectWooComCheckBox(){
+
+    public boolean verifyUnselectWooComCheckBox() {
         wooCommerceDataInSalesGraph.click();
         return checkBoxWooComInSales.isSelected();
 
     }
-    public boolean verifyUnselectMyObCheckBox(){
+
+    public boolean verifyUnselectMyObCheckBox() {
         myObDataInSalesGraph.click();
         return checkBoxMyObInSales.isSelected();
     }
 
     //Mailing List Subscription
-    public void verifyClickOnSelectOptionDropdownInMailing(){
+    public void verifyClickOnSelectOptionDropdownInMailing() {
         selectOptionDropdownMailingListSubscriptionGraph.click();
     }
-    public boolean verifyWooComDataInMailingGraph(){
+
+    public boolean verifyWooComDataInMailingGraph() {
         return wooComDataInMailingGraph.isDisplayed();
     }
 
-    public boolean verifyMyObDataInMailing(){
+    public boolean verifyMyObDataInMailing() {
         return myObDataInMailingGraph.isDisplayed();
     }
-    public boolean verifyOmniSendDataInMailing(){
+
+    public boolean verifyOmniSendDataInMailing() {
         return omniSendDataInMailingGraph.isDisplayed();
     }
+
     public boolean verifyWooComCheckBoxCheckedInMailing() {
         return checkBoxWooComInMailingGraph.isSelected();
     }
+
     public boolean verifyMyObCheckBoxCheckedMailing() {
         return checkBoxMyObInMailingGraph.isSelected();
     }
 
     //Best Performing Product graph
 
-    public boolean verifyBestPerformingProductsInQuantity(){
+    public boolean verifyBestPerformingProductsInQuantity() {
         return quantityRadioButtonInBestPerformanceGraph.isSelected();
     }
-    public boolean verifyBestPerformingProductsInRevenue(){
+
+    public boolean verifyBestPerformingProductsInRevenue() {
         return revenueRadioButtonInBestPerformanceGraph.isSelected();
     }
 
-    public void verifyQuantityRadioButtonClick(){
+    public void verifyQuantityRadioButtonClick() {
         quantityRadioButtonInBestPerformanceGraph.click();
     }
-    public void verifyRevenueRadioButtonClick(){
+
+    public void verifyRevenueRadioButtonClick() {
         revenueRadioButtonInBestPerformanceGraph.click();
 
     }
