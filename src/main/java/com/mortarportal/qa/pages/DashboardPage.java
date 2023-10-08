@@ -32,6 +32,8 @@ public class DashboardPage extends TestBase {
     WebElement brandSearchButton;*/
     @FindBy(id = "submitButton")
     WebElement brandSearchButton;
+    @FindBy(css = "#submitButton")
+    WebElement brandSearchButtonCss;
     @FindBy(id = "dropdownBasic1")
     WebElement dropDownStatusFilterOpenButton;
     @FindBy(css = "[class='p-3 ng-tns-c198-0']")
@@ -134,8 +136,9 @@ if(isSelected == false) {
 
     public BusinessOverview searchABrandAndGoToBusinessOverview(String brandName) throws InterruptedException {
         placeholderSearchClient.sendKeys(brandName);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         brandSearchButton.click();
+        brandSearchButtonCss.click();
         Thread.sleep(2000);
         goToSearchedDashboardButton.click();
         return new BusinessOverview();

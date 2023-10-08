@@ -33,11 +33,22 @@ public class SalesAIAnalytics extends TestBase {
     WebElement year2022Checkbox;
     @FindBy(id = "year-2023")
     WebElement year2023Checkbox;
+    CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics = PageFactory.initElements(driver,
+            CustomerChurnPredictionAIAnalytics.class);
     public SalesAIAnalytics() {
         PageFactory.initElements(driver, this);
     }
     public String verifyMortarTitleSalesTab() {
         return driver.getTitle();
+    }
+    public boolean validateAIAnalyticsHeader() {
+        return customerChurnPredictionAIAnalytics.analyticsLabel.isDisplayed();
+    }
+    public boolean salesTabIsEnabled() {
+        return Boolean.parseBoolean(customerChurnPredictionAIAnalytics.salesLink.getAttribute("aria-disabled"));
+    }
+    public boolean salesTabIsSelected() {
+        return Boolean.parseBoolean(customerChurnPredictionAIAnalytics.salesLink.getAttribute("aria-selected"));
     }
     public boolean verifyAverageHourlySalesGraphHeader(){
         return averageHourlySalesGraphHeader.isDisplayed();

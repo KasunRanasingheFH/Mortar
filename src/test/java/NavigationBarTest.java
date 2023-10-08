@@ -59,6 +59,8 @@ public class NavigationBarTest extends TestBase {
     @Test(priority = 3)
     public void verifiedGoToBusinessOverview() {
          businessOverview = navigationBar.clickOnGoToBusinessOverview();
+         boolean isDisplaying = businessOverview.verifyBusinessOverviewPageHeader();
+         Assert.assertTrue(isDisplaying,"Business Overview Page is not Available");
         System.out.println("Navigate To BusinessOverview");
     }
 
@@ -69,7 +71,7 @@ public class NavigationBarTest extends TestBase {
         System.out.println("Navigate to Customer Churn Prediction AI Analytics");
         Thread.sleep(2000);
     }
-    @Test(priority = 6)
+    @Test(priority = 5)
     public void verifyClickGoToMyCustomerPageTest() throws InterruptedException {
 //        testUtil.switchToFrame();
         myCustomer = navigationBar.clickOnGoToMyCustomer();
@@ -77,7 +79,7 @@ public class NavigationBarTest extends TestBase {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 6)
     public void verifyClickGoToIntegrationsPageTest() throws InterruptedException {
 //        testUtil.switchToFrame();
         integrations = navigationBar.clickOnGoToIntegrations();
@@ -85,14 +87,14 @@ public class NavigationBarTest extends TestBase {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 7)
     public void verifyClickToOpenSubMenuEmailsAndJourneysPageTest() throws InterruptedException {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuEmailsAndJourneys();
         System.out.println("Navigate to Mails And Journeys Sub Menu ");
         Thread.sleep(5000);
     }
-    @Test(priority = 9)
+    @Test(priority = 8)
     public void verifiedClickToGoToSingleMailingInEmailsAndJourney() throws InterruptedException {
         navigationBar.clickOnOpenSubMenuEmailsAndJourneys();
         System.out.println("Navigate to Mails And Journeys Sub Menu ");
@@ -112,13 +114,13 @@ public class NavigationBarTest extends TestBase {
     }
 
 
-    @Test(priority = 9)
+    @Test(priority = 10)
     public void VerifyOpeningSocialDisplayAdvertisingSubNavBar() {
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
         System.out.println("Navigate to Social Display Advertising Sub Navigation Bar");
     }
 
-    @Test(priority = 10)
+    @Test(priority = 11)
     public void verifyClickGoToFacebookAdvertisingPageTest() {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
@@ -126,7 +128,7 @@ public class NavigationBarTest extends TestBase {
         System.out.println("Navigate to Facebook Advertising");
     }
 
-    @Test(priority = 11)
+    @Test(priority = 12)
     public void verifyClickGoToGoogleAnalyticsPageTest() {
 //        testUtil.switchToFrame();
         navigationBar.clickOnOpenSubMenuNavSocialDisplayAdvertising();
@@ -134,29 +136,29 @@ public class NavigationBarTest extends TestBase {
         System.out.println("Navigate to Google Analytics Reporting");
     }
 
-    @Test(priority = 12)
+    @Test(priority = 13)
     public void VerifyOpeningDigitalMediaBuyingSubNavBar() {
-        navigationBar.clickOnNavDigitalMediaBuying();
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
         System.out.println("Navigate to Digital Media Buying Sub Navigation Bar");
     }
 
-    @Test(priority = 13)
+    @Test(priority = 14)
     public void verifyClickGoToCampaignReportingPageTest() {
 //        testUtil.switchToFrame();
-        navigationBar.clickOnNavDigitalMediaBuying();
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
         campaignReportingPage = navigationBar.clickOnGoToCampaignReportingPage();
         System.out.println("Navigate to Campaign Reporting");
     }
 
-    @Test(priority = 14)
+    @Test(priority = 15)
     public void verifyClickGoToCreatACampaignPageTest() {
 //        testUtil.switchToFrame();
-        navigationBar.clickOnNavDigitalMediaBuying();
+        navigationBar.clickOnToOpenSubNavDigitalMediaBuying();
         creatNewCampaignPage = navigationBar.clickOnGoToCreatNewCampaignPage();
         System.out.println("Navigate to Create New CampaignPage");
     }
 
-    @Test(priority = 15)
+    @Test(priority = 16)
     public void verifyClickGoToMyCreativesTest() {
 //        testUtil.switchToFrame();
         myCreatives = navigationBar.clickOnGoToMyCreatives();

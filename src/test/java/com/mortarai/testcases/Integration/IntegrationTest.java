@@ -4,13 +4,12 @@ import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
 import com.mortarportal.qa.pages.AIAnalyticsPages.SalesAIAnalytics;
 import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.CustomerSegmentByProductCategoryInSegment;
-import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.SegmentsAIAnalytics;
+import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.CustomerSegmentsByRFMT;
 import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.Integrations.Integrations;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
-import io.cucumber.java.sl.In;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -22,7 +21,7 @@ public class IntegrationTest extends TestBase {
     BusinessOverview businessOverview;
     CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics;
     SalesAIAnalytics salesAIAnalytics;
-    SegmentsAIAnalytics segmentsAIAnalytics;
+    CustomerSegmentsByRFMT customerSegmentsByRFMT;
     CustomerSegmentByProductCategoryInSegment customerSegmentByProductCategoryInSegment;
     Integrations integrations;
 
