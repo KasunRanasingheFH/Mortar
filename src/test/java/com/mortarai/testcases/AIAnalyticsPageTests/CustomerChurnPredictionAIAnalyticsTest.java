@@ -53,7 +53,6 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         }
 
     }
-
     @Test(priority = 2)
     public void verifiedCustomerAtChurnListHeader() {
         String heading = customerChurnPredictionAIAnalytics.verifyCustomerAtChurnListHeaderName();
