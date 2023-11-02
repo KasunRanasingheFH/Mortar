@@ -7,6 +7,7 @@ import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CampaignReportingPage;
 import com.mortarportal.qa.pages.DigitalMediaBuyingPages.CreatNewCampaignPage;
 import com.mortarportal.qa.pages.EmailsAndJourneysPages.EmailsAndJourney.SingleMailingPage;
 import com.mortarportal.qa.pages.Integrations.Integrations;
+import com.mortarportal.qa.pages.MyCustomers.MyCustomer;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.GoogleAnalyticsPage;
 import org.testng.Assert;

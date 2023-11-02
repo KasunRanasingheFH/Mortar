@@ -58,7 +58,7 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     @FindBy(css = "[class='dropdown-menu mb-2 show'] .dropdown-item:nth-of-type(4)")
     WebElement previous60DaysFilter;
     //AI Analytics Page
-    @FindBy(xpath = "//button[contains(.,' Export Underlying Sales Data')]")
+    @FindBy(xpath = "//button[contains(text(),' Export Underlying Sales Data')]")
     WebElement exportUnderlyingSalesDataButton;
     @FindBy(id = "ngb-nav-0")
     WebElement customerChurnPredictionLink;
@@ -85,6 +85,11 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     WebElement connectYourPlatformText;
     @FindBy(id = "dropdownBasic1")
     WebElement minimumPurchaseCountDropdown;
+    @FindBy(css = ".col-md-6:nth-child(1) .m-0")
+    WebElement historicalCustomerBreakdownChartHeader;
+    @FindBy(css = ".card.card-white [class='m-0 p-3 text-left dis-block']")
+    WebElement historicalChurnRecordsGraphHeader;
+
 
     public CustomerChurnPredictionAIAnalytics() {
         PageFactory.initElements(driver, this);
@@ -170,5 +175,12 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
         minimumPurchaseCount.selectByValue(minimumPurchaseCountValue);
     }
 
+    public boolean verifyHistoricalCustomerBreakdownChartHeader() {
+        return historicalCustomerBreakdownChartHeader.isDisplayed();
+    }
+
+    public boolean verifyHistoricalChurnRecordsGraphHeader() {
+        return historicalChurnRecordsGraphHeader.isDisplayed();
+    }
 
 }

@@ -5,6 +5,7 @@ import com.mortarportal.qa.pages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
 import com.mortarportal.qa.pages.AIAnalyticsPages.SegmentTab.CustomerSegmentsByRFMT;
 import com.mortarportal.qa.pages.Integrations.Integrations;
+import com.mortarportal.qa.pages.MyCustomers.MyCustomer;
 import com.mortarportal.qa.pages.SocialAndDisplayAdvertisingPages.FacebookAdvertisingPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -61,19 +62,19 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
 
     }
     @Test(priority = 2)
-    public void verifiedAIAnalyticsHeader(){
+    public void verifiedAIAnalyticsHeader() {
         boolean isDisplayingAIAnalyticsHeader = customerChurnPredictionAIAnalytics.validateAIAnalyticsHeader();
-        Assert.assertTrue(isDisplayingAIAnalyticsHeader,"You are not In AI Analytics section");
+        Assert.assertTrue(isDisplayingAIAnalyticsHeader, "You are not In AI Analytics section");
         System.out.println("Verify in AI Analytics");
     }
     @Test(priority = 3)
-    public void verifiedCustomerChurnIsEnabled(){
+    public void verifiedCustomerChurnIsEnabled() {
         boolean isDisable = customerChurnPredictionAIAnalytics.customerChurnPredictionIsEnabled();
         Assert.assertFalse(isDisable, "Customer Churn Prediction is not Enable");
         System.out.println("Customer Churn Prediction Tab Is Enabled");
     }
     @Test(priority = 4)
-    public void verifiedCustomerChurnIsSelected(){
+    public void verifiedCustomerChurnIsSelected() {
         boolean isSelected = customerChurnPredictionAIAnalytics.customerChurnPredictionIsSelected();
         Assert.assertTrue(isSelected, "Customer Churn Prediction is not Selected");
         System.out.println("Customer Churn Prediction Tab Is Selected");
@@ -126,6 +127,16 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         targetAudienceAIAnalytics = customerChurnPredictionAIAnalytics.targetAudienceLinkClick();
     }
 
+    @Test(priority = 14)
+    public void verifiedHistoricalCustomerBreakdownChartHeader() {
+        boolean isDisplaying = customerChurnPredictionAIAnalytics.verifyHistoricalCustomerBreakdownChartHeader();
+        Assert.assertTrue(isDisplaying,"Historical Customer Breakdown is not available");
+    }
+    @Test(priority = 15)
+    public void verifiedHistoricalChurnRecordsGraphHeader() {
+        boolean isDisplaying = customerChurnPredictionAIAnalytics.verifyHistoricalChurnRecordsGraphHeader();
+        Assert.assertTrue(isDisplaying,"Historical Churn Records is not available");
+    }
 
     @AfterMethod
     public void tearDown() {
