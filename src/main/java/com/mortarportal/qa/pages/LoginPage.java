@@ -1,9 +1,18 @@
 package com.mortarportal.qa.pages;
 
 import com.mortarportal.qa.base.TestBase;
+import com.mortarportal.qa.pages.AIAnalyticsPages.CustomerChurnPredictionAIAnalytics;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class LoginPage extends TestBase {
     //Page Factory - OR:
@@ -27,6 +36,9 @@ public class LoginPage extends TestBase {
     WebElement spanErrorMessage;
 
     //Initializing Page Objects
+    DashboardPage dashboardPage = PageFactory.initElements(driver,
+            DashboardPage.class);
+
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
@@ -56,8 +68,33 @@ public class LoginPage extends TestBase {
         return loginBtn.isDisplayed();
     }
 
-    public void loginButtonClickable() {
+    @Parameters({"browser.name"})
+    public void user_navigates_to_the_login_page(@Optional("chrome") String browser) {
+        initialization(browser);
+    }
+
+    @When("^user enters username \"([^\"]*)\"$")
+    public void enter_User_Name(String uname) {
+        username.sendKeys(uname);
+    }
+
+    @And("user enters the password as \"([^\"]*)\"$")
+    public void user_Enter_Password(String pwd) {
+        password.sendKeys(pwd);
+    }
+
+    @And("clicks on login button")
+    public void login_Button_Clickable() {
         loginBtn.click();
+    }
+
+    @Then("user is navigated to the home page and see {string} message")
+    public DashboardPage user_navigates_to_the_home_page(String message) throws InterruptedException {
+        Thread.sleep(5000);
+        String getDashboardTitle = dashboardPage.dashboardLabel.getText();
+        Assert.assertEquals(getDashboardTitle, message, "Login failed! Please check your username and password and try again.");
+//        Assert.assertTrue(isInDashboard, "Login failed! Please check your username and password and try again.");
+        return new DashboardPage();
     }
 
     public DashboardPage login(String uname, String pwd) {

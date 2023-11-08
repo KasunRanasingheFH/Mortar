@@ -5,6 +5,7 @@ import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.util.TestUtil;
+import io.cucumber.java.en.Given;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -23,9 +24,10 @@ public class LoginPageTest extends TestBase {
         super();
     }
 
+    @Given("user navigates to the login page in browser {string}")
     @Parameters({"browser.name"})
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser) {
+    public void user_navigates_to_the_login_page(@Optional("chrome") String browser) {
         initialization(browser);
         loginPage = new LoginPage();
     }
@@ -58,7 +60,7 @@ public class LoginPageTest extends TestBase {
     }
     @Test(priority = 6)
     public void verifyLoginButtonClickable(){
-        loginPage.loginButtonClickable();
+        loginPage.login_Button_Clickable();
         boolean errorMsg = loginPage.getErrorMessage();
         Assert.assertTrue(errorMsg, "Login failed! Please check your username and password and try again.");
     }
