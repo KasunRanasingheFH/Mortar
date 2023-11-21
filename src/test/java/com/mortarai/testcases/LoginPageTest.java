@@ -31,9 +31,6 @@ public class LoginPageTest extends TestBase {
         initialization(browser);
         loginPage = new LoginPage();
     }
-
-    int x = 1;
-
     @Test(priority = 1)
     public void loginPageTitleTest() {
         String title = loginPage.validateLoginPageTitle();

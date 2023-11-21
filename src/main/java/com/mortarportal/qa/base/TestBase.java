@@ -131,14 +131,18 @@ public class TestBase {
                 chromeOptions.addArguments("remote-allow-origins=*");
                 chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 chromeOptions.addArguments("test-type");
-                chromeOptions.addArguments("start-maximized");
+                chromeOptions.addArguments("--start-maximized");
                 chromeOptions.setExperimentalOption("excludeSwitches", ImmutableList.of("disable-popup-blocking"));
+                chromeOptions.setImplicitWaitTimeout(Duration.ofSeconds(10));
+                chromeOptions.setPageLoadTimeout(Duration.ofSeconds(10));
                 return new ChromeDriver(chromeOptions);
             case FIREFOX:
                 return new FirefoxDriver();
             case IE:
                 InternetExplorerOptions ieOptions = new InternetExplorerOptions();
                 ieOptions.setCapability(InternetExplorerDriver.IE_USE_PER_PROCESS_PROXY, false);
+                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICITLY_WAIT));
                 return new InternetExplorerDriver(ieOptions);
             case EDGE:
                 return new EdgeDriver();

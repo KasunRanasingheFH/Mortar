@@ -43,6 +43,7 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         businessOverview = dashboardPage.searchABrandAndGoToBusinessOverview(prop.getProperty("brandName"));
         customerChurnPredictionAIAnalytics = businessOverview.clickOnGoToCustomerChurnPredictionAIAnalytics();
     }
+
     @Test(priority = 1)
     public void verifiedDemographicAIAnalyticsTitle() {
         String title = salesAIAnalytics.verifyMortarTitleSalesTab();
@@ -61,18 +62,21 @@ public class CustomerChurnPredictionAIAnalyticsTest extends TestBase {
         }
 
     }
+
     @Test(priority = 2)
     public void verifiedAIAnalyticsHeader() {
         boolean isDisplayingAIAnalyticsHeader = customerChurnPredictionAIAnalytics.validateAIAnalyticsHeader();
         Assert.assertTrue(isDisplayingAIAnalyticsHeader, "You are not In AI Analytics section");
         System.out.println("Verify in AI Analytics");
     }
+
     @Test(priority = 3)
     public void verifiedCustomerChurnIsEnabled() {
         boolean isDisable = customerChurnPredictionAIAnalytics.customerChurnPredictionIsEnabled();
         Assert.assertFalse(isDisable, "Customer Churn Prediction is not Enable");
         System.out.println("Customer Churn Prediction Tab Is Enabled");
     }
+
     @Test(priority = 4)
     public void verifiedCustomerChurnIsSelected() {
         boolean isSelected = customerChurnPredictionAIAnalytics.customerChurnPredictionIsSelected();

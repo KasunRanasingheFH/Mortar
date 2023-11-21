@@ -102,6 +102,7 @@ public class CustomerChurnPredictionAIAnalytics extends TestBase {
     public boolean validateAIAnalyticsHeader() {
         return analyticsLabel.isDisplayed();
     }
+
     public boolean customerChurnPredictionIsEnabled() {
         return Boolean.parseBoolean(customerChurnPredictionLink.getAttribute("aria-disabled"));
     }

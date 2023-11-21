@@ -23,6 +23,7 @@ public class DemographicAIAnalyticsTest extends TestBase {
     CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics;
     SalesAIAnalytics salesAIAnalytics;
     DemographicAIAnalytics demographicAIAnalytics;
+
     @Parameters({"browser.name"})
     @BeforeMethod
     public void setUp(@Optional("chrome") String browser) throws InterruptedException {
@@ -34,33 +35,55 @@ public class DemographicAIAnalyticsTest extends TestBase {
         demographicAIAnalytics = customerChurnPredictionAIAnalytics.demographicLinkClick();
         customerChurnPredictionAIAnalytics = new CustomerChurnPredictionAIAnalytics();
     }
+
     @Test(priority = 1)
     public void verifiedDemographicAIAnalyticsTitle() {
         String title = demographicAIAnalytics.verifyMortarTitleDemographicTab();
         Assert.assertEquals(title, "Mortar - Web Portal", "Title is wrong");
     }
+
     @Test(priority = 2)
     public void verifiedAIAnalyticsHeader() {
         boolean isDisplayingAIAnalyticsHeader = demographicAIAnalytics.validateAIAnalyticsHeader();
         Assert.assertTrue(isDisplayingAIAnalyticsHeader, "You are not In AI Analytics section");
         System.out.println("Verify in AI Analytics");
     }
+
     @Test(priority = 3)
     public void verifiedCustomerChurnIsEnabled() {
         boolean isDisable = demographicAIAnalytics.demographicTabIsEnabled();
         Assert.assertFalse(isDisable, "Demographic Tab is not Enable");
         System.out.println("Demographic Tab Is Enabled");
     }
+
     @Test(priority = 3)
     public void verifiedCustomerChurnIsSelected() {
         boolean isSelected = demographicAIAnalytics.demographicTabIsSelected();
         Assert.assertTrue(isSelected, "Demographic Tab is not Selected");
         System.out.println("Demographic Tab Is Selected");
     }
+
     @Test(priority = 5)
     public void verifyExportUnderlyingSalesData() {
         customerChurnPredictionAIAnalytics.exportUnderlyingSalesDataButtonClick();
     }
+    @Test(priority = 6)
+    public void verifiedLocationByNumberOfCustomersHeader(){
+        boolean isDisplay = demographicAIAnalytics.verifyLocationByNumberOfCustomersHeader();
+        Assert.assertTrue(isDisplay,"Location by Number of Customers Header Is not Available");
+    }
+    @Test(priority = 7)
+    public void verifiedLocationByTotalCustomerSpendHeader(){
+        boolean isDisplay = demographicAIAnalytics.verifyLocationByTotalCustomerSpendHeader();
+        System.out.println(isDisplay);
+        Assert.assertTrue(isDisplay,"Location by Total Customer Spend Header Is not Available");
+    }
+    @Test(priority = 7)
+    public void verifiedCustomerGenderDistribution(){
+        boolean isDisplay = demographicAIAnalytics.verifyCustomerGenderDistribution();
+        Assert.assertTrue(isDisplay,"Customer Gender Distribution Header Is not Available");
+    }
+
 
 
 }

@@ -92,6 +92,9 @@ if(isSelected == false) {
     public boolean verifyDashboardText() {
         return dashboardLabel.isDisplayed();
     }
+    public void getDashboardTitleText(){
+        String dashboardLabelText =dashboardLabel.getText();
+    }
 
     /*public void searchABrand(String brandName){
          placeholderSearchClient.sendKeys(brandName);

@@ -1,4 +1,4 @@
-package com.mortarai.testcases;
+package com.mortarai.testcases.AIAnalyticsPageTests;
 
 import com.mortarportal.qa.base.TestBase;
 import com.mortarportal.qa.pages.AIAnalyticsPages.*;
@@ -50,15 +50,15 @@ public class TrendsAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 3)
-    public void verifiedCustomerChurnIsEnabled() {
-        boolean isDisable = productsAIAnalytics.productTabIsEnabled();
+    public void verifiedTrendsTabIsEnabled() {
+        boolean isDisable = trendsAIAnalytics.trendsTabIsEnabled();
         Assert.assertFalse(isDisable, "Trends Tab is not Enable");
         System.out.println("Trends Tab Is Enabled");
     }
 
     @Test(priority = 3)
     public void verifiedCustomerChurnIsSelected() {
-        boolean isSelected = productsAIAnalytics.productTabIsSelected();
+        boolean isSelected = trendsAIAnalytics.trendsTabIsSelected();
         Assert.assertTrue(isSelected, "Trends Tab is not Selected");
         System.out.println("Trends Tab Is Selected");
     }
@@ -66,5 +66,26 @@ public class TrendsAIAnalyticsTest extends TestBase {
     @Test(priority = 5)
     public void verifyExportUnderlyingSalesData() {
         customerChurnPredictionAIAnalytics.exportUnderlyingSalesDataButtonClick();
+    }
+    @Test(priority = 6)
+    public void verifiedCumulativeSalesChartHeader() {
+        boolean isDisplay = trendsAIAnalytics.verifyCumulativeSalesChartHeader();
+        Assert.assertTrue(isDisplay, "Cumulative Chart Header is not available");
+    }
+
+    @Test(priority = 7)
+    public void verifiedCumulativeSalesChartCanvas() {
+        boolean isDisplay = trendsAIAnalytics.verifyCumulativeSalesChartCanvas();
+        Assert.assertTrue(isDisplay, "Cumulative Chart Canvas is not available");
+
+    }
+
+    @Test(priority = 8)
+    public void verifiedClickOnPreviousSalesFilter() {
+        trendsAIAnalytics.verifyClickOnPreviousSalesFilter();
+    }
+    @Test(priority = 9)
+    public void verifiedClickOnCurrentSalesFilter() {
+        trendsAIAnalytics.verifyClickOnCurrentSalesFilter();
     }
 }

@@ -23,6 +23,12 @@ public class ProductsAIAnalytics extends TestBase {
     @FindBy(xpath = "//label[@for='bottom10-2']")
     WebElement bottom10ProductByRevenue;
 
+    @FindBy(id = "dropdownExport")
+    WebElement exportDropdown;
+@FindBy(css = ".show .dropdown-item:nth-of-type(1)")
+        WebElement exportAllData;
+@FindBy(css = ".show .dropdown-item:nth-of-type(2)")
+        WebElement exportFilteredData;
     CustomerChurnPredictionAIAnalytics customerChurnPredictionAIAnalytics = PageFactory.initElements(driver,
             CustomerChurnPredictionAIAnalytics.class);
     public ProductsAIAnalytics() {
@@ -52,6 +58,12 @@ public class ProductsAIAnalytics extends TestBase {
     public boolean verifyTop10ProductsRevenueIsAvailable() {
         return top10ProductByRevenue.isDisplayed();
     }
+    public void verifyTop10ProductsFilterByQuantity(){
+        top10ProductByQuantity.click();
+    }
+    public void verifyTop10ProductsFilterByRevenue(){
+        top10ProductByRevenue.click();
+    }
     public boolean verifyBottom10ProductsHeader() {
         return bottom10ProductHeader.isDisplayed();
     }
@@ -64,5 +76,24 @@ public class ProductsAIAnalytics extends TestBase {
     public boolean verifyBottom10ProductsRevenueIsAvailable() {
         return bottom10ProductByRevenue.isDisplayed();
     }
+    public void verifyBottom10ProductsFilterByQuantity(){
+        bottom10ProductByRevenue.click();
+    }
+    public void verifyBottom10ProductsFilterByRevenue(){
+        bottom10ProductByRevenue.click();
+    }
+    public void verifyExportAllData() throws InterruptedException {
+        exportDropdown.click();
+        Thread.sleep(10000);
+        exportAllData.click();
+        Thread.sleep(5000);
+    }
+    public void verifyExportFilteredData() throws InterruptedException {
+        exportDropdown.click();
+        Thread.sleep(10000);
+        exportFilteredData.click();
+        Thread.sleep(5000);
+    }
+
 }
 

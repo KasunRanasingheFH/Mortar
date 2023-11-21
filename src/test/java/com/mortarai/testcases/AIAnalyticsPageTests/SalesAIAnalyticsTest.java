@@ -7,8 +7,6 @@ import com.mortarportal.qa.pages.BusinessOverview;
 import com.mortarportal.qa.pages.DashboardPage;
 import com.mortarportal.qa.pages.LoginPage;
 import com.mortarportal.qa.pages.NavigationBar;
-import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
-import org.bouncycastle.math.Primes;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -46,14 +44,14 @@ public class SalesAIAnalyticsTest extends TestBase {
     }
 
     @Test(priority = 3)
-    public void verifiedCustomerChurnIsEnabled() {
+    public void verifiedSalesTabIsEnabled() {
         boolean isDisable = salesAIAnalytics.salesTabIsEnabled();
         Assert.assertFalse(isDisable, "Products Tab is not Enable");
         System.out.println("Products Tab Is Enabled");
     }
 
     @Test(priority = 4)
-    public void verifiedCustomerChurnIsSelected() {
+    public void verifiedSalesTabIsSelected() {
         boolean isSelected = salesAIAnalytics.salesTabIsSelected();
         Assert.assertTrue(isSelected, "Products Tab is not Selected");
         System.out.println("Products Tab Is Selected");
